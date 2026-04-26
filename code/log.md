@@ -23,3 +23,41 @@ Append-only. Most recent at top.
 - Marked `k-t1-001` in-progress (Astro project setup begins next).
 
 Next: Phase 2 — Astro project scaffold + Cloudflare Pages connection.
+
+---
+
+## 2026-04-26 — Phase 2 partial (Astro scaffold + foundation)
+
+**Actor:** claude-code
+**Phase:** 2 (Astro project setup) — partial: foundation done, Cloudflare Pages connection pending Ross-side step
+
+Built:
+- `package.json`, `astro.config.mjs`, `tsconfig.json` — Astro 5, sitemap integration, static output, trailingSlash always
+- `src/lib/nap.ts` — single source of truth for NAP, geo, hours, insurance, the 18 SERVICE_AREAS array (in BRIEF priority order), the 5 SERVICES array
+- `src/styles/global.css` — full design system ported from existing GHL build (navy + orange palette, Inter, all components: hero, FAQ, CTA banner, footer, breadcrumb, body content, WhatsApp float button, fade-in animations)
+- `src/layouts/BaseLayout.astro` — header (with logo + nav + Call CTA), footer (with NAP + dynamic areas list), WhatsApp floating button, FAQ accordion JS
+- `src/components/schema/`:
+  - `LocalBusiness.astro` (with full areaServed, hasOfferCatalog, geo, hours)
+  - `Person.astro` (Ross, with `sameAs: []` empty-array pattern per BRIEF Part 5)
+  - `FAQPage.astro` (parameterised)
+  - `BreadcrumbList.astro` (parameterised)
+  - `Service.astro` (parameterised, with AggregateOffer price ranges)
+- `src/components/FAQ.astro` (visible accordion, paired with FAQPage schema)
+- `src/components/ContactCTA.astro`
+- `public/robots.txt` — full AI-crawler allowlist per BRIEF Part 8
+- `public/llms.txt` — business overview for AI engines
+- Ported `favicon.svg`, `favicon.png`, `newcastle-logo.svg` from existing GHL build
+- `src/pages/index.astro` — homepage built end-to-end (hero, services grid, Note from Ross block, areas grid, FAQ accordion, CTA banner, all schema types injected). Strips Aga from FAQ; areaServed schema reflects new 18 only.
+
+Not yet done in Phase 2:
+- `npm install` not yet run (Ross can run locally, or I run on next session)
+- Cloudflare Pages connection to GitHub repo (Ross does this in the Cloudflare dashboard — connects repo, sets build cmd `npm run build`, output dir `dist`, branch `main` for production / `dev` for staging)
+- `wrangler.toml` (optional — can be configured via dashboard, deferring)
+- Schema validation pass via Rich Results Test (deferred to Phase 4)
+
+State updates:
+- `k-t1-001` marked done (Astro project scaffold complete)
+- `k-t1-002` marked todo (Cloudflare Pages connection — needs dashboard step)
+- `k-t1-003`, `k-t1-004` marked done (folder structure + base layout)
+
+Phase 3 (content build, 28 pages) is the largest remaining chunk. Beginning in the next session — drafting content for the 5 service variant pages first (highest commercial value), then the 18 location pages in BRIEF priority order, then the 4 supporting pages.

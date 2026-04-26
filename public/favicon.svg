@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Orange background -->
+  <rect width="32" height="32" rx="6" fill="#FF7A00"/>
+  <!-- Oven body -->
+  <rect x="5" y="9" width="22" height="18" rx="2" fill="white"/>
+  <!-- Oven door window -->
+  <rect x="8" y="15" width="16" height="9" rx="1.5" fill="#FF7A00"/>
+  <!-- Door handle -->
+  <rect x="11" y="13" width="10" height="2" rx="1" fill="#0F172A"/>
+  <!-- Control knobs -->
+  <circle cx="10" cy="12" r="1.5" fill="#0F172A"/>
+  <circle cx="16" cy="12" r="1.5" fill="#0F172A"/>
+  <circle cx="22" cy="12" r="1.5" fill="#0F172A"/>
+  <!-- Shine on door -->
+  <rect x="10" y="17" width="4" height="5" rx="1" fill="white" opacity="0.25"/>
+</svg>

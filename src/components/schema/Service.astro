@@ -1,0 +1,37 @@
+---
+import { NAP, SERVICE_AREAS } from '~/lib/nap';
+
+interface Props {
+  serviceType: string;
+  url: string;
+  priceFrom: number;
+  priceTo: number;
+  description: string;
+  /** Optionally override the areaServed list — defaults to all 18. */
+  areaServed?: string[];
+}
+
+const { serviceType, url, priceFrom, priceTo, description, areaServed } = Astro.props;
+const areas = areaServed ?? SERVICE_AREAS.map(a => a.name);
+
+const fullUrl = url.startsWith('http') ? url : `${NAP.url}${url}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType,
+  name: serviceType,
+  url: fullUrl,
+  description,
+  provider: { '@id': `${NAP.url}/#business` },
+  areaServed: areas.map(name => ({ '@type': 'Place', name })),
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'GBP',
+    lowPrice: String(priceFrom),
+    highPrice: String(priceTo),
+    url: fullUrl,
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

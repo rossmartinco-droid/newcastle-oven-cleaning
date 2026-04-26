@@ -1,0 +1,17 @@
+---
+import { NAP } from '~/lib/nap';
+
+interface Props {
+  heading?: string;
+  sub?: string;
+}
+
+const { heading = 'Ready for a spotless oven?', sub = `Call today for a free, no-obligation quote. ${NAP.hours.display}.` } = Astro.props;
+---
+<section class="cta-banner">
+  <div class="container">
+    <h2>{heading}</h2>
+    <p>{sub}</p>
+    <a href={NAP.phone.href} class="btn-white">📞 Call {NAP.phone.display}</a>
+  </div>
+</section>

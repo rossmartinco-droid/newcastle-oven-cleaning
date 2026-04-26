@@ -1,0 +1,24 @@
+---
+import { NAP } from '~/lib/nap';
+
+interface Props {
+  /** sameAs URLs (Facebook, Instagram, LinkedIn etc). Empty array if none yet. */
+  sameAs?: string[];
+}
+
+const { sameAs = [] } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${NAP.url}/#ross`,
+  name: `${NAP.ownerFirstName} ${NAP.ownerLastName}`,
+  jobTitle: NAP.ownerJobTitle,
+  worksFor: { '@id': `${NAP.url}/#business` },
+  description: `Owner of ${NAP.name}. Independent sole trader, fully insured, based in ${NAP.address.locality}, ${NAP.address.city}. Specialist oven cleaning across Newcastle and surrounding areas.`,
+  telephone: NAP.phone.international,
+  email: NAP.email.address,
+  sameAs,
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-26T15:55:00Z",
+  "lastUpdated": "2026-04-26T16:25:00Z",
   "lastUpdatedBy": "claude-code",
   "schemaNote": "Task IDs mirror tracker.html. Status values: todo | in-progress | done | blocked. Claude Code updates this file as work completes; tracker.html reads it on load. See BRIEF.md for the workflow model (maximum delegation, single review pass at the end).",
   "tasks": {
@@ -105,30 +105,34 @@
       "note": "18 location pages (Corbridge + Hexham dropped from original 20)"
     },
     "k-t1-001": {
-      "status": "in-progress",
+      "status": "done",
       "updatedBy": "claude-code",
-      "updatedAt": "2026-04-26T15:55:00Z",
-      "note": "Phase 1 audit done (code/audit-2026-04-26.md). Astro scaffold next."
+      "updatedAt": "2026-04-26T16:25:00Z",
+      "note": "Astro project scaffold + folder structure done."
     },
     "k-t1-002": {
-      "status": "blocked",
-      "updatedBy": "claude-chat",
-      "updatedAt": "2026-04-25T16:00:00Z"
+      "status": "todo",
+      "updatedBy": "claude-code",
+      "updatedAt": "2026-04-26T16:25:00Z",
+      "note": "Cloudflare Pages connection \u2014 Ross to action via dashboard. Build cmd: npm run build. Output: dist. Branch: main = prod, dev = staging."
     },
     "k-t1-003": {
-      "status": "blocked",
-      "updatedBy": "claude-chat",
-      "updatedAt": "2026-04-25T16:00:00Z"
+      "status": "done",
+      "updatedBy": "claude-code",
+      "updatedAt": "2026-04-26T16:25:00Z",
+      "note": "GitHub repo + .gitignore configured."
     },
     "k-t1-004": {
-      "status": "blocked",
-      "updatedBy": "claude-chat",
-      "updatedAt": "2026-04-25T16:00:00Z"
+      "status": "done",
+      "updatedBy": "claude-code",
+      "updatedAt": "2026-04-26T16:25:00Z",
+      "note": "Folder structure + BaseLayout + components built."
     },
     "k-t1-005": {
-      "status": "blocked",
-      "updatedBy": "claude-chat",
-      "updatedAt": "2026-04-25T16:00:00Z"
+      "status": "in-progress",
+      "updatedBy": "claude-code",
+      "updatedAt": "2026-04-26T16:25:00Z",
+      "note": "Homepage skeleton built; content polish pending."
     },
     "k-t1-006": {
       "status": "blocked",

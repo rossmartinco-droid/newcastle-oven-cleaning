@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" role="img" aria-label="Newcastle">
+  <defs>
+    <clipPath id="shield">
+      <path d="M50 2 L96 14 L96 62 C96 92 74 110 50 118 C26 110 4 92 4 62 L4 14 Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#shield)">
+    <rect x="0"  y="0" width="20" height="120" fill="#ffffff"/>
+    <rect x="20" y="0" width="20" height="120" fill="#000000"/>
+    <rect x="40" y="0" width="20" height="120" fill="#ffffff"/>
+    <rect x="60" y="0" width="20" height="120" fill="#000000"/>
+    <rect x="80" y="0" width="20" height="120" fill="#ffffff"/>
+  </g>
+  <path d="M50 2 L96 14 L96 62 C96 92 74 110 50 118 C26 110 4 92 4 62 L4 14 Z"
+        fill="none" stroke="#000000" stroke-width="3" stroke-linejoin="round"/>
+</svg>

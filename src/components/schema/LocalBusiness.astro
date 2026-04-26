@@ -1,0 +1,43 @@
+---
+import { NAP, schemaAddress, schemaGeo, SERVICE_AREAS } from '~/lib/nap';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'HouseCleaningService'],
+  '@id': `${NAP.url}/#business`,
+  name: NAP.name,
+  legalName: NAP.legalName,
+  url: NAP.url,
+  telephone: NAP.phone.international,
+  email: NAP.email.address,
+  image: `${NAP.url}/favicon.png`,
+  priceRange: '££',
+  currenciesAccepted: 'GBP',
+  paymentAccepted: 'Cash, Bank Transfer, Card',
+  address: schemaAddress,
+  geo: schemaGeo,
+  areaServed: SERVICE_AREAS.map(a => ({ '@type': 'Place', name: a.name })),
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: NAP.hours.days,
+      opens: NAP.hours.opens,
+      closes: NAP.hours.closes,
+    },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Oven Cleaning Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Single Oven Cleaning', url: `${NAP.url}/single-oven-cleaning-newcastle/` }, price: '55', priceCurrency: 'GBP' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Double Oven Cleaning', url: `${NAP.url}/double-oven-cleaning-newcastle/` }, price: '75', priceCurrency: 'GBP' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Range Cooker Cleaning', url: `${NAP.url}/range-cooker-cleaning-newcastle/` }, price: '90', priceCurrency: 'GBP' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Hob & Extractor Cleaning', url: `${NAP.url}/hob-and-extractor-cleaning-newcastle/` }, price: '20', priceCurrency: 'GBP' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Microwave Cleaning', url: `${NAP.url}/microwave-cleaning-newcastle/` }, price: '20', priceCurrency: 'GBP' },
+    ],
+  },
+  founder: { '@id': `${NAP.url}/#ross` },
+  description: 'Specialist oven cleaning in Newcastle upon Tyne and surrounding areas. Independent, sole trader, fully insured. Single ovens, double ovens, range cookers, hobs, extractors and microwaves.',
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

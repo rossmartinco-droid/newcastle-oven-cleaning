@@ -1,0 +1,135 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import Person from '~/components/schema/Person.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP, SERVICES, SERVICE_AREAS } from '~/lib/nap';
+
+const title = 'Oven Cleaning Newcastle | Independent Specialist | Newcastle Oven Cleaning';
+const description = 'Specialist oven cleaning in Newcastle upon Tyne from £55. Independent sole trader, fully insured, based in Fenham. Single ovens, double ovens, range cookers, hobs, extractors, microwaves. Call 07949 529741.';
+
+const faqs = [
+  {
+    question: 'How much does oven cleaning cost in Newcastle?',
+    answer: 'Single ovens start at £55, double ovens at £75, and range cookers at £90. Hob, extractor and microwave cleans are typically £20 each as add-ons. Final price depends on the condition of the appliance — call or send a photo for a precise quote.',
+  },
+  {
+    question: 'How long does an oven clean take?',
+    answer: 'A single oven typically takes 1.5–2 hours on site. Double ovens and range cookers take 2–3 hours. Add 30–45 minutes if you\'re combining a hob, extractor or microwave clean in the same visit.',
+  },
+  {
+    question: 'Do you clean Aga cookers?',
+    answer: 'No. Aga cleaning needs specialist training I haven\'t undertaken — I\'d rather be upfront than do the job poorly. If you\'d like a recommendation for an Aga specialist in the area, give me a call and I\'ll point you in the right direction.',
+  },
+  {
+    question: 'Do I need to be home during the clean?',
+    answer: 'Yes — someone needs to be at the property when I arrive and when I leave, so you can inspect the finished result before I go.',
+  },
+  {
+    question: 'What areas do you cover?',
+    answer: 'I cover Newcastle upon Tyne and surrounding areas within roughly 20 miles of Fenham — including Jesmond, Gosforth, Ponteland, Darras Hall, Tynemouth, Whitley Bay, Morpeth, Low Fell, and the wider commuter belt. Full list at the bottom of the page.',
+  },
+  {
+    question: 'Are you fully insured?',
+    answer: 'Yes. Newcastle Oven Cleaning holds £1m public liability insurance via Simply Business. Certificate available on request.',
+  },
+  {
+    question: 'How often should I get my oven professionally cleaned?',
+    answer: 'For most households, every 6–12 months is ideal. If you cook several times a week or use the oven heavily over winter, every 4–6 months keeps it in better condition and extends the life of the heating element and seals.',
+  },
+];
+
+const crumbs: { name: string; url: string }[] = [];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <Person sameAs={[]} />
+    <FAQPageSchema faqs={faqs} />
+    <BreadcrumbList crumbs={crumbs} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">⭐ Independent · Fully Insured · Fenham-based</div>
+      <h1>Specialist <span>Oven Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <p class="hero-lead">
+        Independent oven cleaning by Ross Smith — sole trader, based in Fenham, working across Newcastle and the surrounding affluent suburbs.
+        Single ovens from £55, double ovens from £75, range cookers from £90. Same-week appointments across Jesmond, Gosforth, Ponteland, Tynemouth and the wider 20-mile radius.
+      </p>
+      <p class="hero-meta">
+        <strong>Call {NAP.phone.display}</strong> or WhatsApp for a free quote. {NAP.hours.display}.
+      </p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="background: var(--light);">
+    <div class="container">
+      <h2 class="section-title">Services & Pricing</h2>
+      <p class="section-sub">Transparent £ ranges. No "from £X" surprises. Final price confirmed by phone or photo before booking.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; max-width: 1000px; margin: 0 auto;">
+        {SERVICES.map(s => (
+          <a href={`/${s.slug}/`} style="background: var(--white); padding: 26px 22px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; color: inherit; display: block; transition: all 0.2s;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--navy);">{s.name}</h3>
+            <p style="color: var(--grey); font-size: 0.9rem; margin-bottom: 14px;">{s.addOn ? 'Add-on or standalone' : 'Specialist clean, all parts included'}</p>
+            <div style="font-size: 1.4rem; font-weight: 900; color: var(--orange); letter-spacing: -0.02em;">£{s.priceFrom}–{s.priceTo}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- A NOTE FROM ROSS -->
+  <section style="background: linear-gradient(180deg, #FFF7EF 0%, var(--white) 100%);">
+    <div class="container-narrow">
+      <div style="background: var(--white); border-radius: var(--radius-lg); padding: 44px 40px; border-left: 5px solid var(--orange); box-shadow: 0 12px 40px rgba(255, 122, 0, 0.12);">
+        <p style="font-size: 1.05rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
+          The grimier the better. Don't be embarrassed about the state of your oven when you call — bringing a really filthy oven back to spotless is the part I enjoy most.
+        </p>
+        <p style="font-size: 1.05rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
+          I come to your home, work cleanly around the kitchen, and tidy up properly before I leave — including wiping the floor down. I bring a protective mat that sits in front of the oven while I work so nothing gets onto your flooring.
+        </p>
+        <p style="font-size: 1.05rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
+          SMEGs and high-end ranges are quoted individually because they take more care — I take the doors apart where needed and polish the hob caps until they shine. I don't service Aga cookers — but happy to recommend a specialist if you call.
+        </p>
+        <p style="font-style: italic; color: var(--orange); font-weight: 700; margin-top: 6px;">
+          Kindly,<br />Ross
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section id="areas" style="text-align: center; background: linear-gradient(180deg, var(--white) 0%, #FFF7EF 100%);">
+    <div class="container">
+      <h2 class="section-title">Areas We Cover</h2>
+      <p class="section-sub">Within roughly 20 miles of Fenham (NE4 5NS). All 18 areas have dedicated pages with local detail.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 900px; margin: 0 auto 28px;">
+        {SERVICE_AREAS.map(a => (
+          <a
+            href={`/oven-cleaning-${a.slug}/`}
+            style="background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%); color: var(--white); padding: 9px 18px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; text-decoration: none; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25); transition: all 0.2s;"
+          >
+            {a.name}
+          </a>
+        ))}
+      </div>
+      <p style="color: var(--grey); font-size: 0.95rem;">
+        Not sure if your area is covered? <a href={NAP.phone.href} style="color: var(--orange); font-weight: 700;">Give me a call</a> — I cover most affluent residential pockets within the 20-mile radius.
+      </p>
+    </div>
+  </section>
+
+  <FAQ faqs={faqs} sub="Quick answers to the things customers ask most often." />
+
+  <ContactCTA />
+</BaseLayout>
