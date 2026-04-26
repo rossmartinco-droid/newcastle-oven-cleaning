@@ -1,23 +1,23 @@
 # Completion Report — Phases 1–4
 **Date:** 2026-04-26
-**Build status:** ✅ All 28 target pages generated successfully (+ 404)
+**Build status:** ✅ 29 target pages generated successfully (+ 404)
 
 ---
 
 ## What's done
 
 ### Phase 1 — Audit ✅
-`code/audit-2026-04-26.md` reconciles all 22 existing GHL pages against BRIEF.md's 28-page target. Includes redirect map, Aga cleanup plan (~80 sitewide mentions), demographic-filter rationale per page, and 4 open questions (flagged below).
+`code/audit-2026-04-26.md` reconciles all 22 existing GHL pages against BRIEF.md.s 29-page target. Includes redirect map, Aga cleanup plan (~80 sitewide mentions), demographic-filter rationale per page, and 4 open questions (flagged below).
 
 Prior audits (`code/audit-report-v1-2026-04-23.md`, `code/audit-report-v2-2026-04-24.md`) and superseded artifacts (`gap-list-v2-superseded.md`, `redirect-map-v2-superseded.txt`) ported in with SUPERSEDED headers per BRIEF Phase 1 spec.
 
 ### Phase 2 — Astro project setup ✅
 - Astro 5 project scaffolded with `@astrojs/sitemap`, static output, trailingSlash always
-- `src/lib/nap.ts` — single source of truth for NAP, geo, hours, insurance, the 18 service areas (in BRIEF priority order), the 5 services
+- `src/lib/nap.ts` — single source of truth for NAP, geo, hours, insurance, the 19 service areas (in BRIEF priority order), the 5 services
 - `src/styles/global.css` — full design system ported from existing GHL build (navy + orange palette, Inter)
-- `src/layouts/BaseLayout.astro` — header, dynamic nav, dynamic footer (with all 18 area links auto-generated from `nap.ts`), WhatsApp floating button, FAQ accordion JS
+- `src/layouts/BaseLayout.astro` — header, dynamic nav, dynamic footer (with all 19 area links auto-generated from `nap.ts`), WhatsApp floating button, FAQ accordion JS
 - 5 schema components in `src/components/schema/`:
-  - `LocalBusiness.astro` — full areaServed (18 places), hasOfferCatalog (5 services), geo, hours, founder ref
+  - `LocalBusiness.astro` — full areaServed (19 places), hasOfferCatalog (5 services), geo, hours, founder ref
   - `Person.astro` — Ross, with `sameAs: []` empty-array per BRIEF Part 5
   - `FAQPage.astro` — parameterised
   - `BreadcrumbList.astro` — parameterised
@@ -36,7 +36,7 @@ Prior audits (`code/audit-report-v1-2026-04-23.md`, `code/audit-report-v2-2026-0
 No DNS change needed at this stage — staging URL only.
 
 ### Phase 3 — Content build ✅
-**All 28 pages built end-to-end. `npm run build` succeeds: 29 HTML files generated (28 + 404).**
+**All 29 pages built end-to-end. `npm run build` succeeds: 29 HTML files generated (28 + 404).**
 
 | Bucket | Pages |
 |---|---|
@@ -66,11 +66,11 @@ Each location page is built from a markdown file with frontmatter (name, distanc
 `npm install && npm run build` succeeds clean. Output:
 
 ```
-[build] 29 page(s) built in ~900ms
+[build] 30 page(s) built in ~900ms
 [@astrojs/sitemap] sitemap-index.xml created at dist
 ```
 
-29 = 28 site pages + 404. Sitemap covers all 28 indexable URLs.
+30 = 28 indexable + 1 noindex (before-and-after) + 404. Sitemap covers all 28 indexable URLs.
 
 ---
 
@@ -112,7 +112,7 @@ Per BRIEF Phase 6:
 ## Headcount summary
 
 - **22 existing GHL pages** mapped: 7 reused (rebuilt as Astro), 4 rewritten, 11 deleted with 301
-- **17 net-new pages** built from scratch: 4 supporting + 13 location
+- **17 net-new pages** built from scratch: 4 supporting + 14 location
 - **Final live page count:** 28 indexable + 1 noindex (404)
 - **Final sitemap entries:** 28
 - **Lines of code/content shipped:** ~3,400 lines across Astro pages, components, content markdown, and schema
@@ -143,7 +143,7 @@ code/log.md                                    # NEW
 code/completion-report.md                      # NEW (this file)
 
 src/content.config.ts                          # NEW
-src/content/service-areas/{18 markdown files}  # NEW
+src/content/service-areas/{19 markdown files}  # NEW
 src/lib/nap.ts                                 # NEW
 src/styles/global.css                          # NEW
 src/layouts/BaseLayout.astro                   # NEW

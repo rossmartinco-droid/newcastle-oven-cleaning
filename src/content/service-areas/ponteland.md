@@ -47,7 +47,7 @@ Broadway West, Northumberland Avenue, Eastern Way, Callerton Lane, Bell Villas, 
 
 ## Why Ponteland customers book me
 
-Two reasons. First — independent sole trader. Most Ponteland customers have used Ovenu or Ovenclean at some point and want to know exactly who's coming to their kitchen and that I'm the same person who quoted. Second — willingness to be honest about Aga. Ponteland has a notable Aga population, and rather than take the booking and disappoint, I'll recommend a specialist who actually does Agas. That trades a small bit of revenue for a lot of credibility — and it brings the non-Aga oven owners back when their range cooker needs doing.
+Two reasons. First — independent sole trader. Most Ponteland customers have used a national franchise at some point and want to know exactly who's coming to their kitchen, and that I'm the same person who quoted. Second — willingness to be honest about Aga. Ponteland has a notable Aga population, and rather than take the booking and disappoint, I'll recommend a specialist who actually does Agas. That trades a small bit of revenue for a lot of credibility — and it brings the non-Aga oven owners back when their range cooker needs doing.
 
 ## Drive and parking
 

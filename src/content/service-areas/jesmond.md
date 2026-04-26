@@ -48,4 +48,4 @@ Most of Jesmond falls inside controlled parking zones (NE2 Permit Holders Only o
 
 ## Why Jesmond customers tend to book me
 
-Most of my Jesmond customers are repeat. The mix of "I'm an independent sole trader, not a franchise" and being literally five minutes' drive away tends to land well in NE2 — people want a named person who knows the area, not a call-centre booking. If you've used Ovenu or Ovenclean in the past and want a comparison, I'm happy to talk through what I do differently on the call.
+Most of my Jesmond customers are repeat. The mix of "I'm an independent sole trader, not a franchise" and being literally five minutes' drive away tends to land well in NE2 — people want a named person who knows the area, not a call-centre booking. If you've used a national franchise in the past and want a comparison, I'm happy to talk through what I do differently on the call.
