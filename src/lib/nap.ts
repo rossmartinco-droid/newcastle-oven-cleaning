@@ -84,9 +84,10 @@ export const schemaGeo = {
 };
 
 /**
- * The 18 location/service-area names served by the business.
- * Per BRIEF.md Part 4. Used in homepage areaServed schema and the areas list.
- * Order matches BRIEF priority (1 = highest local SEO priority).
+ * The 19 location/service-area names served by the business.
+ * Per BRIEF.md Part 4 (18 priority pages) plus Cramlington (added 2026-04-26 per Ross).
+ * Used in homepage areaServed schema and the areas list.
+ * Order roughly matches BRIEF priority (1 = highest local SEO priority).
  */
 export const SERVICE_AREAS = [
   { slug: 'jesmond', name: 'Jesmond' },
@@ -107,6 +108,7 @@ export const SERVICE_AREAS = [
   { slug: 'wideopen', name: 'Wideopen' },
   { slug: 'killingworth', name: 'Killingworth' },
   { slug: 'prudhoe', name: 'Prudhoe' },
+  { slug: 'cramlington', name: 'Cramlington' },
 ] as const;
 
 /**

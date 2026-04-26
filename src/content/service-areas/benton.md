@@ -35,7 +35,7 @@ faqs:
 
 ## Benton and Forest Hall
 
-Benton sits north-east of Newcastle around the Metro line, adjoining Forest Hall. The two areas are functionally one — same demographic, same housing stock, same kind of customer. Mostly 1950s–70s family semis with refitted modern kitchens, plus some smaller terraced houses around the Metro station and a scattering of newer infill.
+This page covers Benton, Forest Hall, and the surrounding NE7/NE12 streets — they share the same demographic and housing stock, so they're treated as one service area. Same fixed pricing across both. Mostly 1950s–70s family semis with refitted modern kitchens, plus some smaller terraced houses around the Metro station and a scattering of newer infill.
 
 ## Typical job profile
 

@@ -9,6 +9,12 @@ const title = 'Before & After Photos | Newcastle Oven Cleaning';
 const description = 'Before and after oven cleaning photos from Newcastle jobs. Real results from real homes — Jesmond, Gosforth, Ponteland and the wider 20-mile radius.';
 const url = '/before-and-after/';
 
+// Page exists but is hidden until the gallery is populated:
+// - Excluded from sitemap via astro.config.mjs filter
+// - Rendered with noindex (via BaseLayout `noindex` prop below)
+// - Removed from header nav in BaseLayout.astro
+// Repopulate (remove noindex, add to nav, remove sitemap filter) once Ross has 6–8 real before/after photos.
+
 // Placeholder gallery — Ross adds photos as jobs complete.
 // Each job: { area, appliance, beforeAlt, afterAlt, beforeSrc, afterSrc, notes }
 const jobs: Array<{
@@ -32,7 +38,7 @@ const jobs: Array<{
   // },
 ];
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} noindex>
   <Fragment slot="head">
     <LocalBusiness />
     <BreadcrumbList crumbs={[{ name: 'Before & After', url }]} />

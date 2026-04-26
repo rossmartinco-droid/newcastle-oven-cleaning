@@ -98,3 +98,18 @@ State updates:
 Wrote `code/completion-report.md` with full status, build verification, deferred items, open questions, and next-steps workflow per BRIEF Phase 5.
 
 **Status: ready for Ross to spin up Cloudflare Pages staging URL, then for Claude (chat) Phase 6 review.**
+
+---
+
+## 2026-04-26 — Ross's 4 corrections applied (one batch)
+
+**Actor:** claude-code
+
+1. **Cramlington restored** as 19th location page. New `src/content/service-areas/cramlington.md` (Northburn, Beaconhill, Eastfield, Mayfield, Shankhouse, Annitsford, Dudley village pockets + western developments). Added to `SERVICE_AREAS` in `nap.ts`. Updated `public/_redirects`: `/areas/cramlington/` now redirects to `/oven-cleaning-cramlington/` instead of `/`. Auto-included in homepage areaServed schema (driven by SERVICE_AREAS array). Auto-included in sitemap.
+2. **Benton — Forest Hall absorbed.** Edited `src/content/service-areas/benton.md` body to explicitly state coverage of "Benton, Forest Hall, and the surrounding NE7/NE12 streets". No separate Forest Hall page built.
+3. **Before/after page hidden.** Three changes: (a) removed from nav in `BaseLayout.astro`, (b) `noindex` prop set on the BaseLayout call in `before-and-after.astro`, (c) excluded from sitemap via `filter` in `astro.config.mjs`. Page still exists at `/before-and-after/` for direct access but won't be discovered. Comment in source explains how to re-enable when 6–8 photos are ready.
+4. **Person schema image.** Already had no `image` property — confirmed by grep. No code change needed.
+
+Build verified post-corrections: 30 HTML files (28 indexable + 1 noindex + 404). Sitemap has 28 URLs, excludes before-and-after, includes cramlington.
+
+State updates: no new task IDs added; `k-t1-008` remains done (now covers 19 location pages instead of 18).

@@ -11,6 +11,8 @@ export default defineConfig({
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date(),
+      // Exclude pages that are noindex'd or not yet ready for search
+      filter: (page) => !page.includes('/before-and-after'),
     }),
   ],
   build: {

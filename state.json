@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-04-26T16:30:00Z",
+  "lastUpdated": "2026-04-26T16:45:00Z",
   "lastUpdatedBy": "claude-code",
   "schemaNote": "Task IDs mirror tracker.html. Status values: todo | in-progress | done | blocked. Claude Code updates this file as work completes; tracker.html reads it on load. See BRIEF.md for the workflow model (maximum delegation, single review pass at the end).",
   "tasks": {
@@ -146,7 +146,8 @@
     "k-t1-008": {
       "status": "done",
       "updatedBy": "claude-code",
-      "updatedAt": "2026-04-26T16:30:00Z"
+      "updatedAt": "2026-04-26T16:30:00Z",
+      "note": "All 19 location pages built (BRIEF 18 + Cramlington restored per Ross 2026-04-26)."
     },
     "k-t1-009": {
       "status": "done",
