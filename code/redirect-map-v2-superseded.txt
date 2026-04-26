@@ -1,0 +1,52 @@
+> ⚠️ SUPERSEDED by code/audit-2026-04-26.md (reconciled against BRIEF.md, max-delegation model). Kept for historical reference.
+
+# Redirect map for newcastleovencleaning.co.uk restructure
+# Paste into GHL → Sites → URL Redirects (or .htaccess)
+# All 301 permanent. Execute in the order specified in audit-report-v2.md.
+
+# ────────────────────────────────────────────────────────────
+# AREA PAGE RENAMES (surviving pages moved to new URL structure)
+# ────────────────────────────────────────────────────────────
+/areas/jesmond/                 → /oven-cleaning-jesmond/
+/areas/gosforth/                → /oven-cleaning-gosforth/
+/areas/tynemouth/               → /oven-cleaning-tynemouth/
+
+# ────────────────────────────────────────────────────────────
+# AREA PAGES REWRITTEN AT NEW URL (narrow target)
+# ────────────────────────────────────────────────────────────
+/areas/heaton/                  → /oven-cleaning-high-heaton/
+/areas/whitley-bay/             → /oven-cleaning-whitley-bay/
+
+# ────────────────────────────────────────────────────────────
+# AREA PAGE DELETIONS (wrong demographic or out of market)
+# Redirect to nearest surviving page or to homepage (hub)
+# ────────────────────────────────────────────────────────────
+/areas/gateshead/               → /oven-cleaning-low-fell/     # (after Low Fell page exists — until then, redirect to /)
+/areas/wallsend/                → /
+/areas/north-shields/           → /oven-cleaning-tynemouth/
+/areas/south-shields/           → /
+/areas/sunderland/              → /
+/areas/durham/                  → /
+/areas/washington/              → /
+/areas/cramlington/             → /
+/areas/chester-le-street/       → /
+/areas/blyth/                   → /
+
+# ────────────────────────────────────────────────────────────
+# SERVICE PAGE RENAMES
+# ────────────────────────────────────────────────────────────
+/services/single-oven-cleaning/     → /single-oven-cleaning-newcastle/
+/services/double-oven-cleaning/     → /double-oven-cleaning-newcastle/
+/services/range-cooker-cleaning/    → /range-cooker-cleaning-newcastle/
+/services/microwave-cleaning/       → /microwave-cleaning-newcastle/
+
+# ────────────────────────────────────────────────────────────
+# SERVICE PAGE MERGES (hob + extractor → one page)
+# ────────────────────────────────────────────────────────────
+/services/hob-cleaning/             → /hob-and-extractor-cleaning-newcastle/
+/services/extractor-fan-cleaning/   → /hob-and-extractor-cleaning-newcastle/
+
+# ────────────────────────────────────────────────────────────
+# SERVICE PAGE DELETION
+# ────────────────────────────────────────────────────────────
+/services/oven-hob-extractor-bundle/ → /single-oven-cleaning-newcastle/

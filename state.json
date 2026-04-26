@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-04-26T15:55:00Z",
+  "lastUpdatedBy": "claude-code",
+  "schemaNote": "Task IDs mirror tracker.html. Status values: todo | in-progress | done | blocked. Claude Code updates this file as work completes; tracker.html reads it on load. See BRIEF.md for the workflow model (maximum delegation, single review pass at the end).",
+  "tasks": {
+    "r-t1-001": {
+      "status": "in-progress",
+      "updatedBy": "ross",
+      "updatedAt": "2026-04-24T18:00:00Z",
+      "note": "GBP video verification submitted, awaiting Google review (5-14 working days)"
+    },
+    "r-t1-002": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z",
+      "note": "GBP optimisation \u2014 blocked until verification completes"
+    },
+    "r-t1-003": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-004": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-005": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-006": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-007": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-008": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-009": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-010": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-011": {
+      "status": "done",
+      "updatedBy": "claude-code",
+      "updatedAt": "2026-04-26T15:55:00Z",
+      "note": "GitHub + Cloudflare set up. Repo cloned successfully."
+    },
+    "r-t1-012": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t1-013": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t1-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z",
+      "note": "Under maximum-delegation model: Claude Code can draft this directly using BRIEF.md as the source. Claude (chat) reviews at end."
+    },
+    "c-t1-002": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t1-003": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t1-004": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t1-005": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t1-006": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z",
+      "note": "18 location pages (Corbridge + Hexham dropped from original 20)"
+    },
+    "k-t1-001": {
+      "status": "in-progress",
+      "updatedBy": "claude-code",
+      "updatedAt": "2026-04-26T15:55:00Z",
+      "note": "Phase 1 audit done (code/audit-2026-04-26.md). Astro scaffold next."
+    },
+    "k-t1-002": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-003": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-004": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-005": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-006": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-007": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-008": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-009": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-010": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t1-011": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z",
+      "note": "Final cutover \u2014 only after GBP verification AND Ross approval"
+    },
+    "k-t1-012": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t2-001": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t2-002": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t2-003": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t2-004": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t2-011": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t2-012": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t2-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-001": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-002": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-003": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-004": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-005": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-006": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-t3-007": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t3-001": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t4-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t4-002": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t4-003": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t4-004": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-t4-005": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-002": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-003": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-004": {
+      "status": "blocked",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-005": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-006": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-007": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z",
+      "note": "Aga training \u2014 highest-leverage future expansion. \u00a320k+/yr potential."
+    },
+    "r-t4-008": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-t4-009": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-002": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-003": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-004": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-005": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-006": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-007": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-008": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-009": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-010": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-on-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-011": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-012": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-013": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-014": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-on-002": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-on-003": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-on-004": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-on-001": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-015": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-016": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-on-002": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-on-003": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "k-on-005": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-on-004": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "c-on-005": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    },
+    "r-on-017": {
+      "status": "todo",
+      "updatedBy": "claude-chat",
+      "updatedAt": "2026-04-25T16:00:00Z"
+    }
+  }
+}

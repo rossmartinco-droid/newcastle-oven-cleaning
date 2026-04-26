@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newcastle Oven Cleaning — Tracker</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --bg-2: #131922;
+    --panel: #1a2230;
+    --panel-2: #212b3c;
+    --panel-3: #2a3548;
+    --border: #2e3a52;
+    --border-soft: #243049;
+    --text: #eef2f8;
+    --text-dim: #a4b0c4;
+    --text-muted: #7a8699;
+    --accent: #5eb3ff;
+    --accent-2: #8b6cff;
+    --accent-soft: rgba(94, 179, 255, 0.12);
+    --success: #4ade80;
+    --success-soft: rgba(74, 222, 128, 0.12);
+    --warn: #fbbf24;
+    --warn-soft: rgba(251, 191, 36, 0.1);
+    --danger: #fb7185;
+    --t1: #fb7185;
+    --t2: #fbbf24;
+    --t3: #5eb3ff;
+    --t4: #c084fc;
+    --ongoing: #4ade80;
+    --ross: #5eb3ff;
+    --claude: #c084fc;
+    --code: #4ade80;
+    --shadow: 0 4px 24px rgba(0,0,0,0.35);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(139, 108, 255, 0.08), transparent 60%),
+      radial-gradient(1000px 500px at -10% 20%, rgba(94, 179, 255, 0.06), transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: rgba(26, 34, 48, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .brand-icon {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(94,179,255,0.25);
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-2);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+  }
+  .nav-tab {
+    padding: 8px 18px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active {
+    color: var(--text);
+    background: linear-gradient(135deg, rgba(94,179,255,0.15), rgba(139,108,255,0.15));
+    border-color: rgba(94,179,255,0.3);
+    box-shadow: var(--shadow-sm);
+  }
+  .stats-mini {
+    display: flex;
+    gap: 18px;
+    font-size: 12px;
+    color: var(--text-muted);
+    align-items: center;
+  }
+  .stats-mini .stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .stats-mini strong { color: var(--text); font-weight: 700; }
+  .stats-mini .stat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .stat-dot.done { background: var(--success); }
+  .stat-dot.progress { background: var(--warn); }
+  .stat-dot.todo { background: var(--text-muted); }
+
+  /* PROGRESS DASHBOARD */
+  .progress-dash {
+    padding: 22px 28px;
+    background: rgba(26, 34, 48, 0.4);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .progress-dash-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .ring {
+    position: relative;
+    width: 110px;
+    height: 110px;
+  }
+  .ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+  .ring-bg {
+    fill: none;
+    stroke: var(--border-soft);
+    stroke-width: 8;
+  }
+  .ring-fg {
+    fill: none;
+    stroke: url(#ringGradient);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .ring-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .ring-pct {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .ring-pct .pct-symbol { font-size: 16px; color: var(--text-dim); margin-left: 1px; }
+  .ring-frac {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .ring-cheer {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--success);
+    margin-top: 4px;
+  }
+  .ring-cheer-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .tier-cards {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+  .tier-card {
+    flex: 1;
+    min-width: 130px;
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: 10px 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .tier-card:hover {
+    border-color: var(--border);
+    transform: translateY(-1px);
+  }
+  .tier-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .tier-card-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .tier-card-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-align: right;
+    flex: 1;
+  }
+  .tier-card-count {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .tier-card-count .count-of {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-left: 3px;
+  }
+  .tier-card-bar {
+    height: 5px;
+    background: var(--bg-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .tier-card-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .tier-card.t1 .tier-card-label { color: var(--t1); }
+  .tier-card.t1 .tier-card-count { color: var(--t1); }
+  .tier-card.t1 .tier-card-bar-fill { background: var(--t1); }
+  .tier-card.t2 .tier-card-label { color: var(--t2); }
+  .tier-card.t2 .tier-card-count { color: var(--t2); }
+  .tier-card.t2 .tier-card-bar-fill { background: var(--t2); }
+  .tier-card.t3 .tier-card-label { color: var(--t3); }
+  .tier-card.t3 .tier-card-count { color: var(--t3); }
+  .tier-card.t3 .tier-card-bar-fill { background: var(--t3); }
+  .tier-card.t4 .tier-card-label { color: var(--t4); }
+  .tier-card.t4 .tier-card-count { color: var(--t4); }
+  .tier-card.t4 .tier-card-bar-fill { background: var(--t4); }
+  .tier-card.tongoing .tier-card-label { color: var(--ongoing); }
+  .tier-card.tongoing .tier-card-count { color: var(--ongoing); }
+  .tier-card.tongoing .tier-card-bar-fill { background: var(--ongoing); }
+
+  .actor-pills {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .actor-pill {
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    text-align: center;
+    min-width: 72px;
+  }
+  .actor-pill-num {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .actor-pill-label {
+    font-size: 9.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .actor-pill.ross .actor-pill-num { color: var(--ross); }
+  .actor-pill.claude .actor-pill-num { color: var(--claude); }
+  .actor-pill.code .actor-pill-num { color: var(--code); }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== KANBAN PAGE ===== */
+  .now-banner {
+    padding: 32px 28px 24px;
+  }
+  .now-banner-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .now-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .now-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+  }
+  .now-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .now-card {
+    background: linear-gradient(135deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .now-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+  }
+  .now-card.actor-ross::before { background: linear-gradient(90deg, var(--ross), #7dc3ff); }
+  .now-card.actor-claude::before { background: linear-gradient(90deg, var(--claude), #d6a8ff); }
+  .now-card.actor-code::before { background: linear-gradient(90deg, var(--code), #7eebac); }
+  .now-card:hover {
+    border-color: rgba(94,179,255,0.4);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .now-actor {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+  }
+  .actor-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.04);
+  }
+  .now-task-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .now-task-desc {
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .now-card-cta {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .now-card:hover .now-card-cta { opacity: 1; }
+
+  /* BOARD */
+  .board {
+    padding: 24px 28px 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .board-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .board-title-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .board-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .toggle-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .toggle-btn:hover { color: var(--text); border-color: var(--accent); }
+  .toggle-btn.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: rgba(94,179,255,0.4);
+    box-shadow: 0 0 0 3px rgba(94,179,255,0.06);
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .column {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    box-shadow: var(--shadow-sm);
+  }
+  .column-header {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .column-title {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+  }
+  .column-count {
+    font-size: 11px;
+    color: var(--text-dim);
+    background: var(--bg-2);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid var(--border-soft);
+  }
+  .column-body {
+    padding: 14px;
+    flex: 1;
+    overflow-y: auto;
+    max-height: calc(100vh - 280px);
+  }
+  .column-body::-webkit-scrollbar { width: 8px; }
+  .column-body::-webkit-scrollbar-track { background: transparent; }
+  .column-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  .column-body::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+  .tier-section {
+    margin-bottom: 20px;
+    animation: slideIn 0.3s ease;
+  }
+  .tier-header {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    background: var(--bg-2);
+  }
+  .tier-section.t1 .tier-header { color: var(--t1); background: rgba(251,113,133,0.08); }
+  .tier-section.t2 .tier-header { color: var(--t2); background: rgba(251,191,36,0.08); }
+  .tier-section.t3 .tier-header { color: var(--t3); background: rgba(94,179,255,0.08); }
+  .tier-section.t4 .tier-header { color: var(--t4); background: rgba(192,132,252,0.08); }
+  .tier-section.ongoing .tier-header { color: var(--ongoing); background: rgba(74,222,128,0.08); }
+
+  .card {
+    background: var(--panel-2);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .card:hover {
+    border-color: rgba(94,179,255,0.3);
+    background: var(--panel-3);
+    transform: translateX(2px);
+  }
+  .card.done {
+    opacity: 0.45;
+  }
+  .card.done .card-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+  .card.blocked {
+    opacity: 0.55;
+    border-style: dashed;
+  }
+  .card.blocked::before {
+    content: '🔒';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 11px;
+    opacity: 0.7;
+  }
+  .card.in-progress {
+    border-color: var(--warn);
+    background: var(--warn-soft);
+    box-shadow: 0 0 0 3px rgba(251,191,36,0.06);
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin-bottom: 6px;
+    padding-right: 20px;
+    letter-spacing: -0.005em;
+  }
+  .card-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .card-status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .card.in-progress .card-status-dot {
+    background: var(--warn);
+    box-shadow: 0 0 0 3px rgba(251,191,36,0.2);
+    animation: pop 1.5s ease infinite;
+  }
+  .card.done .card-status-dot { background: var(--success); }
+
+  .card-detail {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-soft);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .card.expanded .card-detail { display: block; animation: slideIn 0.2s ease; }
+  .card-detail p { margin: 0 0 8px 0; }
+  .card-source {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    padding: 6px 8px;
+    background: var(--bg-2);
+    border-radius: 5px;
+    border-left: 2px solid var(--border);
+  }
+  .card-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .card-action {
+    background: linear-gradient(180deg, var(--panel-3), var(--panel-2));
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .card-action:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  /* ===== REFERENCE PAGE ===== */
+  .reference {
+    padding: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .ref-intro {
+    margin-bottom: 20px;
+  }
+  .ref-intro-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .ref-intro-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .ref-section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .ref-section-header {
+    padding: 16px 20px;
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .ref-section-header:hover {
+    background: var(--panel-3);
+  }
+  .ref-section-title {
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+  }
+  .ref-section-progress {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-2);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid var(--border-soft);
+  }
+  .ref-section-progress.complete {
+    color: var(--success);
+    background: var(--success-soft);
+    border-color: rgba(74,222,128,0.25);
+  }
+  .ref-toggle {
+    color: var(--text-muted);
+    font-size: 12px;
+    transition: transform 0.2s;
+  }
+  .ref-section.collapsed .ref-section-body { display: none; }
+  .ref-section.collapsed .ref-toggle { transform: rotate(-90deg); }
+  .ref-section-body { padding: 8px 12px; }
+
+  .ref-task {
+    display: grid;
+    grid-template-columns: 28px 1fr auto auto auto;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .ref-task:hover { background: var(--panel-2); }
+
+  .ref-checkbox {
+    width: 20px; height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-2);
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.2s;
+  }
+  .ref-checkbox:hover {
+    border-color: var(--accent);
+    transform: scale(1.05);
+  }
+  .ref-checkbox.checked {
+    background: var(--success);
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px var(--success-soft);
+    animation: pop 0.3s ease;
+  }
+  .ref-checkbox.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .ref-checkbox.in-progress {
+    background: var(--warn);
+    border-color: var(--warn);
+    box-shadow: 0 0 0 3px var(--warn-soft);
+  }
+  .ref-checkbox.in-progress::after {
+    content: '◐';
+    color: white;
+    font-size: 12px;
+  }
+
+  .ref-task-content { min-width: 0; }
+  .ref-task-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .ref-task.done .ref-task-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+  .ref-task-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .ref-task-source {
+    font-size: 10.5px;
+    color: var(--text-muted);
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    white-space: nowrap;
+    display: inline-block;
+    letter-spacing: 0.3px;
+  }
+  .badge-tier-1 { background: rgba(251,113,133,0.12); color: var(--t1); border: 1px solid rgba(251,113,133,0.3); }
+  .badge-tier-2 { background: rgba(251,191,36,0.12); color: var(--t2); border: 1px solid rgba(251,191,36,0.3); }
+  .badge-tier-3 { background: rgba(94,179,255,0.12); color: var(--t3); border: 1px solid rgba(94,179,255,0.3); }
+  .badge-tier-4 { background: rgba(192,132,252,0.12); color: var(--t4); border: 1px solid rgba(192,132,252,0.3); }
+  .badge-ongoing { background: rgba(74,222,128,0.12); color: var(--ongoing); border: 1px solid rgba(74,222,128,0.3); }
+
+  .badge-actor-ross { background: rgba(94,179,255,0.12); color: var(--ross); }
+  .badge-actor-claude { background: rgba(192,132,252,0.12); color: var(--claude); }
+  .badge-actor-code { background: rgba(74,222,128,0.12); color: var(--code); }
+
+  .badge-impact {
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .badge-impact-H { background: rgba(251,113,133,0.12); color: var(--t1); }
+  .badge-impact-M { background: rgba(251,191,36,0.12); color: var(--warn); }
+  .badge-impact-L { background: rgba(164,176,196,0.12); color: var(--text-dim); }
+
+  .ref-effort {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .filter-bar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow-sm);
+  }
+  .filter-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-right: 4px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .filter-btn {
+    background: var(--bg-2);
+    border: 1px solid var(--border-soft);
+    color: var(--text-dim);
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: rgba(94,179,255,0.4);
+    font-weight: 600;
+  }
+  .filter-btn:hover:not(.active) { color: var(--text); border-color: var(--border); }
+
+  /* CONFETTI / CELEBRATION */
+  @keyframes celebrate {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    100% { transform: scale(0) rotate(360deg); opacity: 0; }
+  }
+  .celebrate-burst {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    font-size: 28px;
+    animation: celebrate 0.8s ease forwards;
+  }
+
+  /* WINS PANEL */
+  .wins-panel {
+    background: linear-gradient(135deg, var(--success-soft), rgba(94,179,255,0.06));
+    border: 1px solid rgba(74,222,128,0.25);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow-sm);
+  }
+  .wins-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .wins-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .wins-count {
+    font-size: 12px;
+    color: var(--success);
+    background: rgba(74,222,128,0.15);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  .wins-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px;
+  }
+  .win-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .win-item:hover {
+    border-color: var(--success);
+    transform: translateY(-1px);
+  }
+  .win-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .win-content { flex: 1; min-width: 0; }
+  .win-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+  .win-meta {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .win-undo {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .win-undo:hover { color: var(--text); border-color: var(--text-muted); }
+  .wins-empty {
+    text-align: center;
+    padding: 24px 16px;
+    color: var(--text-dim);
+  }
+  .wins-empty-emoji { font-size: 32px; margin-bottom: 8px; display: block; }
+  .wins-empty-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+  .wins-empty-sub { font-size: 12px; color: var(--text-muted); }
+
+  /* TOGGLE INFO BANNER */
+  .toggle-info {
+    background: var(--accent-soft);
+    border: 1px solid rgba(94,179,255,0.3);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toggle-info-icon { font-size: 16px; }
+  .toggle-info strong { color: var(--accent); }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .empty-state-emoji { font-size: 28px; margin-bottom: 8px; display: block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .columns { grid-template-columns: 1fr; }
+    .now-cards { grid-template-columns: 1fr; }
+    .topbar { flex-wrap: wrap; gap: 10px; padding: 12px 16px; }
+    .nav-tabs { width: 100%; justify-content: center; }
+    .stats-mini { width: 100%; justify-content: center; flex-wrap: wrap; }
+    .now-banner, .board { padding-left: 16px; padding-right: 16px; }
+    .progress-strip { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================== -->
+<!-- TOP BAR -->
+<!-- ============================================== -->
+<div class="topbar">
+  <div class="brand">
+    <span class="brand-icon">🔥</span>
+    Newcastle Oven Cleaning
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('kanban', this)">Today's Focus</button>
+    <button class="nav-tab" onclick="showPage('reference', this)">Full Playbook</button>
+  </div>
+  <div class="stats-mini">
+    <span class="stat-pill"><span class="stat-dot done"></span><strong id="stat-done">0</strong> done</span>
+    <span class="stat-pill"><span class="stat-dot progress"></span><strong id="stat-progress">0</strong> live</span>
+    <span class="stat-pill"><span class="stat-dot todo"></span><strong id="stat-todo">0</strong> to go</span>
+  </div>
+</div>
+
+<div class="progress-dash">
+  <div class="progress-dash-inner">
+
+    <div class="ring-wrap">
+      <div class="ring">
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5eb3ff"/>
+              <stop offset="100%" stop-color="#8b6cff"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-bg" cx="50" cy="50" r="42"/>
+          <circle class="ring-fg" id="ring-fg" cx="50" cy="50" r="42" stroke-dasharray="263.89" stroke-dashoffset="263.89"/>
+        </svg>
+        <div class="ring-text">
+          <div class="ring-pct"><span id="stat-pct">0</span><span class="pct-symbol">%</span></div>
+          <div class="ring-frac"><span id="stat-frac">0 / 0</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="ring-cheer" id="progress-cheer">Let's go 🚀</div>
+        <div class="ring-cheer-sub">Tap a task to mark it done</div>
+      </div>
+    </div>
+
+    <div class="tier-cards">
+      <div class="tier-card t1">
+        <div class="tier-card-head"><span class="tier-card-label">🔥 Tier 1</span><span class="tier-card-sub">Do First</span></div>
+        <div class="tier-card-count"><span id="t1-done">0</span><span class="count-of">/ <span id="t1-total">0</span></span></div>
+        <div class="tier-card-bar"><div class="tier-card-bar-fill" id="t1-bar" style="width: 0%;"></div></div>
+      </div>
+      <div class="tier-card t2">
+        <div class="tier-card-head"><span class="tier-card-label">⭐ Tier 2</span><span class="tier-card-sub">High Impact</span></div>
+        <div class="tier-card-count"><span id="t2-done">0</span><span class="count-of">/ <span id="t2-total">0</span></span></div>
+        <div class="tier-card-bar"><div class="tier-card-bar-fill" id="t2-bar" style="width: 0%;"></div></div>
+      </div>
+      <div class="tier-card t3">
+        <div class="tier-card-head"><span class="tier-card-label">🛠️ Tier 3</span><span class="tier-card-sub">Foundation</span></div>
+        <div class="tier-card-count"><span id="t3-done">0</span><span class="count-of">/ <span id="t3-total">0</span></span></div>
+        <div class="tier-card-bar"><div class="tier-card-bar-fill" id="t3-bar" style="width: 0%;"></div></div>
+      </div>
+      <div class="tier-card t4">
+        <div class="tier-card-head"><span class="tier-card-label">🌱 Tier 4</span><span class="tier-card-sub">Growth</span></div>
+        <div class="tier-card-count"><span id="t4-done">0</span><span class="count-of">/ <span id="t4-total">0</span></span></div>
+        <div class="tier-card-bar"><div class="tier-card-bar-fill" id="t4-bar" style="width: 0%;"></div></div>
+      </div>
+      <div class="tier-card tongoing">
+        <div class="tier-card-head"><span class="tier-card-label">↻ Recurring</span><span class="tier-card-sub">Keep Doing</span></div>
+        <div class="tier-card-count"><span id="tongoing-done">0</span><span class="count-of">/ <span id="tongoing-total">0</span></span></div>
+        <div class="tier-card-bar"><div class="tier-card-bar-fill" id="tongoing-bar" style="width: 0%;"></div></div>
+      </div>
+    </div>
+
+    <div class="actor-pills">
+      <div class="actor-pill ross">
+        <div class="actor-pill-num" id="ross-live">0</div>
+        <div class="actor-pill-label">Ross live</div>
+      </div>
+      <div class="actor-pill claude">
+        <div class="actor-pill-num" id="claude-live">0</div>
+        <div class="actor-pill-label">Claude live</div>
+      </div>
+      <div class="actor-pill code">
+        <div class="actor-pill-num" id="code-live">0</div>
+        <div class="actor-pill-label">Code live</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================== -->
+<!-- PAGE 1: KANBAN BOARD -->
+<!-- ============================================== -->
+<div class="page active" id="kanban">
+
+  <div class="now-banner">
+    <div class="now-banner-inner">
+      <div class="now-title">👋 Pick up where you left off</div>
+      <div class="now-subtitle">One next move for each of you. Click a card to jump to it.</div>
+      <div class="now-cards" id="now-cards"></div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="board-header">
+      <div>
+        <div class="board-title">📋 The Board <span class="board-title-hint">— grouped by who's doing what</span></div>
+      </div>
+      <div class="board-controls">
+        <button class="toggle-btn" id="toggle-blocked" onclick="toggleBlocked()">🔒 Show blocked</button>
+        <button class="toggle-btn" id="toggle-done" onclick="toggleDone()">✓ Show completed</button>
+        <button class="toggle-btn active" id="toggle-ongoing" onclick="toggleOngoing()">↻ Show recurring</button>
+      </div>
+    </div>
+
+    <div id="toggle-info" class="toggle-info" style="display:none;"></div>
+
+    <div id="wins-panel" class="wins-panel" style="display:none;"></div>
+
+    <div class="columns">
+
+      <!-- ROSS COLUMN -->
+      <div class="column">
+        <div class="column-header">
+          <div class="column-title">
+            <span class="actor-dot" style="background: var(--ross);"></span>
+            Ross
+          </div>
+          <span class="column-count" id="ross-count">0</span>
+        </div>
+        <div class="column-body" id="col-ross"></div>
+      </div>
+
+      <!-- CLAUDE COLUMN -->
+      <div class="column">
+        <div class="column-header">
+          <div class="column-title">
+            <span class="actor-dot" style="background: var(--claude);"></span>
+            Claude (chat)
+          </div>
+          <span class="column-count" id="claude-count">0</span>
+        </div>
+        <div class="column-body" id="col-claude"></div>
+      </div>
+
+      <!-- CLAUDE CODE COLUMN -->
+      <div class="column">
+        <div class="column-header">
+          <div class="column-title">
+            <span class="actor-dot" style="background: var(--code);"></span>
+            Claude Code
+          </div>
+          <span class="column-count" id="code-count">0</span>
+        </div>
+        <div class="column-body" id="col-code"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================== -->
+<!-- PAGE 2: FULL REFERENCE -->
+<!-- ============================================== -->
+<div class="page" id="reference">
+  <div class="reference">
+
+    <div class="ref-intro">
+      <div class="ref-intro-title">📚 The Full Playbook</div>
+      <div class="ref-intro-sub">Every task, grouped by category. Tick boxes as you go — progress saves automatically.</div>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Who:</span>
+      <button class="filter-btn active" data-filter-actor="all" onclick="filterRef('actor', 'all', this)">All</button>
+      <button class="filter-btn" data-filter-actor="ross" onclick="filterRef('actor', 'ross', this)">Ross</button>
+      <button class="filter-btn" data-filter-actor="claude" onclick="filterRef('actor', 'claude', this)">Claude</button>
+      <button class="filter-btn" data-filter-actor="code" onclick="filterRef('actor', 'code', this)">Code</button>
+      <span style="margin-left:14px; color: var(--border);">|</span>
+      <span class="filter-label">Priority:</span>
+      <button class="filter-btn active" data-filter-tier="all" onclick="filterRef('tier', 'all', this)">All</button>
+      <button class="filter-btn" data-filter-tier="1" onclick="filterRef('tier', '1', this)">Tier 1</button>
+      <button class="filter-btn" data-filter-tier="2" onclick="filterRef('tier', '2', this)">Tier 2</button>
+      <button class="filter-btn" data-filter-tier="3" onclick="filterRef('tier', '3', this)">Tier 3</button>
+      <button class="filter-btn" data-filter-tier="4" onclick="filterRef('tier', '4', this)">Tier 4</button>
+      <button class="filter-btn" data-filter-tier="ongoing" onclick="filterRef('tier', 'ongoing', this)">Ongoing</button>
+    </div>
+
+    <div id="ref-content"></div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// TASK DATA (single source of truth)
+// ============================================================
+// Each task has: id, title, desc, actor (ross/claude/code), tier (1/2/3/4/ongoing),
+// impact (H/M/L), effort, source, blocked (optional), category
+
+const TASKS = [
+  // ============= TIER 1 — ROSS =============
+  { id: 'r-t1-001', title: 'Pass GBP video verification', desc: 'Submitted, awaiting Google review (5-14 working days). All other GBP tasks blocked until this completes.', actor: 'ross', tier: '1', impact: 'H', effort: 'Waiting', source: 'Google Support — verification flow', category: 'GBP Verification & Setup' },
+  { id: 'r-t1-002', title: 'Set primary GBP category = "House cleaning service"', desc: '#1 Whitespark 2026 ranking factor. No "Oven cleaning service" exists in UK. Do NOT change once set.', actor: 'ross', tier: '1', impact: 'H', effort: '5 min', source: 'Whitespark 2026 LSRF', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-003', title: 'Add secondary GBP categories: Cleaner + Commercial cleaning service', desc: 'Two only. Bloat dilutes relevance.', actor: 'ross', tier: '1', impact: 'H', effort: '5 min', source: 'Whitespark 2026', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-004', title: 'Decide on visible vs hidden address (RECOMMENDED: show 60 Brighton Grove)', desc: 'Whitespark 2026 #7 ranking factor. Hidden SAB addresses can revert ranking to outdated pin.', actor: 'ross', tier: '1', impact: 'H', effort: '30 min', source: 'Whitespark 2026, Sterling Sky', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-005', title: 'Set service area to clean 20-mile radius from NE4 5NS', desc: 'Remove Durham unless target demographic. Service areas don\'t boost ranking but should reflect real coverage.', actor: 'ross', tier: '1', impact: 'M', effort: '10 min', source: 'Sterling Sky', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-006', title: 'Set business hours (Mon-Sat 08:00-18:00)', desc: '"Open now" is new top-5 Whitespark factor. Keep holiday hours updated religiously.', actor: 'ross', tier: '1', impact: 'H', effort: '5 min', source: 'Whitespark 2026', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-007', title: 'Write GBP description (750 chars)', desc: 'Newcastle, Fenham, 20-mile radius, target areas, price band, insurance, eco, non-Aga disclaimer. Influences AI answers.', actor: 'ross', tier: '1', impact: 'M', effort: '30 min', source: 'BrightLocal 2026 AI search', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-008', title: 'Populate GBP Services section with full price list', desc: 'Single oven, Double oven, Range cooker, Hob, Extractor, Microwave, End-of-tenancy, Landlord. Each with price + description.', actor: 'ross', tier: '1', impact: 'H', effort: '60 min', source: 'Sterling Sky', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-009', title: 'Upload 25 starter photos to GBP', desc: 'Exterior, before/afters, owner-in-uniform, dip-tank, finished ovens. Geo-relevant where natural.', actor: 'ross', tier: '1', impact: 'H', effort: '90 min', source: 'Whitespark 2026 behavioural', category: 'GBP Verification & Setup', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-010', title: 'Generate reviewable link (g.page/r/...)', desc: 'Use from day one. Text to every customer after payment.', actor: 'ross', tier: '1', impact: 'H', effort: '5 min', source: 'Google help', category: 'Review System', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-011', title: 'Set up GitHub + Cloudflare accounts (free)', desc: 'Both needed for Astro deployment. ~3 min each.', actor: 'ross', tier: '1', impact: 'H', effort: '10 min', source: 'Astro/Cloudflare docs', category: 'Website Migration' },
+
+  // ============= TIER 1 — CLAUDE (chat) =============
+  { id: 'c-t1-001', title: 'Draft homepage copy (Newcastle hub)', desc: 'NOT a separate /oven-cleaning-newcastle-upon-tyne/ page. Avoids Diversity Update penalty. Strong local angle, oven specialism, non-Aga differentiation.', actor: 'claude', tier: '1', impact: 'H', effort: '2-3h', source: 'Joy Hawkins Diversity Update Apr 2025', category: 'Content Drafts' },
+  { id: 'c-t1-002', title: 'Draft About page (Fenham E-E-A-T angle)', desc: 'Ross\'s story, named sole trader, photo, non-Aga honesty statement. Trust-builder.', actor: 'claude', tier: '1', impact: 'H', effort: '1h', source: 'Whitespark on-page weight 19%', category: 'Content Drafts' },
+  { id: 'c-t1-003', title: 'Draft Pricing page (transparent £ ranges)', desc: 'Specific prices, not "from £X". AI answers privilege transparent pricing.', actor: 'claude', tier: '1', impact: 'H', effort: '1h', source: 'Whitespark 2026 AI factor', category: 'Content Drafts' },
+  { id: 'c-t1-004', title: 'Draft Contact + Before/After page structures', desc: 'Standard pages. Contact: phone, hours, service areas, contact form. B/A: gallery template ready for photos.', actor: 'claude', tier: '1', impact: 'M', effort: '1.5h', source: 'Standard practice', category: 'Content Drafts' },
+  { id: 'c-t1-005', title: 'Draft 5 service variant pages (NO Aga)', desc: 'Single oven, Double oven, Range cooker (with explicit non-Aga + recommendation), Hob/extractor, Microwave. 800-1200 words each.', actor: 'claude', tier: '1', impact: 'H', effort: '5-6h', source: 'Sterling Sky service pages', category: 'Content Drafts' },
+  { id: 'c-t1-006', title: 'Draft 20 unique service-area pages', desc: 'Jesmond, Gosforth, High Heaton, Newcastle Great Park, South Gosforth, Ponteland, Darras Hall, Tynemouth, Whitley Bay, Cullercoats, Morpeth, Low Fell, Corbridge, Hexham, Wylam, Ryton, Benton, Wideopen, Killingworth, Prudhoe. 600-900 words each, 80/20 rule per Sterling Sky.', actor: 'claude', tier: '1', impact: 'H', effort: '15-20h', source: 'Sterling Sky 80/20 rule', category: 'Content Drafts' },
+
+  // ============= TIER 1 — CLAUDE CODE =============
+  { id: 'k-t1-001', title: 'Spin up Astro project on staging URL', desc: 'newcastle-oven-cleaning.pages.dev. Google never sees it. Safe during GBP verification per Sterling Sky.', actor: 'code', tier: '1', impact: 'H', effort: '1-2h', source: 'Sterling Sky platform-switch safety', category: 'Project Setup', blocked: true, blockedBy: 'r-t1-011' },
+  { id: 'k-t1-002', title: 'Set up Cloudflare Pages connection', desc: 'Build cmd, output dir, env vars, custom domain SSL. Continuous deployment from GitHub.', actor: 'code', tier: '1', impact: 'H', effort: '30 min', source: 'Cloudflare Pages docs', category: 'Project Setup', blocked: true, blockedBy: 'k-t1-001' },
+  { id: 'k-t1-003', title: 'Configure GitHub repo (branching, deployment hooks, secrets)', desc: 'main → production, dev → staging. Secrets management for any API keys.', actor: 'code', tier: '1', impact: 'M', effort: '30 min', source: 'GitHub best practices', category: 'Project Setup', blocked: true, blockedBy: 'k-t1-001' },
+  { id: 'k-t1-004', title: 'Build Astro folder structure + content collections', desc: 'src/pages, src/components, src/content/serviceAreas, src/content/services. Reusable layouts.', actor: 'code', tier: '1', impact: 'H', effort: '2h', source: 'Astro best practices', category: 'Project Setup', blocked: true, blockedBy: 'k-t1-002' },
+  { id: 'k-t1-005', title: 'Build homepage from Claude\'s draft', desc: 'H1, hero, services list, prices, 3 reviews, before/after slider, trust badges, map embed, FAQ accordion.', actor: 'code', tier: '1', impact: 'H', effort: '3h', source: 'Astro implementation', category: 'Page Build', blocked: true, blockedBy: 'c-t1-001' },
+  { id: 'k-t1-006', title: 'Build 4 supporting pages (About, Contact, Pricing, B/A)', desc: 'From Claude drafts.', actor: 'code', tier: '1', impact: 'H', effort: '3h', source: 'Astro implementation', category: 'Page Build', blocked: true, blockedBy: 'c-t1-004' },
+  { id: 'k-t1-007', title: 'Build 5 service variant pages from drafts', desc: 'With FAQ accordion + schema per page.', actor: 'code', tier: '1', impact: 'H', effort: '4h', source: 'Astro implementation', category: 'Page Build', blocked: true, blockedBy: 'c-t1-005' },
+  { id: 'k-t1-008', title: 'Build 20 service-area pages from drafts', desc: 'Templated component with variable injection. Each page validated against 80/20 uniqueness rule.', actor: 'code', tier: '1', impact: 'H', effort: '8h', source: 'Astro implementation', category: 'Page Build', blocked: true, blockedBy: 'c-t1-006' },
+  { id: 'k-t1-009', title: 'Inject JSON-LD schema on every page', desc: 'LocalBusiness, Service (areaServed), FAQPage, Person, Organization, BreadcrumbList. NO AggregateRating with 3rd-party reviews.', actor: 'code', tier: '1', impact: 'H', effort: '4h', source: 'Google structured data', category: 'Page Build', blocked: true, blockedBy: 'k-t1-005' },
+  { id: 'k-t1-010', title: 'Set up 301 redirect map (GHL → Astro URLs)', desc: 'Cloudflare Bulk Redirects. Ready to deploy when DNS flips.', actor: 'code', tier: '1', impact: 'H', effort: '2h', source: 'Google Search Central', category: 'Page Build', blocked: true, blockedBy: 'k-t1-008' },
+  { id: 'k-t1-011', title: 'Flip DNS after GBP verification completes', desc: 'newcastleovencleaning.co.uk now points to Cloudflare Pages. Domain stays the same. Activate 301 redirects.', actor: 'code', tier: '1', impact: 'H', effort: '30 min', source: 'Standard cutover', category: 'Page Build', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'k-t1-012', title: 'Verify Core Web Vitals (LCP <2.5s, INP <200ms, CLS <0.1)', desc: 'PageSpeed Insights post-launch. Astro+Cloudflare should pass easily.', actor: 'code', tier: '1', impact: 'H', effort: '30 min', source: 'web.dev CWV thresholds', category: 'Page Build', blocked: true, blockedBy: 'k-t1-011' },
+
+  // ============= TIER 1 — REVIEWS (Ross) =============
+  { id: 'r-t1-012', title: 'Memorise + use review-ask script with EVERY job', desc: '"If you\'re happy, would you take 60 seconds to leave a Google review? Mentioning your area [Gosforth] and what we cleaned really helps."', actor: 'ross', tier: '1', impact: 'H', effort: 'Per job', source: 'BrightLocal 2026', category: 'Review System', blocked: true, blockedBy: 'r-t1-001' },
+  { id: 'r-t1-013', title: 'Cross 20 Google reviews (BrightLocal cliff)', desc: '47% of consumers won\'t use a business with <20 reviews. Push hard in weeks 2-8.', actor: 'ross', tier: '1', impact: 'H', effort: 'Weeks 2-8', source: 'BrightLocal 2026', category: 'Review System', blocked: true, blockedBy: 'r-t1-001' },
+
+  // ============= TIER 2 — AI VISIBILITY (Code) =============
+  { id: 'k-t2-001', title: 'Set up robots.txt allowing all major AI crawlers', desc: 'Googlebot, Google-Extended, bingbot, GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User, PerplexityBot, CCBot, Amazonbot, meta-externalagent, Applebot-Extended.', actor: 'code', tier: '2', impact: 'H', effort: '15 min', source: 'AI crawler ecosystem 2026', category: 'AI Visibility', blocked: true, blockedBy: 'k-t1-001' },
+  { id: 'k-t2-002', title: 'Publish llms.txt at root', desc: 'Mueller says no AI uses it yet, but cost is near-zero.', actor: 'code', tier: '2', impact: 'L', effort: '30 min', source: 'Evil Martians', category: 'AI Visibility', blocked: true, blockedBy: 'k-t1-001' },
+  { id: 'k-t2-003', title: 'FAQ schema with conversational Q&As on every page', desc: '"How much does oven cleaning cost in Newcastle?" 50-70 word answers — citation-optimised.', actor: 'code', tier: '2', impact: 'H', effort: '4h', source: 'Dataslayer AI Overview', category: 'AI Visibility', blocked: true, blockedBy: 'k-t1-009' },
+  { id: 'k-t2-004', title: 'Set up sitemap.xml + submit to GSC + Bing Webmaster', desc: 'Astro auto-generates. Submit to both search engines.', actor: 'code', tier: '2', impact: 'H', effort: '30 min', source: 'Google Search Central', category: 'AI Visibility', blocked: true, blockedBy: 'k-t1-011' },
+
+  // ============= TIER 2 — AI VISIBILITY (Ross) =============
+  { id: 'r-t2-011', title: 'Set up Google Search Console for newcastleovencleaning.co.uk', desc: 'Verify ownership, submit sitemap, monitor impressions/AI mentions.', actor: 'ross', tier: '2', impact: 'H', effort: '30 min', source: 'GSC docs', category: 'AI Visibility', blocked: true, blockedBy: 'k-t1-011' },
+  { id: 'r-t2-012', title: 'Set up Bing Webmaster Tools + AI Performance report', desc: 'ONLY free first-party AI citation data available. Launched Feb 2026. Check monthly.', actor: 'ross', tier: '2', impact: 'M', effort: '30 min', source: 'Search Engine Land Feb 2026', category: 'AI Visibility', blocked: true, blockedBy: 'k-t1-011' },
+
+  // ============= TIER 2 — AI VISIBILITY (Claude) =============
+  { id: 'c-t2-001', title: 'Build FAQ library (40+ Q&As)', desc: 'Rotate across pages. Oven cleaning-specific. Feeds AI answer engines.', actor: 'claude', tier: '2', impact: 'M', effort: '4h', source: 'AI search 2026', category: 'AI Visibility' },
+
+  // ============= TIER 3 — TECHNICAL (Code) =============
+  { id: 'k-t3-001', title: 'Set up GA4 with basic events', desc: 'Phone-click, form-submit, review-link-click. Tracks user actions.', actor: 'code', tier: '3', impact: 'M', effort: '1h', source: 'GA4 docs', category: 'Analytics & Monitoring', blocked: true, blockedBy: 'k-t1-011' },
+  { id: 'k-t3-002', title: 'Schema validation script (Rich Results Test API)', desc: 'Runs on every deploy. Catches broken JSON-LD before it ships.', actor: 'code', tier: '3', impact: 'H', effort: '2h', source: 'Google Rich Results', category: 'Analytics & Monitoring', blocked: true, blockedBy: 'k-t1-009' },
+  { id: 'k-t3-003', title: 'WebP image conversion + lazy-load pipeline', desc: 'Astro <Image> component. Oven-specific alt text required for every image.', actor: 'code', tier: '3', impact: 'M', effort: 'Embedded', source: 'Astro image opt', category: 'Analytics & Monitoring', blocked: true, blockedBy: 'k-t1-005' },
+  { id: 'k-t3-004', title: 'NAP consistency audit script (runs monthly)', desc: 'Checks live citations for NAP drift. Alerts on mismatch.', actor: 'code', tier: '3', impact: 'M', effort: '2h script', source: 'SOCi 2026', category: 'Analytics & Monitoring' },
+  { id: 'k-t3-005', title: 'Internal linking audit (hub-and-spoke check)', desc: 'Confirms homepage hub → service variants → location pages structure stays intact.', actor: 'code', tier: '3', impact: 'M', effort: '2h script', source: 'Joy Hawkins internal linking', category: 'Analytics & Monitoring', blocked: true, blockedBy: 'k-t1-008' },
+  { id: 'k-t3-006', title: 'Alt text completeness check', desc: 'Flags any images without alt text. Runs on build.', actor: 'code', tier: '3', impact: 'M', effort: '1h', source: 'WCAG + SEO', category: 'Analytics & Monitoring', blocked: true, blockedBy: 'k-t1-005' },
+  { id: 'k-t3-007', title: 'Auto-submit sitemap on deploy', desc: 'Pings GSC + Bing Webmaster Tools after each deployment.', actor: 'code', tier: '3', impact: 'M', effort: '1h', source: 'Standard practice', category: 'Analytics & Monitoring', blocked: true, blockedBy: 'k-t2-004' },
+
+  // ============= TIER 3 — PIN PLACEMENT (Ross) =============
+  { id: 'r-t3-001', title: 'Check GBP pin placement (must be on 60 Brighton Grove, not road centre)', desc: 'New top-11 Whitespark 2026 factor. Drag to correct after verification.', actor: 'ross', tier: '3', impact: 'M', effort: '5 min', source: 'Whitespark 2026', category: 'GBP Optimisation', blocked: true, blockedBy: 'r-t1-001' },
+
+  // ============= TIER 4 — CONTENT/PR (Claude + Ross) =============
+  { id: 'c-t4-001', title: 'Draft 1st press release (month 2-3)', desc: 'Independent-not-franchise + Fenham-local + named sole trader. Joy Hawkins Dec 2025 confirmed PRs move local pack + AI Overviews.', actor: 'claude', tier: '4', impact: 'M', effort: '4h', source: 'Sterling Sky Dec 2025', category: 'Content & PR' },
+  { id: 'c-t4-002', title: 'Draft hybrid-intent blog post: "Is professional oven cleaning worth it in Newcastle?"', desc: 'Triggers AI Overviews 92-97% per Whitespark 540-query study.', actor: 'claude', tier: '4', impact: 'M', effort: '3h', source: 'Whitespark AI Overview', category: 'Content & PR' },
+  { id: 'c-t4-003', title: 'Draft seasonal content (pre-Christmas + end-of-tenancy + January + Easter)', desc: 'Calendar-based content rotation.', actor: 'claude', tier: '4', impact: 'M', effort: '4h', source: 'UK seasonality', category: 'Content & PR' },
+  { id: 'c-t4-004', title: 'Draft letting agent + estate agent cold outreach templates', desc: '30 letting agents (end-of-tenancy), 30 estate agents (pre-sale).', actor: 'claude', tier: '4', impact: 'H', effort: '2h', source: 'B2B template', category: 'Content & PR' },
+  { id: 'c-t4-005', title: 'Draft social media content plan (IG/TikTok)', desc: '1 before/after post/week. Calendar with hooks and captions.', actor: 'claude', tier: '4', impact: 'L-M', effort: '2h', source: 'Social discovery', category: 'Content & PR' },
+  { id: 'r-t4-001', title: 'Send press release to ChronicleLive + local outlets', desc: 'Use Claude\'s draft. One-off pitch.', actor: 'ross', tier: '4', impact: 'M', effort: '2h', source: 'Local PR', category: 'Content & PR' },
+  { id: 'r-t4-002', title: 'Start Reddit participation in r/NewcastleUponTyne', desc: '2-3 helpful comments/week. NO self-promo for first 3+ months. AI-cited threads are old, low-upvote, authentic.', actor: 'ross', tier: '4', impact: 'M', effort: '20 min/day', source: 'Cassie Clark AI 2026', category: 'Content & PR' },
+
+  // ============= TIER 4 — B2B OUTREACH (Ross) =============
+  { id: 'r-t4-003', title: 'Letting agent outreach — 30 agents in Newcastle', desc: 'Use Claude template. End-of-tenancy is huge recurring revenue.', actor: 'ross', tier: '4', impact: 'H', effort: '8h', source: 'UK home services', category: 'B2B Outreach', blocked: true, blockedBy: 'c-t4-004' },
+  { id: 'r-t4-004', title: 'Estate agent outreach — 30 agents', desc: '"Pre-sale kitchen refresh, <£100, 2h slot". Affluent postcodes turn over often.', actor: 'ross', tier: '4', impact: 'H', effort: '4h', source: 'Home services market', category: 'B2B Outreach', blocked: true, blockedBy: 'c-t4-004' },
+  { id: 'r-t4-005', title: 'AirBnB host outreach (Facebook groups + neighbourhood networks)', desc: 'Short-term rentals need frequent oven cleans.', actor: 'ross', tier: '4', impact: 'M', effort: '2h', source: 'Local opportunity', category: 'B2B Outreach' },
+  { id: 'r-t4-006', title: 'Interior designer / home staging partnerships (2-3 Newcastle designers)', desc: 'They recommend for listings or renovations.', actor: 'ross', tier: '4', impact: 'M', effort: '3h', source: 'Premium services', category: 'B2B Outreach' },
+
+  // ============= TIER 4 — FUTURE EXPANSION (Ross) =============
+  { id: 'r-t4-007', title: 'BOOK AGA TRAINING (month 4-6)', desc: 'SINGLE highest-leverage expansion. £300-500 course. Aga clean £150-250 vs £55-90 standard. 2/wk = £20k/yr extra.', actor: 'ross', tier: '4', impact: 'H', effort: '1-2 days', source: 'UK Aga market', category: 'Future Expansion' },
+  { id: 'r-t4-008', title: 'Consider Ltd Co at £30k+ turnover (consult accountant)', desc: 'Unlocks Companies House (LSA prerequisite) + reduced liability.', actor: 'ross', tier: '4', impact: 'M', effort: 'Consult', source: 'Crunch / UK biz', category: 'Future Expansion' },
+  { id: 'r-t4-009', title: 'Set up MTD ITSA-compliant accounting (Xero/FreeAgent/QuickBooks)', desc: 'Mandatory from 6 April 2026 if gross income >£50k. Use from day one.', actor: 'ross', tier: '4', impact: 'Compliance', effort: 'Setup', source: 'HMRC MTD ITSA', category: 'Future Expansion' },
+
+  // ============= ONGOING — EVERY JOB (Ross) =============
+  { id: 'r-on-001', title: 'Take before/after photos every job', desc: 'Identical angle, lighting. Two photos per job. Saves to structured folder.', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '3 min', source: 'GBP behavioural', category: 'Every Job' },
+  { id: 'r-on-002', title: 'Verbal review ask at end of every job', desc: '"If you\'re happy, a quick review mentioning [area] and [service] really helps."', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '30 sec', source: 'BrightLocal 2026', category: 'Every Job' },
+  { id: 'r-on-003', title: 'Send reviewable link via text within 1h of payment', desc: 'Iron-hot timing. Templated message with area + service mention.', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '2 min', source: 'Sterling Sky', category: 'Every Job' },
+  { id: 'r-on-004', title: 'Log job in estimator app (area, service, price, notes)', desc: 'Feeds "recent work" widget on service-area pages.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '2 min', source: 'Site freshness', category: 'Every Job' },
+
+  // ============= ONGOING — DAILY (Ross) =============
+  { id: 'r-on-005', title: 'Respond to new Google reviews within 24h (personalised, mention area + service)', desc: 'SOCi 2026: <5% response = invisible in AI.', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '5-10 min', source: 'SOCi 2026', category: 'Daily' },
+  { id: 'r-on-006', title: 'Check GBP messages (if enabled)', desc: 'Slow responses hurt conversion.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '5 min', source: 'GBP best practices', category: 'Daily' },
+
+  // ============= ONGOING — WEEKLY (Ross) =============
+  { id: 'r-on-007', title: 'Upload 3-5 fresh photos to GBP weekly', desc: 'Owner-uploaded photos = behavioural ranking fuel per ALM Corp 2026.', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '10 min', source: 'Whitespark 2026', category: 'Weekly' },
+  { id: 'r-on-008', title: 'Post 1 Instagram + 1 Facebook update weekly', desc: 'Before/after or tip. Tag Newcastle.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '15 min', source: 'Social ecosystem', category: 'Weekly' },
+  { id: 'r-on-009', title: 'Comment authentically in r/NewcastleUponTyne (2-3/week)', desc: 'NO self-promotion. Build history.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '15 min', source: 'Reddit AI research', category: 'Weekly' },
+  { id: 'r-on-010', title: 'Check review velocity (on track for 5-10/month?)', desc: 'If behind, more review asks this week.', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '2 min', source: 'Velocity monitoring', category: 'Weekly' },
+
+  // ============= ONGOING — WEEKLY (Code) =============
+  { id: 'k-on-001', title: 'Add 1 new testimonial to relevant service-area page weekly', desc: 'Page freshness signal. Ross provides text + area, Code drops it on the right page.', actor: 'code', tier: 'ongoing', impact: 'M', effort: '5 min', source: 'Page freshness', category: 'Weekly' },
+
+  // ============= ONGOING — MONTHLY (Ross) =============
+  { id: 'r-on-011', title: 'Check Bing Webmaster Tools AI Performance report', desc: 'Note new Copilot citation queries.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '15 min', source: 'SEL Feb 2026', category: 'Monthly' },
+  { id: 'r-on-012', title: 'Google Search Console review (queries, impressions, CTR, AI mentions)', desc: 'Any ranking drops?', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '20 min', source: 'GSC', category: 'Monthly' },
+  { id: 'r-on-013', title: 'Competitor ranking grid vs Ovenu/Ovenclean/Oven Doctor Newcastle', desc: 'Local Falcon or BrightLocal trial.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '30 min', source: 'Local Falcon', category: 'Monthly' },
+  { id: 'r-on-014', title: 'Review monthly review count target (5-10/month)', desc: 'Tighten review-ask ritual if below target.', actor: 'ross', tier: 'ongoing', impact: 'H', effort: '5 min', source: 'Sterling Sky 8186', category: 'Monthly' },
+
+  // ============= ONGOING — MONTHLY (Code) =============
+  { id: 'k-on-002', title: 'Run NAP consistency check across all live citations', desc: 'Automated script. Alerts on drift.', actor: 'code', tier: 'ongoing', impact: 'M', effort: '30 min', source: 'NAP for AI', category: 'Monthly' },
+  { id: 'k-on-003', title: 'Monthly Core Web Vitals check (PageSpeed Insights)', desc: 'Any regressions in LCP/INP/CLS?', actor: 'code', tier: 'ongoing', impact: 'M', effort: '10 min', source: 'CWV 2026', category: 'Monthly' },
+  { id: 'k-on-004', title: 'Visual regression check on key pages', desc: 'Catches layout breakage. Automated.', actor: 'code', tier: 'ongoing', impact: 'L', effort: '15 min', source: 'Standard practice', category: 'Monthly' },
+
+  // ============= ONGOING — MONTHLY (Claude) =============
+  { id: 'c-on-001', title: 'Publish 1 new blog post or FAQ expansion monthly', desc: 'Hybrid-intent questions. Feeds AI Overview citation chances.', actor: 'claude', tier: 'ongoing', impact: 'M', effort: '2-3h', source: 'AI content', category: 'Monthly' },
+
+  // ============= ONGOING — QUARTERLY (Ross + Claude) =============
+  { id: 'r-on-015', title: 'Check UK LSA category availability quarterly', desc: 'Is "oven cleaning" a UK LSA category yet? Park until it is.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '10 min', source: 'Google UK LSA', category: 'Quarterly' },
+  { id: 'r-on-016', title: 'Review Checkatrade cost/benefit quarterly', desc: 'Are leads coming? Cost justified? Be willing to cancel.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '30 min', source: 'Checkatrade ROI', category: 'Quarterly' },
+  { id: 'c-on-002', title: 'Draft quarterly press release (real news angle)', desc: 'Seasonal campaign, milestone, partnership. Joy Hawkins Dec 2025 confirmed PRs work.', actor: 'claude', tier: 'ongoing', impact: 'M', effort: '4h', source: 'Sterling Sky', category: 'Quarterly' },
+  { id: 'c-on-003', title: 'Competitor teardown refresh quarterly', desc: 'Screenshot competitor GBPs + websites. Note tactical changes.', actor: 'claude', tier: 'ongoing', impact: 'M', effort: '2h', source: 'Market intel', category: 'Quarterly' },
+  { id: 'k-on-005', title: 'Quarterly citation audit (Tier 1 + Tier 2 still live? Any NAP drift?)', desc: 'Automated check.', actor: 'code', tier: 'ongoing', impact: 'M', effort: '1h', source: 'NAP hygiene', category: 'Quarterly' },
+
+  // ============= ONGOING — SEASONAL (Ross + Claude) =============
+  { id: 'c-on-004', title: 'Pre-Christmas content push (mid-Oct to 20 Dec)', desc: 'Homepage + service pages updated. "Book before Christmas" messaging. Prime season.', actor: 'claude', tier: 'ongoing', impact: 'H', effort: '3h setup', source: 'Seasonality', category: 'Seasonal' },
+  { id: 'c-on-005', title: 'End-of-tenancy push (August/September)', desc: 'Student turnover demand. Letting agent outreach + homepage messaging.', actor: 'claude', tier: 'ongoing', impact: 'H', effort: '2h', source: 'Rental cycle', category: 'Seasonal' },
+  { id: 'r-on-017', title: 'Email past customers seasonally (pre-Christmas + Easter)', desc: '"Time for your annual oven clean" reminder. Use Brevo free tier.', actor: 'ross', tier: 'ongoing', impact: 'M', effort: '30 min/season', source: 'Email retention', category: 'Seasonal' }
+];
+
+// ============================================================
+// STATE & STORAGE — repo-based via state.json
+// ============================================================
+// Reads task statuses from state.json (single source of truth in the repo).
+// Both Claude (chat) and Claude Code update state.json directly; the tracker
+// reflects whatever is committed.
+//
+// When opened via http(s):// — fetches state.json fresh on load.
+// When opened via file:// — modern browsers block fetch on local files;
+// in that case we fall back to reading a pre-bundled state in localStorage
+// and warn Ross that he's looking at a stale view.
+//
+// Local edits via clicking checkboxes save to localStorage as a courtesy
+// (so Ross's local view stays in sync with his actions until he commits).
+// They do NOT persist to state.json — only Claude Code or Claude (chat)
+// can write to the repo.
+// ============================================================
+const STORAGE_KEY = 'nhc_tracker_v3_local';
+const STATE_FILE = 'state.json';
+let state = {};               // map of taskId -> 'todo' | 'in-progress' | 'done' | 'blocked'
+let stateMeta = {};           // map of taskId -> { updatedBy, updatedAt, note }
+let stateSource = 'unknown';  // 'state.json' | 'localStorage' | 'empty'
+let showBlocked = false;
+let showDone = false;
+let showOngoing = true;
+let refFilter = { actor: 'all', tier: 'all' };
+
+async function loadState() {
+  // Try state.json first (the repo source of truth)
+  try {
+    const res = await fetch(STATE_FILE, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.tasks) {
+        const flat = {};
+        const meta = {};
+        Object.keys(data.tasks).forEach(id => {
+          flat[id] = data.tasks[id].status || 'todo';
+          meta[id] = {
+            updatedBy: data.tasks[id].updatedBy,
+            updatedAt: data.tasks[id].updatedAt,
+            note: data.tasks[id].note
+          };
+        });
+        state = flat;
+        stateMeta = meta;
+        stateSource = 'state.json';
+        return;
+      }
+    }
+  } catch (e) {
+    // fetch blocked (file://) or 404 — fall through
+  }
+  // Fallback: localStorage (so Ross can still tick boxes if running file://)
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      state = JSON.parse(saved);
+      stateSource = 'localStorage';
+      return;
+    }
+  } catch (e) {}
+  state = {};
+  stateSource = 'empty';
+}
+
+function saveLocal() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+function getStatus(taskId) {
+  const s = state[taskId];
+  if (!s) return 'todo';
+  // Normalise repo statuses ('in-progress', 'blocked') into UI statuses
+  if (s === 'in-progress') return 'progress';
+  if (s === 'blocked') return 'todo';  // visual treatment handled elsewhere via isBlocked()
+  return s;
+}
+
+function setStatus(taskId, status) {
+  // UI -> storage normalisation
+  const repoStatus = status === 'progress' ? 'in-progress' : status;
+  state[taskId] = repoStatus;
+  saveLocal();
+}
+
+function getStatusNote(taskId) {
+  return (stateMeta[taskId] && stateMeta[taskId].note) || '';
+}
+
+function isBlocked(task) {
+  if (!task.blocked) return false;
+  if (!task.blockedBy) return false;
+  const blockerStatus = getStatus(task.blockedBy);
+  return blockerStatus !== 'done';
+}
+
+// ============================================================
+// KANBAN RENDER
+// ============================================================
+function renderKanban() {
+  const actors = ['ross', 'claude', 'code'];
+  const tiers = ['1', '2', '3', '4', 'ongoing'];
+  const tierLabels = {
+    '1': '🔥 Tier 1 — Do First',
+    '2': '⭐ Tier 2 — High Impact',
+    '3': '🛠️ Tier 3 — Foundation',
+    '4': '🌱 Tier 4 — Growth',
+    'ongoing': '↻ Keep Doing'
+  };
+  const actorEmoji = { ross: '👋', claude: '💬', code: '⚡' };
+  const actorName = { ross: 'Ross', claude: 'Claude (chat)', code: 'Claude Code' };
+
+  // Now cards (single next task per actor)
+  const nowContainer = document.getElementById('now-cards');
+  nowContainer.innerHTML = '';
+  actors.forEach(actor => {
+    const next = TASKS.find(t => t.actor === actor && getStatus(t.id) !== 'done' && !isBlocked(t) && t.tier !== 'ongoing');
+    const blocked = TASKS.find(t => t.actor === actor && getStatus(t.id) !== 'done' && isBlocked(t));
+    const task = next || blocked;
+    if (!task) {
+      nowContainer.innerHTML += `<div class="now-card actor-${actor}"><div class="now-actor"><span class="actor-dot" style="background: var(--${actor === 'code' ? 'code' : actor});"></span>${actorEmoji[actor]} ${actorName[actor]}</div><div class="now-task-title" style="color: var(--success);">🎉 All caught up — nice work!</div><div class="now-task-desc">Nothing pending. Stretch, get a coffee.</div></div>`;
+    } else {
+      const blockedNote = isBlocked(task) ? '<div style="font-size:11px; color:var(--warn); margin-top:8px; font-weight: 600;">🔒 Waiting on a dependency</div>' : '';
+      const cta = isBlocked(task) ? '' : '<div class="now-card-cta">→ Open this task</div>';
+      nowContainer.innerHTML += `
+        <div class="now-card actor-${actor}" onclick="scrollToTask('${task.id}')">
+          <div class="now-actor"><span class="actor-dot" style="background: var(--${actor === 'code' ? 'code' : actor});"></span>${actorEmoji[actor]} ${actorName[actor]}</div>
+          <div class="now-task-title">${task.title}</div>
+          <div class="now-task-desc">${task.desc.length > 110 ? task.desc.substring(0, 110) + '…' : task.desc}</div>
+          ${blockedNote}
+          ${cta}
+        </div>`;
+    }
+  });
+
+  // Columns
+  actors.forEach(actor => {
+    const col = document.getElementById(`col-${actor}`);
+    col.innerHTML = '';
+    let count = 0;
+
+    tiers.forEach(tier => {
+      if (tier === 'ongoing' && !showOngoing) return;
+      const tierTasks = TASKS.filter(t => t.actor === actor && t.tier === tier);
+      const visible = tierTasks.filter(t => {
+        const status = getStatus(t.id);
+        if (status === 'done' && !showDone) return false;
+        if (isBlocked(t) && !showBlocked) return false;
+        return true;
+      });
+      if (visible.length === 0) return;
+
+      const section = document.createElement('div');
+      section.className = `tier-section t${tier === 'ongoing' ? '-ongoing' : tier}`;
+      const tierClass = tier === 'ongoing' ? 'ongoing' : `t${tier}`;
+      section.innerHTML = `<div class="tier-header"><span>${tierLabels[tier]}</span><span>${visible.length}</span></div>`;
+
+      visible.forEach(task => {
+        const status = getStatus(task.id);
+        const blocked = isBlocked(task);
+        count++;
+        const card = document.createElement('div');
+        card.className = `card ${status === 'done' ? 'done' : ''} ${status === 'progress' ? 'in-progress' : ''} ${blocked ? 'blocked' : ''}`;
+        card.dataset.taskId = task.id;
+        card.innerHTML = `
+          <div class="card-title">${task.title}</div>
+          <div class="card-meta">
+            <span class="card-status-dot"></span>
+            <span class="badge badge-impact-${task.impact.charAt(0)}">${task.impact}</span>
+            <span>${task.effort}</span>
+          </div>
+          <div class="card-detail">
+            <p>${task.desc}</p>
+            ${blocked ? `<p style="color: var(--warn);">🔒 Blocked by: ${TASKS.find(t => t.id === task.blockedBy)?.title || task.blockedBy}</p>` : ''}
+            <p class="card-source">📖 ${task.source}</p>
+            <div class="card-actions">
+              <button class="card-action" onclick="event.stopPropagation(); cycleStatus('${task.id}')">${status === 'todo' ? '▸ Mark in progress' : status === 'progress' ? '✓ Mark done' : '↻ Reset'}</button>
+            </div>
+          </div>`;
+        card.onclick = (e) => {
+          if (e.target.classList.contains('card-action')) return;
+          card.classList.toggle('expanded');
+        };
+        section.appendChild(card);
+      });
+
+      col.appendChild(section);
+    });
+
+    document.getElementById(`${actor}-count`).textContent = count;
+  });
+
+  updateStats();
+}
+
+function cycleStatus(taskId) {
+  const current = getStatus(taskId);
+  const next = current === 'todo' ? 'progress' : current === 'progress' ? 'done' : 'todo';
+  setStatus(taskId, next);
+  if (next === 'done') celebrate();
+  renderAll();
+}
+
+function celebrate() {
+  const emojis = ['🎉', '✨', '🔥', '⭐', '💪', '🚀'];
+  const burst = document.createElement('div');
+  burst.className = 'celebrate-burst';
+  burst.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  burst.style.left = (window.innerWidth / 2 - 20 + (Math.random() * 200 - 100)) + 'px';
+  burst.style.top = (window.innerHeight / 2 - 20) + 'px';
+  document.body.appendChild(burst);
+  setTimeout(() => burst.remove(), 800);
+}
+
+function scrollToTask(taskId) {
+  const el = document.querySelector(`[data-task-id="${taskId}"]`);
+  if (el) {
+    el.classList.add('expanded');
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.style.outline = '2px solid var(--accent)';
+    setTimeout(() => el.style.outline = '', 1500);
+  }
+}
+
+function toggleBlocked() {
+  showBlocked = !showBlocked;
+  document.getElementById('toggle-blocked').classList.toggle('active', showBlocked);
+  renderKanban();
+  updateToggleInfo();
+}
+function toggleDone() {
+  showDone = !showDone;
+  document.getElementById('toggle-done').classList.toggle('active', showDone);
+  renderKanban();
+  updateToggleInfo();
+}
+function toggleOngoing() {
+  showOngoing = !showOngoing;
+  document.getElementById('toggle-ongoing').classList.toggle('active', showOngoing);
+  renderKanban();
+  updateToggleInfo();
+}
+
+function updateToggleInfo() {
+  const banner = document.getElementById('toggle-info');
+  if (!banner) return;
+  const messages = [];
+  if (showBlocked) {
+    const n = TASKS.filter(t => isBlocked(t) && getStatus(t.id) !== 'done').length;
+    messages.push(n > 0 ? `🔒 <strong>${n} blocked task${n===1?'':'s'}</strong> now visible (dashed border)` : `🔒 No blocked tasks right now`);
+  }
+  if (!showOngoing) {
+    messages.push(`↻ Recurring tasks are hidden — toggle back on to see weekly/monthly rituals`);
+  }
+  if (messages.length === 0) {
+    banner.style.display = 'none';
+  } else {
+    banner.style.display = 'flex';
+    banner.innerHTML = `<span class="toggle-info-icon">💡</span><span>${messages.join(' &nbsp;·&nbsp; ')}</span>`;
+  }
+  renderWins();
+}
+
+function renderWins() {
+  const panel = document.getElementById('wins-panel');
+  if (!panel) return;
+  if (!showDone) { panel.style.display = 'none'; return; }
+  panel.style.display = 'block';
+
+  const actorName = { ross: 'Ross', claude: 'Claude', code: 'Code' };
+  const tierLabels = { '1': 'T1', '2': 'T2', '3': 'T3', '4': 'T4', 'ongoing': 'Recurring' };
+  const done = TASKS.filter(t => getStatus(t.id) === 'done');
+
+  if (done.length === 0) {
+    panel.innerHTML = `
+      <div class="wins-header">
+        <div class="wins-title">🏆 Your Wins</div>
+      </div>
+      <div class="wins-empty">
+        <span class="wins-empty-emoji">🎯</span>
+        <div class="wins-empty-title">No wins yet — but you're about to start stacking them.</div>
+        <div class="wins-empty-sub">Click any task → "Mark in progress" → "Mark done". Completed tasks will appear here.</div>
+      </div>`;
+    return;
+  }
+
+  const items = done.map(t => `
+    <div class="win-item">
+      <div class="win-check">✓</div>
+      <div class="win-content">
+        <div class="win-title">${t.title}</div>
+        <div class="win-meta">
+          <span class="badge badge-actor-${t.actor}">${actorName[t.actor]}</span>
+          <span class="badge badge-tier-${t.tier}">${tierLabels[t.tier]}</span>
+        </div>
+      </div>
+      <button class="win-undo" onclick="cycleStatus('${t.id}'); cycleStatus('${t.id}'); cycleStatus('${t.id}');" title="Reset to to-do">Undo</button>
+    </div>`).join('');
+
+  panel.innerHTML = `
+    <div class="wins-header">
+      <div class="wins-title">🏆 Your Wins</div>
+      <div class="wins-count">${done.length} done</div>
+    </div>
+    <div class="wins-list">${items}</div>`;
+}
+
+// ============================================================
+// REFERENCE PAGE RENDER
+// ============================================================
+function renderReference() {
+  const container = document.getElementById('ref-content');
+  container.innerHTML = '';
+
+  // Group by category
+  const filtered = TASKS.filter(t => {
+    if (refFilter.actor !== 'all' && t.actor !== refFilter.actor) return false;
+    if (refFilter.tier !== 'all' && t.tier !== refFilter.tier) return false;
+    return true;
+  });
+
+  const grouped = {};
+  filtered.forEach(t => {
+    if (!grouped[t.category]) grouped[t.category] = [];
+    grouped[t.category].push(t);
+  });
+
+  Object.keys(grouped).forEach(category => {
+    const tasks = grouped[category];
+    const done = tasks.filter(t => getStatus(t.id) === 'done').length;
+    const isComplete = done === tasks.length;
+    const section = document.createElement('div');
+    section.className = 'ref-section';
+    section.innerHTML = `
+      <div class="ref-section-header" onclick="this.parentElement.classList.toggle('collapsed')">
+        <div class="ref-section-title">${isComplete ? '✅ ' : ''}${category}</div>
+        <div style="display:flex; gap:14px; align-items:center;">
+          <span class="ref-section-progress ${isComplete ? 'complete' : ''}">${done}/${tasks.length}${isComplete ? ' ✓' : ''}</span>
+          <span class="ref-toggle">▼</span>
+        </div>
+      </div>
+      <div class="ref-section-body">
+        ${tasks.map(t => {
+          const status = getStatus(t.id);
+          return `
+            <div class="ref-task ${status === 'done' ? 'done' : ''}">
+              <div class="ref-checkbox ${status === 'done' ? 'checked' : status === 'progress' ? 'in-progress' : ''}" onclick="cycleStatus('${t.id}')"></div>
+              <div class="ref-task-content">
+                <div class="ref-task-title">${t.title}</div>
+                <div class="ref-task-desc">${t.desc}</div>
+                <div class="ref-task-source">📖 ${t.source}</div>
+              </div>
+              <div><span class="badge badge-actor-${t.actor}">${t.actor === 'code' ? 'Claude Code' : t.actor === 'claude' ? 'Claude' : 'Ross'}</span></div>
+              <div><span class="badge badge-tier-${t.tier}">${t.tier === 'ongoing' ? 'Recurring' : 'T' + t.tier}</span></div>
+              <div style="display:flex; flex-direction:column; gap:3px; align-items:flex-end;">
+                <span class="badge badge-impact badge-impact-${t.impact.charAt(0)}">${t.impact}</span>
+                <span class="ref-effort">${t.effort}</span>
+              </div>
+            </div>`;
+        }).join('')}
+      </div>`;
+    container.appendChild(section);
+  });
+
+  if (Object.keys(grouped).length === 0) {
+    container.innerHTML = '<div class="empty-state"><span class="empty-state-emoji">🔍</span>No tasks match these filters. Try widening them.</div>';
+  }
+}
+
+function filterRef(type, value, btn) {
+  refFilter[type] = value;
+  document.querySelectorAll(`[data-filter-${type}]`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderReference();
+}
+
+// ============================================================
+// STATS + PAGE TOGGLE
+// ============================================================
+function updateStats() {
+  const total = TASKS.length;
+  let done = 0, progress = 0, todo = 0;
+  TASKS.forEach(t => {
+    const s = getStatus(t.id);
+    if (s === 'done') done++;
+    else if (s === 'progress') progress++;
+    else todo++;
+  });
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-progress').textContent = progress;
+  document.getElementById('stat-todo').textContent = todo;
+  document.getElementById('stat-pct').textContent = pct;
+  const frac = document.getElementById('stat-frac');
+  if (frac) frac.textContent = `${done} / ${total} COMPLETE`;
+  const ring = document.getElementById('ring-fg');
+  if (ring) {
+    const circumference = 2 * Math.PI * 42;
+    ring.style.strokeDashoffset = circumference * (1 - pct / 100);
+  }
+
+  // Per-tier breakdown
+  const tiers = ['1', '2', '3', '4', 'ongoing'];
+  tiers.forEach(t => {
+    const key = t === 'ongoing' ? 'tongoing' : 't' + t;
+    const tierTasks = TASKS.filter(x => x.tier === t);
+    const tierDone = tierTasks.filter(x => getStatus(x.id) === 'done').length;
+    const tierPct = tierTasks.length > 0 ? Math.round((tierDone / tierTasks.length) * 100) : 0;
+    const doneEl = document.getElementById(`${key}-done`);
+    const totalEl = document.getElementById(`${key}-total`);
+    const barEl = document.getElementById(`${key}-bar`);
+    if (doneEl) doneEl.textContent = tierDone;
+    if (totalEl) totalEl.textContent = tierTasks.length;
+    if (barEl) barEl.style.width = tierPct + '%';
+  });
+
+  // Per-actor live (in-progress) counts
+  ['ross', 'claude', 'code'].forEach(a => {
+    const liveCount = TASKS.filter(x => x.actor === a && getStatus(x.id) === 'progress').length;
+    const el = document.getElementById(`${a}-live`);
+    if (el) el.textContent = liveCount;
+  });
+
+  const cheer = document.getElementById('progress-cheer');
+  if (cheer) {
+    if (pct === 0) cheer.textContent = "Let's go 🚀";
+    else if (pct < 10) cheer.textContent = "Off the start line 💪";
+    else if (pct < 25) cheer.textContent = "Building momentum 🔥";
+    else if (pct < 50) cheer.textContent = "Quarter way there ⭐";
+    else if (pct < 75) cheer.textContent = "Halfway done — keep going ✨";
+    else if (pct < 95) cheer.textContent = "Home stretch 🏁";
+    else if (pct < 100) cheer.textContent = "Almost there! 🎯";
+    else cheer.textContent = "🏆 Smashed it!";
+  }
+}
+
+function showPage(pageId, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  btn.classList.add('active');
+}
+
+function renderAll() {
+  renderKanban();
+  renderReference();
+  renderWins();
+  renderSourceBanner();
+}
+
+function renderSourceBanner() {
+  // Show a small banner at top so Ross knows whether he's looking at the
+  // repo state.json or a local browser-only view.
+  let banner = document.getElementById('source-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'source-banner';
+    banner.style.cssText = 'position:fixed;bottom:12px;right:12px;padding:8px 14px;border-radius:8px;font-size:11px;font-weight:600;z-index:1000;backdrop-filter:blur(8px);box-shadow:0 4px 16px rgba(0,0,0,0.4);';
+    document.body.appendChild(banner);
+  }
+  if (stateSource === 'state.json') {
+    banner.style.background = 'rgba(74, 222, 128, 0.15)';
+    banner.style.color = '#4ade80';
+    banner.style.border = '1px solid rgba(74, 222, 128, 0.3)';
+    banner.textContent = '✓ Live from state.json';
+  } else if (stateSource === 'localStorage') {
+    banner.style.background = 'rgba(251, 191, 36, 0.12)';
+    banner.style.color = '#fbbf24';
+    banner.style.border = '1px solid rgba(251, 191, 36, 0.3)';
+    banner.textContent = '⚠ Local view only — open via http(s) for live state';
+  } else {
+    banner.style.background = 'rgba(155, 164, 179, 0.12)';
+    banner.style.color = '#7a8699';
+    banner.style.border = '1px solid rgba(155, 164, 179, 0.3)';
+    banner.textContent = 'No state loaded yet';
+  }
+}
+
+// Init — async because state.json fetch is async
+(async () => {
+  await loadState();
+  renderAll();
+})();
+</script>
+</body>
+</html>
