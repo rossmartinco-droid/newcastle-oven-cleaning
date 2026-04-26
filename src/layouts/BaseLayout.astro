@@ -1,5 +1,6 @@
 ---
 import { NAP, SERVICE_AREAS } from '~/lib/nap';
+import '@fontsource-variable/inter';
 import '~/styles/global.css';
 
 interface Props {
@@ -25,10 +26,6 @@ const year = new Date().getFullYear();
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <slot name="head" />
 </head>
