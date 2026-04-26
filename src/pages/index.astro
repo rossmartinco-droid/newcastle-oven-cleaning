@@ -6,7 +6,7 @@ import FAQPageSchema from '~/components/schema/FAQPage.astro';
 import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
 import FAQ from '~/components/FAQ.astro';
 import ContactCTA from '~/components/ContactCTA.astro';
-import { NAP, SERVICES, SERVICE_AREAS } from '~/lib/nap';
+import { NAP, SERVICE_AREAS } from '~/lib/nap';
 
 const title = 'Oven Cleaning Newcastle | Independent Specialist | Newcastle Oven Cleaning';
 const description = 'Specialist oven cleaning in Newcastle upon Tyne from £55. Independent sole trader, fully insured, based in Fenham. Single ovens, double ovens, range cookers, hobs, extractors, microwaves. Call 07949 529741.';
@@ -14,23 +14,23 @@ const description = 'Specialist oven cleaning in Newcastle upon Tyne from £55. 
 const faqs = [
   {
     question: 'How much does oven cleaning cost in Newcastle?',
-    answer: 'Single ovens start at £55, double ovens at £75, and range cookers at £90. Hob, extractor and microwave cleans are typically £20 each as add-ons. Final price depends on the condition of the appliance — call or send a photo for a precise quote.',
+    answer: 'Single ovens start at £55, double ovens at £75, and range cookers at £90. Hob, extractor and microwave cleans are typically £20 each as add-ons. Final price depends on the condition of the appliance. Call or send a photo for a precise quote.',
   },
   {
     question: 'How long does an oven clean take?',
-    answer: 'A single oven typically takes 1.5–2 hours on site. Double ovens and range cookers take 2–3 hours. Add 30–45 minutes if you\'re combining a hob, extractor or microwave clean in the same visit.',
+    answer: 'A single oven typically takes 1.5 to 2 hours on site. Double ovens and range cookers take 2 to 3 hours. Add 30 to 45 minutes if you\'re combining a hob, extractor or microwave clean in the same visit.',
   },
   {
     question: 'Do you clean Aga cookers?',
-    answer: 'No. Aga cleaning needs specialist training I haven\'t undertaken — I\'d rather be upfront than do the job poorly. If you\'d like a recommendation for an Aga specialist in the area, give me a call and I\'ll point you in the right direction.',
+    answer: 'No. Aga cleaning needs specialist training I haven\'t undertaken. I\'d rather be upfront than do the job poorly. If you\'d like a recommendation for an Aga specialist in the area, give me a call and I\'ll point you in the right direction.',
   },
   {
     question: 'Do I need to be home during the clean?',
-    answer: 'Yes — someone needs to be at the property when I arrive and when I leave, so you can inspect the finished result before I go.',
+    answer: 'Yes. Someone needs to be at the property when I arrive and when I leave, so you can inspect the finished result before I go.',
   },
   {
     question: 'What areas do you cover?',
-    answer: 'I cover Newcastle upon Tyne and surrounding areas within roughly 20 miles of Fenham — including Jesmond, Gosforth, Ponteland, Darras Hall, Tynemouth, Whitley Bay, Morpeth, Low Fell, and the wider commuter belt. Full list at the bottom of the page.',
+    answer: 'I cover Newcastle upon Tyne and surrounding areas within roughly 20 miles of Fenham. That includes Jesmond, Gosforth, Ponteland, Darras Hall, Tynemouth, Whitley Bay, Morpeth, Low Fell, and the wider commuter belt. Full list at the bottom of the page.',
   },
   {
     question: 'Are you fully insured?',
@@ -38,52 +38,186 @@ const faqs = [
   },
   {
     question: 'How often should I get my oven professionally cleaned?',
-    answer: 'For most households, every 6–12 months is ideal. If you cook several times a week or use the oven heavily over winter, every 4–6 months keeps it in better condition and extends the life of the heating element and seals.',
+    answer: 'For most households, every 6 to 12 months is ideal. If you cook several times a week or use the oven heavily over winter, every 4 to 6 months keeps it in better condition and extends the life of the heating element and seals.',
   },
 ];
-
-const crumbs: { name: string; url: string }[] = [];
 ---
 <BaseLayout title={title} description={description}>
   <Fragment slot="head">
     <LocalBusiness />
     <Person sameAs={[]} />
     <FAQPageSchema faqs={faqs} />
-    <BreadcrumbList crumbs={crumbs} />
+    <BreadcrumbList crumbs={[]} />
   </Fragment>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">⭐ Independent · Fully Insured · Fenham-based</div>
-      <h1>Specialist <span>Oven Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <div class="hero-eyebrow">⭐ Fully Insured · Results Guaranteed · Local Specialist</div>
+      <h1>Professional <span>Oven Cleaning</span><br />in Newcastle upon Tyne</h1>
       <p class="hero-lead">
-        Independent oven cleaning by Ross Smith — sole trader, based in Fenham, working across Newcastle and the surrounding affluent suburbs.
-        Single ovens from £55, double ovens from £75, range cookers from £90. Same-week appointments across Jesmond, Gosforth, Ponteland, Tynemouth and the wider 20-mile radius.
+        Oven cleaning by a fully insured local specialist. Single ovens from £55, double ovens from £75, range cookers from £90. Same-week appointments across Newcastle, Gateshead, Jesmond, Gosforth, Heaton and the wider North East.
       </p>
       <p class="hero-meta">
-        <strong>Call {NAP.phone.display}</strong> or WhatsApp for a free quote. {NAP.hours.display}.
+        <strong>Call {NAP.phone.display}</strong> or email for a free no-obligation quote. {NAP.hours.display}. Results guaranteed or we come back free.
       </p>
       <div class="hero-btns">
         <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
-        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">Get a Free Quote</a>
       </div>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section id="services" style="background: var(--light);">
+  <section class="services" id="services">
     <div class="container">
-      <h2 class="section-title">Services & Pricing</h2>
-      <p class="section-sub">Transparent £ ranges. No "from £X" surprises. Final price confirmed by phone or photo before booking.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; max-width: 1000px; margin: 0 auto;">
-        {SERVICES.map(s => (
-          <a href={`/${s.slug}/`} style="background: var(--white); padding: 26px 22px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-sm); text-decoration: none; color: inherit; display: block; transition: all 0.2s;">
-            <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--navy);">{s.name}</h3>
-            <p style="color: var(--grey); font-size: 0.9rem; margin-bottom: 14px;">{s.addOn ? 'Add-on or standalone' : 'Specialist clean, all parts included'}</p>
-            <div style="font-size: 1.4rem; font-weight: 900; color: var(--orange); letter-spacing: -0.02em;">£{s.priceFrom}–{s.priceTo}</div>
-          </a>
-        ))}
+      <h2 class="section-title">Our Oven Cleaning Services</h2>
+      <p class="section-sub">Transparent, competitive pricing across Newcastle upon Tyne and surrounding areas. No hidden charges.</p>
+      <div class="services-grid">
+
+        <a href="/single-oven-cleaning-newcastle/" class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="30" y="8" width="80" height="118" rx="3"/>
+              <rect x="30" y="8" width="80" height="22" rx="3"/>
+              <circle cx="46" cy="19" r="2.5"/><circle cx="60" cy="19" r="2.5"/>
+              <circle cx="80" cy="19" r="2.5"/><circle cx="94" cy="19" r="2.5"/>
+              <rect x="38" y="40" width="64" height="78" rx="2"/>
+              <rect x="44" y="46" width="52" height="66" rx="1.5"/>
+              <line x1="50" y1="38" x2="90" y2="38"/>
+            </svg>
+          </div>
+          <h3>Single Oven</h3>
+          <p>Full interior clean including racks, trays, and door glass</p>
+          <div class="price">from £55</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="/double-oven-cleaning-newcastle/" class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="26" y="6" width="88" height="120" rx="3"/>
+              <rect x="26" y="6" width="88" height="18" rx="3"/>
+              <circle cx="40" cy="15" r="2.3"/><circle cx="55" cy="15" r="2.3"/><circle cx="70" cy="15" r="2.3"/><circle cx="85" cy="15" r="2.3"/><circle cx="100" cy="15" r="2.3"/>
+              <rect x="34" y="32" width="72" height="42" rx="2"/>
+              <rect x="40" y="38" width="60" height="30" rx="1.5"/>
+              <line x1="48" y1="30" x2="92" y2="30"/>
+              <rect x="34" y="80" width="72" height="42" rx="2"/>
+              <rect x="40" y="86" width="60" height="30" rx="1.5"/>
+              <line x1="48" y1="78" x2="92" y2="78"/>
+            </svg>
+          </div>
+          <h3>Double Oven</h3>
+          <p>Both cavities, all racks, trays, and door glass thoroughly cleaned</p>
+          <div class="price">from £75</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="/range-cooker-cleaning-newcastle/" class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <ellipse cx="38" cy="22" rx="13" ry="4"/><ellipse cx="70" cy="22" rx="13" ry="4"/><ellipse cx="102" cy="22" rx="13" ry="4"/>
+              <rect x="10" y="24" width="120" height="100" rx="3"/>
+              <rect x="10" y="24" width="120" height="18" rx="3"/>
+              <circle cx="25" cy="33" r="2.3"/><circle cx="40" cy="33" r="2.3"/><circle cx="55" cy="33" r="2.3"/>
+              <circle cx="85" cy="33" r="2.3"/><circle cx="100" cy="33" r="2.3"/><circle cx="115" cy="33" r="2.3"/>
+              <rect x="18" y="50" width="52" height="66" rx="2"/>
+              <rect x="24" y="56" width="40" height="54" rx="1.5"/>
+              <circle cx="60" cy="82" r="1.5"/>
+              <rect x="74" y="50" width="48" height="66" rx="2"/>
+              <rect x="80" y="56" width="36" height="54" rx="1.5"/>
+              <circle cx="112" cy="82" r="1.5"/>
+            </svg>
+          </div>
+          <h3>Range Cooker</h3>
+          <p>All cavities, burners, and doors. Full range clean</p>
+          <div class="price">from £90</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="/hob-and-extractor-cleaning-newcastle/" class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="14" y="28" width="112" height="74" rx="4"/>
+              <circle cx="46" cy="52" r="14"/><circle cx="46" cy="52" r="6"/>
+              <circle cx="94" cy="52" r="14"/><circle cx="94" cy="52" r="6"/>
+              <circle cx="46" cy="82" r="14"/><circle cx="46" cy="82" r="6"/>
+              <circle cx="94" cy="82" r="14"/><circle cx="94" cy="82" r="6"/>
+              <line x1="14" y1="102" x2="126" y2="102"/>
+              <circle cx="36" cy="112" r="2"/><circle cx="58" cy="112" r="2"/><circle cx="82" cy="112" r="2"/><circle cx="104" cy="112" r="2"/>
+            </svg>
+          </div>
+          <h3>Hob Clean</h3>
+          <p>Gas or electric hob deep cleaned alongside your oven</p>
+          <div class="price">from £20</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="/hob-and-extractor-cleaning-newcastle/" class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="58" y="8" width="24" height="26" rx="2"/>
+              <path d="M20 36 L120 36 L104 94 L36 94 Z"/>
+              <line x1="36" y1="82" x2="104" y2="82"/>
+              <line x1="50" y1="88" x2="50" y2="94"/><line x1="62" y1="88" x2="62" y2="94"/>
+              <line x1="70" y1="88" x2="70" y2="94"/><line x1="78" y1="88" x2="78" y2="94"/>
+              <line x1="90" y1="88" x2="90" y2="94"/>
+              <circle cx="50" cy="60" r="4"/><circle cx="90" cy="60" r="4"/>
+              <rect x="62" y="56" width="16" height="10" rx="1.5"/>
+              <line x1="65" y1="61" x2="75" y2="61"/>
+            </svg>
+          </div>
+          <h3>Extractor Fan</h3>
+          <p>Filters, fan blades, and housing thoroughly degreased</p>
+          <div class="price">from £20</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="/single-oven-cleaning-newcastle/" class="service-card featured">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="18" y="14" width="84" height="108" rx="3"/>
+              <rect x="18" y="14" width="84" height="20" rx="3"/>
+              <circle cx="32" cy="24" r="2.3"/><circle cx="48" cy="24" r="2.3"/><circle cx="72" cy="24" r="2.3"/><circle cx="88" cy="24" r="2.3"/>
+              <rect x="26" y="44" width="68" height="70" rx="2"/>
+              <rect x="32" y="50" width="56" height="58" rx="1.5"/>
+              <line x1="38" y1="42" x2="82" y2="42"/>
+              <g stroke-width="2.2">
+                <line x1="118" y1="22" x2="118" y2="42"/><line x1="108" y1="32" x2="128" y2="32"/>
+                <line x1="111" y1="25" x2="125" y2="39"/><line x1="125" y1="25" x2="111" y2="39"/>
+              </g>
+              <g stroke-width="1.8"><line x1="118" y1="64" x2="118" y2="76"/><line x1="112" y1="70" x2="124" y2="70"/></g>
+              <g stroke-width="1.8"><line x1="120" y1="94" x2="120" y2="104"/><line x1="115" y1="99" x2="125" y2="99"/></g>
+            </svg>
+          </div>
+          <h3>Full Kitchen Bundle</h3>
+          <p>Oven + hob + extractor cleaned in one visit. Best value.</p>
+          <div class="price">from £85</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
+        <a href="/microwave-cleaning-newcastle/" class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 140 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="14" y="28" width="112" height="74" rx="3"/>
+              <rect x="22" y="36" width="74" height="58" rx="2"/>
+              <circle cx="59" cy="65" r="14"/>
+              <circle cx="59" cy="65" r="3"/>
+              <line x1="59" y1="55" x2="59" y2="48"/>
+              <rect x="104" y="40" width="14" height="6" rx="1"/>
+              <rect x="104" y="52" width="14" height="6" rx="1"/>
+              <circle cx="111" cy="68" r="3"/>
+              <circle cx="111" cy="82" r="3"/>
+              <line x1="30" y1="106" x2="42" y2="106"/>
+              <line x1="98" y1="106" x2="110" y2="106"/>
+            </svg>
+          </div>
+          <h3>Microwave</h3>
+          <p>Interior, turntable, ceiling and door. Degreased inside and out.</p>
+          <div class="price">from £20</div>
+          <span class="service-link">Learn more →</span>
+        </a>
+
       </div>
     </div>
   </section>
@@ -93,13 +227,13 @@ const crumbs: { name: string; url: string }[] = [];
     <div class="container-narrow">
       <div style="background: var(--white); border-radius: var(--radius-lg); padding: 44px 40px; border-left: 5px solid var(--orange); box-shadow: 0 12px 40px rgba(255, 122, 0, 0.12);">
         <p style="font-size: 1.05rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
-          The grimier the better. Don't be embarrassed about the state of your oven when you call — bringing a really filthy oven back to spotless is the part I enjoy most.
+          The grimier the better. Don't be embarrassed about the state of your oven when you call. Honestly, bringing a really filthy oven back to spotless is the part I enjoy most.
         </p>
         <p style="font-size: 1.05rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
-          I come to your home, work cleanly around the kitchen, and tidy up properly before I leave — including wiping the floor down. I bring a protective mat that sits in front of the oven while I work so nothing gets onto your flooring.
+          I come to your home, work cleanly around the kitchen, and tidy up properly before I leave. That includes wiping the floor down. I bring a protective mat that sits in front of the oven while I work so nothing gets onto your flooring.
         </p>
         <p style="font-size: 1.05rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
-          SMEGs and high-end ranges are quoted individually because they take more care — I take the doors apart where needed and polish the hob caps until they shine. I don't service Aga cookers — but happy to recommend a specialist if you call.
+          SMEGs and high-end ranges are quoted individually because they take more care. I'll take the doors apart where needed and polish the hob caps until they shine. I don't service Aga cookers, but happy to recommend a specialist if you call.
         </p>
         <p style="font-style: italic; color: var(--orange); font-weight: 700; margin-top: 6px;">
           Kindly,<br />Ross
@@ -108,11 +242,76 @@ const crumbs: { name: string; url: string }[] = [];
     </div>
   </section>
 
+  <!-- HOW WE CLEAN YOUR OVEN -->
+  <section class="cleaning-process">
+    <div class="container">
+      <h2 class="section-title">How We Clean Your Oven</h2>
+      <p class="section-sub">A thorough, methodical process every time.</p>
+      <div class="process-grid">
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="26" width="46" height="30" rx="3"/>
+              <path d="M52 34 L64 34 L72 46 L72 56 L52 56 Z"/>
+              <rect x="56" y="38" width="12" height="10" rx="1.5"/>
+              <circle cx="20" cy="58" r="6"/><circle cx="20" cy="58" r="2.5"/>
+              <circle cx="60" cy="58" r="6"/><circle cx="60" cy="58" r="2.5"/>
+              <line x1="26" y1="58" x2="54" y2="58"/>
+            </svg>
+          </div>
+          <h3>Arrival</h3>
+          <p>On-time arrival, protective floor coverings laid, and a full inspection of your oven.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 30 L26 68 L54 68 L60 30 Z"/>
+              <line x1="16" y1="30" x2="64" y2="30"/>
+              <path d="M28 30 Q40 14 52 30"/>
+              <circle cx="34" cy="22" r="2.5"/><circle cx="46" cy="18" r="3"/><circle cx="52" cy="24" r="2"/>
+            </svg>
+          </div>
+          <h3>Soak</h3>
+          <p>Racks, trays and removable parts are soaked and treated while I work on the interior.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="22" y="40" width="36" height="26" rx="5"/>
+              <rect x="30" y="30" width="20" height="14" rx="3"/>
+              <circle cx="28" cy="22" r="3.5"/><circle cx="40" cy="16" r="4.5"/><circle cx="52" cy="22" r="3.5"/>
+              <circle cx="36" cy="12" r="2"/><circle cx="48" cy="12" r="2"/>
+              <line x1="30" y1="50" x2="50" y2="50"/><line x1="30" y1="56" x2="44" y2="56"/>
+            </svg>
+          </div>
+          <h3>Deep Clean</h3>
+          <p>Oven interior brushed, scrubbed, and rinsed back to like-new condition. No residue, no missed spots.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-icon">
+            <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M28 14 L32 32 L50 36 L32 40 L28 58 L24 40 L6 36 L24 32 Z"/>
+              <g stroke-width="1.8"><line x1="58" y1="14" x2="58" y2="26"/><line x1="52" y1="20" x2="64" y2="20"/></g>
+              <g stroke-width="1.8"><line x1="66" y1="46" x2="66" y2="58"/><line x1="60" y1="52" x2="72" y2="52"/></g>
+            </svg>
+          </div>
+          <h3>Polish</h3>
+          <p>Everything reassembled and polished to a showroom shine. Ready to use immediately.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- AREAS -->
   <section id="areas" style="text-align: center; background: linear-gradient(180deg, var(--white) 0%, #FFF7EF 100%);">
     <div class="container">
       <h2 class="section-title">Areas We Cover</h2>
-      <p class="section-sub">Within roughly 20 miles of Fenham (NE4 5NS). All 18 areas have dedicated pages with local detail.</p>
+      <p class="section-sub">Within roughly 20 miles of Fenham (NE4 5NS). All 19 areas have dedicated pages with local detail.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 900px; margin: 0 auto 28px;">
         {SERVICE_AREAS.map(a => (
           <a
@@ -124,7 +323,7 @@ const crumbs: { name: string; url: string }[] = [];
         ))}
       </div>
       <p style="color: var(--grey); font-size: 0.95rem;">
-        Not sure if your area is covered? <a href={NAP.phone.href} style="color: var(--orange); font-weight: 700;">Give me a call</a> — I cover most affluent residential pockets within the 20-mile radius.
+        Not sure if your area is covered? <a href={NAP.phone.href} style="color: var(--orange); font-weight: 700;">Give me a call</a>. I cover most affluent residential pockets within the 20-mile radius.
       </p>
     </div>
   </section>
