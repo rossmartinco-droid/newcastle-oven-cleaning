@@ -46,7 +46,7 @@ A standard Great Park booking is a tall housing unit with a stacked double oven 
 - Single oven: £55–80
 - Double oven (most common Great Park appliance): £75–100
 - Hob (induction or ceramic): £20 add-on
-- Extractor: £20 add-on
+- Extractor: £35 add-on
 - Microwave (often built-in combi): £20 add-on
 
 ## Streets and access
