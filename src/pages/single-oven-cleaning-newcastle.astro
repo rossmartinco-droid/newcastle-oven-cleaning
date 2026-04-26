@@ -1,0 +1,110 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import ServiceSchema from '~/components/schema/Service.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Single Oven Cleaning Newcastle | From £55 | Newcastle Oven Cleaning';
+const description = 'Specialist single oven cleaning in Newcastle from £55. Independent sole trader, fully insured. Racks, trays, door glass — all dismantled and cleaned. Call 07949 529741.';
+const url = '/single-oven-cleaning-newcastle/';
+
+const faqs = [
+  {
+    question: 'How much does a single oven clean cost in Newcastle?',
+    answer: 'Single oven cleans start at £55 and go up to £80 depending on condition. Heavily soiled ovens that haven\'t been done in years sit at the upper end; well-maintained annual cleans at the lower end. Send a photo on WhatsApp for an exact price.',
+  },
+  {
+    question: 'How long does a single oven clean take?',
+    answer: 'Most single ovens take 1.5–2 hours on site. Heavily soiled ovens may take slightly longer at no extra cost.',
+  },
+  {
+    question: 'Do you clean the inside of the door glass?',
+    answer: 'Yes — where the door is designed to come apart, I take both panes out and clean all sides, including the inner pane that traps grease over time. This is one of the most-missed areas in DIY cleaning.',
+  },
+  {
+    question: 'Can you clean a self-cleaning (pyrolytic) oven?',
+    answer: 'Yes. The pyrolytic cycle doesn\'t touch the door glass, seals or racks — those still need a professional clean. I clean everything the cycle can\'t reach.',
+  },
+  {
+    question: 'Do I need to empty the oven before you arrive?',
+    answer: 'Just take out any loose items like bakeware or pizza stones. I handle the racks, trays and removable parts.',
+  },
+  {
+    question: 'How often should a single oven be professionally cleaned?',
+    answer: 'For most households, every 6–12 months. Heavy cooks every 4–6 months. Regular cleaning extends element life and keeps door seals working properly.',
+  },
+];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <ServiceSchema
+      serviceType="Single Oven Cleaning"
+      url={url}
+      priceFrom={55}
+      priceTo={80}
+      description="Specialist single oven cleaning across Newcastle and surrounding affluent areas. Full interior cavity, racks, trays, and door glass."
+    />
+    <FAQPageSchema faqs={faqs} />
+    <BreadcrumbList crumbs={[{ name: 'Single Oven Cleaning', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">⭐ From £55 · 1.5–2 hours · Fully insured</div>
+      <h1>Single <span>Oven Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <p class="hero-lead">
+        Full interior cavity, racks, trays, both sides of the door glass — dismantled where safe, cleaned, rinsed and polished. Done by Ross personally, no subcontracting.
+      </p>
+      <p class="hero-meta"><strong>Call {NAP.phone.display}</strong> · {NAP.hours.display}</p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp a photo</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Single Oven Cleaning</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <div class="price-box">
+        <h3>Single oven cleaning price</h3>
+        <p class="big">£55–80</p>
+        <p>1.5–2 hours on site. All products and equipment included. Hob, extractor or microwave can be added — see <a href="/hob-and-extractor-cleaning-newcastle/">hob & extractor cleaning</a>.</p>
+      </div>
+
+      <h2>What's included</h2>
+      <p>A single oven clean covers every part of the cavity, the racks, the trays, and the door glass. Each visit:</p>
+      <ul>
+        <li>Oven interior — roof, sides, floor and back wall fully degreased</li>
+        <li>Racks and shelves — removed and cleaned individually</li>
+        <li>Door — both sides of the glass, including the inner pane (where removable)</li>
+        <li>Door seal and hinges inspected and wiped</li>
+        <li>Trays — cleaned if left in the cavity</li>
+        <li>Control panel and exterior wiped down</li>
+      </ul>
+
+      <h2>How long it takes</h2>
+      <p>Most single ovens in Newcastle homes take between <strong>1.5 and 2 hours</strong> on site. Heavily soiled ovens that have not been professionally cleaned for several years may take slightly longer, but the price doesn't change.</p>
+
+      <h2>The process</h2>
+      <p>Removable parts come out and get cleaned individually while I work on the cavity. The interior is brushed, scrubbed and rinsed section by section — roof, sides, floor, back wall, door glass inside and out. Every surface is rinsed with fresh water and polished before I leave. The oven is ready to use as soon as I'm done.</p>
+
+      <h2>Who I work for in Newcastle</h2>
+      <p>Mostly affluent and elderly homeowners across Jesmond, Gosforth, High Heaton, Ponteland, Tynemouth, and the surrounding 20-mile radius. Annual maintenance bookings, pre-Christmas deep cleans, and one-off "I've never had it done" first cleans are the bulk of single oven work.</p>
+
+      <h2>Booking</h2>
+      <p>Call <strong>{NAP.phone.display}</strong> or send a photo on WhatsApp. Same-week appointments usually available across Newcastle and the standard service area.</p>
+    </div>
+  </section>
+
+  <FAQ faqs={faqs} />
+  <ContactCTA />
+</BaseLayout>

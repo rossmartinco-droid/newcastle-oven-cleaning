@@ -1,0 +1,23 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { NAP } from '~/lib/nap';
+---
+<BaseLayout
+  title="Page not found | Newcastle Oven Cleaning"
+  description="That page doesn't exist. Try the homepage, or call 07949 529741."
+  noindex
+>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">404 · Page not found</div>
+      <h1>That page <span>doesn't exist</span></h1>
+      <p class="hero-lead">
+        The link or URL you followed doesn't match a page on the site. Most likely an old URL from before the site redesign — try the homepage, or just give me a call.
+      </p>
+      <div class="hero-btns">
+        <a href="/" class="btn-primary">← Homepage</a>
+        <a href={NAP.phone.href} class="btn-ghost">📞 {NAP.phone.display}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

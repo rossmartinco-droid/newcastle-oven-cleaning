@@ -1,0 +1,57 @@
+# Cloudflare Pages 301 redirects (also valid for Netlify _redirects format).
+# Activates automatically after DNS cutover from GHL → Astro on Cloudflare Pages.
+# Old GHL URLs → new Astro URLs. All 301 permanent.
+
+# ── Service page renames ────────────────────────────
+/services/single-oven-cleaning      /single-oven-cleaning-newcastle/      301
+/services/single-oven-cleaning/     /single-oven-cleaning-newcastle/      301
+/services/double-oven-cleaning      /double-oven-cleaning-newcastle/      301
+/services/double-oven-cleaning/     /double-oven-cleaning-newcastle/      301
+/services/range-cooker-cleaning     /range-cooker-cleaning-newcastle/     301
+/services/range-cooker-cleaning/    /range-cooker-cleaning-newcastle/     301
+/services/microwave-cleaning        /microwave-cleaning-newcastle/        301
+/services/microwave-cleaning/       /microwave-cleaning-newcastle/        301
+
+# ── Service page merges (hob + extractor → one page) ────────
+/services/hob-cleaning              /hob-and-extractor-cleaning-newcastle/  301
+/services/hob-cleaning/             /hob-and-extractor-cleaning-newcastle/  301
+/services/extractor-fan-cleaning    /hob-and-extractor-cleaning-newcastle/  301
+/services/extractor-fan-cleaning/   /hob-and-extractor-cleaning-newcastle/  301
+
+# ── Service page deletions ──────────────────────────
+/services/oven-hob-extractor-bundle    /single-oven-cleaning-newcastle/   301
+/services/oven-hob-extractor-bundle/   /single-oven-cleaning-newcastle/   301
+
+# ── Area page renames (kept + rewritten) ────────────
+/areas/jesmond                      /oven-cleaning-jesmond/            301
+/areas/jesmond/                     /oven-cleaning-jesmond/            301
+/areas/gosforth                     /oven-cleaning-gosforth/           301
+/areas/gosforth/                    /oven-cleaning-gosforth/           301
+/areas/tynemouth                    /oven-cleaning-tynemouth/          301
+/areas/tynemouth/                   /oven-cleaning-tynemouth/          301
+/areas/heaton                       /oven-cleaning-high-heaton/        301
+/areas/heaton/                      /oven-cleaning-high-heaton/        301
+/areas/whitley-bay                  /oven-cleaning-whitley-bay/        301
+/areas/whitley-bay/                 /oven-cleaning-whitley-bay/        301
+
+# ── Area drops (not in target 18) ───────────────────
+/areas/gateshead                    /oven-cleaning-low-fell/           301
+/areas/gateshead/                   /oven-cleaning-low-fell/           301
+/areas/wallsend                     /                                   301
+/areas/wallsend/                    /                                   301
+/areas/north-shields                /oven-cleaning-tynemouth/          301
+/areas/north-shields/               /oven-cleaning-tynemouth/          301
+/areas/south-shields                /                                   301
+/areas/south-shields/               /                                   301
+/areas/sunderland                   /                                   301
+/areas/sunderland/                  /                                   301
+/areas/durham                       /                                   301
+/areas/durham/                      /                                   301
+/areas/washington                   /                                   301
+/areas/washington/                  /                                   301
+/areas/cramlington                  /                                   301
+/areas/cramlington/                 /                                   301
+/areas/chester-le-street            /                                   301
+/areas/chester-le-street/           /                                   301
+/areas/blyth                        /                                   301
+/areas/blyth/                       /                                   301

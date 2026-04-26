@@ -1,0 +1,70 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import Person from '~/components/schema/Person.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'About Newcastle Oven Cleaning | Ross Smith, Sole Trader, Fenham';
+const description = 'Newcastle Oven Cleaning is run by Ross Smith — independent sole trader based in Fenham, Newcastle. Fully insured (£1m via Simply Business). Specialist oven cleaning only. Honest about Aga limits.';
+const url = '/about/';
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <Person sameAs={[]} />
+    <BreadcrumbList crumbs={[{ name: 'About', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">📍 Fenham, Newcastle upon Tyne</div>
+      <h1>About <span>Newcastle Oven Cleaning</span></h1>
+      <p class="hero-lead">
+        Newcastle Oven Cleaning is run by Ross Smith — sole trader, owner-operator, no employees, no franchise overhead. Based at 60 Brighton Grove in Fenham, working across Newcastle and the surrounding 20-mile radius.
+      </p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>About</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <h2>Independent, named, local</h2>
+      <p>The big oven cleaning names in Newcastle — Ovenu, Ovenclean, Oven Doctor — are all franchises. Each local territory is run by a salaried franchisee operating to a national template. That's a perfectly fine model for them, but it isn't what I do. I'm an independent sole trader. I quote the job, I do the job, I clean up after the job, and I'm the one who picks up the phone if you ever need to call about it again. Same person, every time.</p>
+
+      <h2>Why Fenham matters</h2>
+      <p>I live and work from Fenham (NE4 5NS). It's a real residential address, not a virtual office or a mailbox. That matters for two reasons. First — I'm genuinely local, so the drive to Jesmond is ten minutes and the drive to Ponteland is twenty-five. Second — Google's local search algorithms and the new AI search engines reward businesses with verified physical addresses. Hidden addresses and PO boxes signal "franchise territory holder" or worse. A real Fenham address signals "Ross actually lives here."</p>
+
+      <h2>What I clean</h2>
+      <p>Specialist oven cleaning only. Not general domestic cleaning, not commercial cleaning, not carpets. The full list:</p>
+      <ul>
+        <li>Single and double ovens</li>
+        <li>Range cookers — Rangemaster, Stoves, Belling, Smeg, Lacanche, Falcon, etc.</li>
+        <li>Hobs — gas, electric, ceramic, induction</li>
+        <li>Extractor fans and cooker hoods</li>
+        <li>Microwaves (built-in, freestanding, combi)</li>
+      </ul>
+
+      <h2>Aga cookers — I don't do these</h2>
+      <p>I don't service Aga cookers. Aga has specific cleaning requirements that need specialist training I haven't undertaken — and I'd rather be honest about that than take the booking and disappoint. If you have an Aga and want a recommendation for a specialist who covers Northumberland, give me a call and I'll point you in the right direction.</p>
+
+      <h2>Insurance</h2>
+      <p>Fully insured via <strong>Simply Business</strong> — £1m public liability, policy CHBS5491775XB, valid April 2026 to April 2027. Certificate available on request — happy to email a copy before the visit if it helps.</p>
+
+      <h2>Where I work</h2>
+      <p>Within roughly 20 miles of Fenham. The <a href="/#areas">full area list</a> is on the homepage — Jesmond, Gosforth, High Heaton, Newcastle Great Park, Ponteland, Darras Hall, Tynemouth, Whitley Bay (Monkseaton end), Cullercoats, Morpeth, Low Fell, Wylam, Ryton, Benton, Wideopen, Killingworth, Prudhoe and the streets around them. If you're not sure, give me a call and I'll tell you straight.</p>
+
+      <h2>Why I work this way</h2>
+      <p>Affluent and elderly homeowners are the customer base I serve well. People who value reliability over the cheapest quote. People who book the same person every year and expect them to remember the appliance. People who want to know who's coming to their kitchen. That's the kind of customer the franchise model isn't built for — and it's the kind I prefer.</p>
+
+      <h2>Get in touch</h2>
+      <p>Call <strong>{NAP.phone.display}</strong>, WhatsApp the same number, or email <a href={NAP.email.href}>{NAP.email.address}</a>. Most enquiries get a same-day reply.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>

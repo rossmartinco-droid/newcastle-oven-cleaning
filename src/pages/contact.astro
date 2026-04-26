@@ -1,0 +1,72 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import { NAP, SERVICE_AREAS } from '~/lib/nap';
+
+const title = 'Contact Newcastle Oven Cleaning | Call Ross on 07949 529741';
+const description = 'Contact Newcastle Oven Cleaning. Call 07949 529741, WhatsApp the same number, or email. Mon–Sat 8am–6pm. Based in Fenham, covering Newcastle and 20-mile radius.';
+const url = '/contact/';
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <BreadcrumbList crumbs={[{ name: 'Contact', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">📞 Same-day reply during working hours</div>
+      <h1>Contact <span>Newcastle Oven Cleaning</span></h1>
+      <p class="hero-lead">
+        Easiest is the phone or WhatsApp — I usually reply within an hour during {NAP.hours.display}. Email's fine too.
+      </p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Contact</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <h2>Phone</h2>
+      <p><a href={NAP.phone.href} style="font-size: 1.4rem; font-weight: 800;">{NAP.phone.display}</a><br />
+      Best for booking and quick questions. {NAP.hours.display}.</p>
+
+      <h2>WhatsApp</h2>
+      <p><a href={NAP.whatsapp.link} target="_blank" rel="noopener" style="font-size: 1.4rem; font-weight: 800;">Send a WhatsApp message</a><br />
+      Best for sending photos before booking — particularly useful for range cookers or unusual installations. I usually reply within the hour.</p>
+
+      <h2>Email</h2>
+      <p><a href={NAP.email.href} style="font-size: 1.1rem; font-weight: 700;">{NAP.email.address}</a><br />
+      Fine for non-urgent enquiries or paper trail. Same-day reply during working hours, next-day at most.</p>
+
+      <h2>Address</h2>
+      <p>
+        <strong>{NAP.legalName}</strong><br />
+        {NAP.address.street}<br />
+        {NAP.address.locality}<br />
+        {NAP.address.city}<br />
+        {NAP.address.region} {NAP.address.postcode}<br />
+        {NAP.address.countryName}
+      </p>
+      <p>(I work from clients' homes, so this is the registered business address rather than a shop or office. The Google Business Profile lists this address publicly.)</p>
+
+      <h2>Hours</h2>
+      <p>{NAP.hours.display}. Closed Sundays.</p>
+
+      <h2>Areas covered</h2>
+      <p>Within roughly 20 miles of Fenham. Each of these has a dedicated page with local detail:</p>
+      <ul>
+        {SERVICE_AREAS.map(a => (
+          <li><a href={`/oven-cleaning-${a.slug}/`}>Oven cleaning in {a.name}</a></li>
+        ))}
+      </ul>
+      <p>If you're not on the list, call — most affluent residential pockets within the 20-mile radius are covered, even if they don't have a dedicated page.</p>
+
+      <h2>Insurance</h2>
+      <p>Fully insured — Simply Business £1m public liability, policy CHBS5491775XB. Certificate on request.</p>
+    </div>
+  </section>
+</BaseLayout>

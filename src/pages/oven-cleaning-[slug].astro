@@ -1,0 +1,93 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import ServiceSchema from '~/components/schema/Service.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP, SERVICES } from '~/lib/nap';
+
+export async function getStaticPaths() {
+  const areas = await getCollection('service-areas');
+  return areas.map(area => ({
+    params: { slug: area.id },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+const { Content } = await render(area);
+const { data, id } = area;
+
+const url = `/oven-cleaning-${id}/`;
+const fullUrl = `${NAP.url}${url}`;
+---
+<BaseLayout
+  title={data.metaTitle}
+  description={data.metaDescription}
+  canonical={fullUrl}
+>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <ServiceSchema
+      serviceType={`Oven Cleaning in ${data.name}`}
+      url={url}
+      priceFrom={55}
+      priceTo={120}
+      description={`Specialist oven cleaning in ${data.name}, Newcastle upon Tyne. ${data.demographic}.`}
+      areaServed={[data.name]}
+    />
+    <FAQPageSchema faqs={data.faqs} />
+    <BreadcrumbList crumbs={[{ name: `Oven Cleaning in ${data.name}`, url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">📍 {data.name} · {data.distanceMiles} miles from Fenham</div>
+      <h1>Oven Cleaning in <span>{data.name}</span></h1>
+      <p class="hero-lead">{data.heroLead}</p>
+      <p class="hero-meta"><strong>Call {NAP.phone.display}</strong> or WhatsApp for a free quote. {NAP.hours.display}.</p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner">
+      <a href="/">Home</a> &rsaquo; <span>Oven Cleaning in {data.name}</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <div class="price-box">
+        <h3>Pricing for {data.name}</h3>
+        <p class="big">From £55</p>
+        <p>Single oven £55–80 · Double oven £75–100 · Range cooker £90–120 · Hob/extractor/microwave £20–40 add-ons. Same prices everywhere I cover — no postcode markup.</p>
+      </div>
+
+      <Content />
+
+      <h2>Services available in {data.name}</h2>
+      <ul>
+        {SERVICES.map(s => (
+          <li><a href={`/${s.slug}/`}>{s.name}</a> — from £{s.priceFrom}</li>
+        ))}
+      </ul>
+
+      <h2>Aga cookers</h2>
+      <p>I don't service Aga cookers — Aga has specific cleaning requirements that need specialist training I haven't undertaken, and I'd rather be upfront than do the job poorly. If you'd like a recommendation for an Aga specialist in the {data.name} area, give me a call and I'll point you in the right direction.</p>
+
+      <h2>Book an oven clean in {data.name}</h2>
+      <p>Call <strong>{NAP.phone.display}</strong> or send a WhatsApp with a photo of your oven for a precise quote. {NAP.hours.display}. Same-week appointments are usually available across {data.name} and the wider {data.postcodes.join(' / ')} area.</p>
+    </div>
+  </section>
+
+  <FAQ faqs={data.faqs} title={`FAQs — ${data.name}`} />
+
+  <ContactCTA />
+</BaseLayout>

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Before & After Photos | Newcastle Oven Cleaning';
+const description = 'Before and after oven cleaning photos from Newcastle jobs. Real results from real homes — Jesmond, Gosforth, Ponteland and the wider 20-mile radius.';
+const url = '/before-and-after/';
+
+// Placeholder gallery — Ross adds photos as jobs complete.
+// Each job: { area, appliance, beforeAlt, afterAlt, beforeSrc, afterSrc, notes }
+const jobs: Array<{
+  area: string;
+  appliance: string;
+  beforeAlt: string;
+  afterAlt: string;
+  beforeSrc?: string;
+  afterSrc?: string;
+  notes: string;
+}> = [
+  // Example structure — populate as photos are taken
+  // {
+  //   area: 'Jesmond',
+  //   appliance: 'Single oven',
+  //   beforeAlt: 'Heavily soiled single oven interior in a Jesmond Tyneside flat before professional cleaning',
+  //   afterAlt: 'Same Jesmond single oven after specialist clean — interior restored to like-new finish',
+  //   beforeSrc: '/images/jesmond-single-oven-before.webp',
+  //   afterSrc: '/images/jesmond-single-oven-after.webp',
+  //   notes: '5 years since last professional clean. Standard £55 single oven price.',
+  // },
+];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <BreadcrumbList crumbs={[{ name: 'Before & After', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">📸 Real jobs · Real homes · Real results</div>
+      <h1>Before & After <span>Photos</span></h1>
+      <p class="hero-lead">
+        A growing gallery of real Newcastle oven cleaning jobs. Each pair shows the appliance before I started and after I finished — same angle, same lighting where I can.
+      </p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Before & After</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      {jobs.length === 0 ? (
+        <div style="background: var(--light); padding: 32px; border-radius: var(--radius); border: 1px solid var(--border);">
+          <h2 style="border: none; padding: 0;">Gallery coming soon</h2>
+          <p>The photo gallery is being populated as I complete jobs across the area. Photos are taken with explicit customer permission only — no kitchen identifiable without consent.</p>
+          <p>If you'd like to see specific examples (a Rangemaster clean, a Tyneside flat single oven, an integrated double in a Great Park kitchen), give me a call on <strong>{NAP.phone.display}</strong> and I can email you a few from the archive.</p>
+        </div>
+      ) : (
+        <div style="display: grid; gap: 32px;">
+          {jobs.map((job) => (
+            <article style="border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; background: var(--white);">
+              <h3 style="margin: 0 0 4px; padding: 0; border: none; font-size: 1.1rem;">{job.appliance} — {job.area}</h3>
+              <p style="margin-bottom: 16px; color: var(--grey); font-size: 0.9rem;">{job.notes}</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                {job.beforeSrc && <img src={job.beforeSrc} alt={job.beforeAlt} loading="lazy" />}
+                {job.afterSrc && <img src={job.afterSrc} alt={job.afterAlt} loading="lazy" />}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+
+      <h2>Why the gallery matters</h2>
+      <p>For most oven cleaning enquiries, the question isn't "can you do it?" — it's "how bad does it have to be before you'd refuse?" The honest answer is: never. The grimier the better. The before-and-after pairs here are the proof.</p>
+
+      <h2>Customer privacy</h2>
+      <p>Every photo here is published with the customer's explicit permission. I don't post anything that could identify a kitchen, address or family without consent — particularly relevant for the higher-profile streets in Darras Hall and parts of Jesmond.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>

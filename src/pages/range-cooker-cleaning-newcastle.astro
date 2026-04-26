@@ -1,0 +1,117 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import ServiceSchema from '~/components/schema/Service.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Range Cooker Cleaning Newcastle | From £90 | Newcastle Oven Cleaning';
+const description = 'Specialist range cooker cleaning in Newcastle from £90. Rangemaster, Stoves, Belling, Smeg, Lacanche. Does NOT cover Aga — recommendation provided. Call 07949 529741.';
+const url = '/range-cooker-cleaning-newcastle/';
+
+const faqs = [
+  {
+    question: 'How much does range cooker cleaning cost in Newcastle?',
+    answer: 'Standard 90cm range cookers start at £90 and go up to £120 depending on condition. Larger 110cm or 120cm models, and premium continental brands (Lacanche, Falcon, Wolf), are quoted individually after photos — typically £120–170.',
+  },
+  {
+    question: 'Do you clean Aga cookers?',
+    answer: 'No. Aga has specific cleaning requirements that need specialist training I haven\'t undertaken — I\'d rather be upfront than do the job poorly. If you\'d like a recommendation for an Aga specialist in the area, give me a call and I\'ll point you in the right direction.',
+  },
+  {
+    question: 'Which range cooker brands do you service?',
+    answer: 'Rangemaster (all models), Stoves (Richmond, Sterling, Precision), Belling (Farmhouse, Cookcentre), Leisure, Smeg (Victoria, Concert, Portofino), Britannia, Lacanche, Falcon, Wolf, ESSE, Everhot. Most major continental and American premium brands too.',
+  },
+  {
+    question: 'How long does a range cooker clean take?',
+    answer: 'Standard range cookers take 3–4 hours on site. Larger 110cm and 120cm ranges may take up to 4.5 hours. The price reflects the work, not just the time.',
+  },
+  {
+    question: 'Do you clean the hob on a range cooker?',
+    answer: 'Yes. The full hob surface — gas burners, pan supports, burner caps, electric plates or induction glass — is included in the range cooker price.',
+  },
+  {
+    question: 'Will the cleaning products damage the enamel?',
+    answer: 'No. I use enamel-safe professional products and respect the dwell times specified for each surface — products are never left to sit beyond their recommended contact time. Enamel and trim aren\'t damaged.',
+  },
+];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <ServiceSchema
+      serviceType="Range Cooker Cleaning"
+      url={url}
+      priceFrom={90}
+      priceTo={170}
+      description="Specialist range cooker cleaning across Newcastle. Rangemaster, Stoves, Belling, Smeg, Lacanche, Falcon. Does not service Aga."
+    />
+    <FAQPageSchema faqs={faqs} />
+    <BreadcrumbList crumbs={[{ name: 'Range Cooker Cleaning', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">⭐ From £90 · 3–4 hours · Specialist work</div>
+      <h1>Range Cooker <span>Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <p class="hero-lead">
+        Rangemaster, Stoves, Belling, Smeg, Lacanche, Falcon and the rest. Doors taken apart properly, hob caps polished, every cavity cleaned. Most of my Gosforth, Ponteland and Darras Hall work.
+      </p>
+      <p class="hero-meta"><strong>Call {NAP.phone.display}</strong> or send photos on WhatsApp for an exact quote.</p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp photos</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Range Cooker Cleaning</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <div class="price-box">
+        <h3>Range cooker cleaning price</h3>
+        <p class="big">£90–170</p>
+        <p>Standard 90cm Rangemaster: £90–110. Larger 110cm/120cm: £110–140. Premium continental (Lacanche, Falcon, Wolf): £140–170, quoted individually. Hob included.</p>
+      </div>
+
+      <h2>What's included</h2>
+      <ul>
+        <li>All cooking cavities — main oven, secondary oven, warming drawer, grill</li>
+        <li>All oven racks, trays, and removable shelving</li>
+        <li>All oven doors — inside and outside glass, including trapped inner panes</li>
+        <li>Hob surface — gas burners, pan supports, burner caps, electric plates, or induction glass</li>
+        <li>Splashback and front control panels</li>
+        <li>Warming drawer and storage drawer interiors</li>
+      </ul>
+
+      <h2>Aga cookers — I don't service these</h2>
+      <p><strong>I don't service Aga cookers.</strong> Aga has specific cleaning requirements that need specialist training I haven't undertaken — I'd rather be upfront than do the job poorly. If you'd like a recommendation for an Aga specialist in the area, give me a call and I'll point you in the right direction. (For ranges that look Aga-shaped but aren't actually Aga — Falcon Continental, ESSE, Everhot, etc — I do clean those. Send a photo if you're not sure.)</p>
+
+      <h2>Brands I service regularly across Newcastle</h2>
+      <ul>
+        <li><strong>Rangemaster</strong> — Classic, Professional Plus, Elan, Nexus, Kitchener, Toledo</li>
+        <li><strong>Stoves</strong> — Richmond, Sterling, Precision</li>
+        <li><strong>Belling</strong> — Farmhouse, Cookcentre</li>
+        <li><strong>Leisure</strong> — Cookmaster, Cuisinemaster</li>
+        <li><strong>Smeg</strong> — Victoria, Portofino, Concert</li>
+        <li><strong>Britannia</strong> — Delphi, Q Line</li>
+        <li><strong>Premium continental and American</strong> — Lacanche, Falcon, Wolf, ESSE, Everhot, Sub-Zero</li>
+      </ul>
+
+      <h2>Where range cooker work is concentrated</h2>
+      <p>The bulk of my range cooker work is in Gosforth, Ponteland, Darras Hall, Tynemouth, Morpeth and the larger family streets in Jesmond and High Heaton. If you're in those areas, range cookers are routine for me — I do several a week.</p>
+
+      <h2>Booking</h2>
+      <p>Range cookers benefit most from a photo quote — send 2–3 photos on WhatsApp showing the front, hob, and any specific concerns, and I'll quote precisely within an hour. Call <strong>{NAP.phone.display}</strong> or message via WhatsApp.</p>
+    </div>
+  </section>
+
+  <FAQ faqs={faqs} />
+  <ContactCTA />
+</BaseLayout>

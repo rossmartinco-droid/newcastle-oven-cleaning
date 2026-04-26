@@ -1,0 +1,109 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import ServiceSchema from '~/components/schema/Service.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Microwave Cleaning Newcastle | From £20 add-on | Newcastle Oven Cleaning';
+const description = 'Microwave cleaning across Newcastle. £20 add-on to an oven clean. Built-in, freestanding, combi microwaves. Call 07949 529741.';
+const url = '/microwave-cleaning-newcastle/';
+
+const faqs = [
+  {
+    question: 'How much does microwave cleaning cost?',
+    answer: '£20 when added to an oven clean. Standalone microwave-only visits are quoted individually — typically £30–40.',
+  },
+  {
+    question: 'Can you clean built-in and combi microwaves?',
+    answer: 'Yes. Every type — freestanding, built-in, combination (combi), over-the-range, and drawer microwaves.',
+  },
+  {
+    question: 'Do you clean the ceiling inside the microwave?',
+    answer: 'Yes — that\'s the most-missed spot in DIY cleaning. The cavity ceiling above the turntable accumulates the worst splatter and never gets reached. I always clean it.',
+  },
+  {
+    question: 'Will the microwave smell of cleaning products afterwards?',
+    answer: 'No. The cavity is rinsed and wiped clean before I finish. Ready to use straight away.',
+  },
+  {
+    question: 'Can you replace a missing turntable plate?',
+    answer: 'I don\'t stock turntable plates because they vary by make and model. Order the correct replacement online and I\'ll fit it during the visit.',
+  },
+];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <ServiceSchema
+      serviceType="Microwave Cleaning"
+      url={url}
+      priceFrom={20}
+      priceTo={40}
+      description="Microwave cleaning across Newcastle. Built-in, freestanding, combi. Add-on or standalone."
+    />
+    <FAQPageSchema faqs={faqs} />
+    <BreadcrumbList crumbs={[{ name: 'Microwave Cleaning', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">⭐ £20 add-on · Same visit as your oven</div>
+      <h1>Microwave <span>Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <p class="hero-lead">
+        Interior, turntable, ceiling and door — every surface inside and out. Cleaned in the same visit as your oven for £20.
+      </p>
+      <p class="hero-meta"><strong>Call {NAP.phone.display}</strong> · {NAP.hours.display}</p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Microwave Cleaning</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <div class="price-box">
+        <h3>Microwave cleaning price</h3>
+        <p class="big">£20 (add-on)</p>
+        <p>Added to any oven clean. Standalone microwave-only visits £30–40. Built-in, freestanding, combi, over-the-range, drawer.</p>
+      </div>
+
+      <h2>What's included</h2>
+      <ul>
+        <li>Interior cavity — roof, floor, sides, back wall</li>
+        <li>Turntable and turntable ring — removed and cleaned individually</li>
+        <li>Door seal and hinge area — degreased and wiped</li>
+        <li>Ceiling above the turntable — the most-missed spot</li>
+        <li>Door interior glass — both sides</li>
+        <li>Control panel and exterior</li>
+        <li>Vent grille (where accessible)</li>
+      </ul>
+
+      <h2>Microwave types I clean</h2>
+      <ul>
+        <li>Freestanding countertop microwaves</li>
+        <li>Built-in integrated microwaves (Bosch, Neff, Siemens, Miele)</li>
+        <li>Combination (combi) microwaves with grill and convection oven</li>
+        <li>Over-the-range microwaves (built-in over the cooker)</li>
+        <li>Drawer microwaves (lower cabinet runs)</li>
+      </ul>
+
+      <h2>Best combined with the oven</h2>
+      <p>Most customers add the microwave to a single or double oven clean — same visit, no second appointment, just an extra 20–30 minutes. Particularly worthwhile for built-in combi microwaves above tall housing units, which rarely get touched between yearly cleans.</p>
+
+      <h2>Booking</h2>
+      <p>Call <strong>{NAP.phone.display}</strong> or WhatsApp. Microwave cleans are usually booked alongside the oven rather than standalone — mention what other appliances you'd like done in the same visit.</p>
+    </div>
+  </section>
+
+  <FAQ faqs={faqs} />
+  <ContactCTA />
+</BaseLayout>

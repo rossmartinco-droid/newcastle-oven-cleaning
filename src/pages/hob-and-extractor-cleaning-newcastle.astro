@@ -1,0 +1,113 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import ServiceSchema from '~/components/schema/Service.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Hob & Extractor Cleaning Newcastle | From £20 add-on | Newcastle Oven Cleaning';
+const description = 'Hob and extractor fan cleaning across Newcastle. £20 each as add-ons to an oven clean. Gas, electric, induction. Filters, fan blades, housing. Call 07949 529741.';
+const url = '/hob-and-extractor-cleaning-newcastle/';
+
+const faqs = [
+  {
+    question: 'How much does hob or extractor cleaning cost in Newcastle?',
+    answer: '£20 each when added to an oven clean. Standalone hob-only or extractor-only visits are quoted individually — typically £40–60 — because they involve a separate trip.',
+  },
+  {
+    question: 'Can you clean induction hobs?',
+    answer: 'Yes. Induction and ceramic hobs are cleaned with specialist non-scratch products only — no abrasives, no steel wool. Standard £20 add-on.',
+  },
+  {
+    question: 'Do you clean inside the gas burners?',
+    answer: 'Yes. Burner caps and heads are removed and cleaned individually, including the flame ports where residue builds up.',
+  },
+  {
+    question: 'Do you replace charcoal filters in extractors?',
+    answer: 'I can fit new charcoal filters if you provide them. I don\'t carry universal stock because they vary so much by make and model — order the correct replacement online before the appointment and I\'ll fit it during the visit.',
+  },
+  {
+    question: 'Will the hob smell of cleaning products afterwards?',
+    answer: 'No. The hob is thoroughly rinsed and wiped clean with fresh water before I finish. Ready to use as soon as I leave.',
+  },
+  {
+    question: 'How often should the extractor filters be cleaned?',
+    answer: 'Heavy cook households every 6 months. Average use every 12 months. Don\'t let it go beyond 18 months — clogged filters are a real fire risk and push grease back into the kitchen.',
+  },
+];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <ServiceSchema
+      serviceType="Hob and Extractor Fan Cleaning"
+      url={url}
+      priceFrom={20}
+      priceTo={60}
+      description="Hob and extractor fan cleaning across Newcastle. Add-ons or standalone visits. Gas, electric, induction. All filter types."
+    />
+    <FAQPageSchema faqs={faqs} />
+    <BreadcrumbList crumbs={[{ name: 'Hob & Extractor Cleaning', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">⭐ £20 add-on each · Same visit as your oven</div>
+      <h1>Hob & Extractor <span>Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <p class="hero-lead">
+        Cleaned in the same visit as your oven for £20 each. Gas burners dismantled, induction glass restored, extractor filters degreased, fan blades cleaned. Most customers add both.
+      </p>
+      <p class="hero-meta"><strong>Call {NAP.phone.display}</strong> · {NAP.hours.display}</p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Hob & Extractor Cleaning</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <div class="price-box">
+        <h3>Hob & extractor pricing</h3>
+        <p class="big">£20 each (add-on)</p>
+        <p>Add to any oven clean. Standalone visits £40–60 each. Combined oven + hob + extractor typically £95–140 depending on oven type.</p>
+      </div>
+
+      <h2>Hob cleaning</h2>
+      <p>The full hob surface — burner removal and individual cleaning, pan support dip-tank treatment, surround cleaning, control knobs. Every hob type:</p>
+      <ul>
+        <li><strong>Gas hobs</strong> — burner removal, flame port unclogging, pan support cleaning</li>
+        <li><strong>Electric solid plate hobs</strong> — plate descaling, surround cleaning</li>
+        <li><strong>Ceramic hobs</strong> — specialist residue remover, non-scratch pads only</li>
+        <li><strong>Induction hobs</strong> — streak-free polish, electronic control panel care</li>
+        <li><strong>Domino hobs</strong> — small separate sections treated individually</li>
+      </ul>
+
+      <h2>Extractor fan cleaning</h2>
+      <p>Filters, blades, internal housing, canopy. Every extractor type fitted in Newcastle kitchens:</p>
+      <ul>
+        <li>Removable grease filters — degreased back to silver</li>
+        <li>Fan blades — cleaned individually</li>
+        <li>Internal housing and motor surround — cleaned where accessible</li>
+        <li>Exterior stainless or glass canopy — polished streak-free</li>
+        <li>Charcoal filters — replaced if you supply</li>
+      </ul>
+
+      <h2>Best as a combined visit</h2>
+      <p>Most customers book oven + hob + extractor as one visit. Combined timing typically 2.5–4 hours depending on oven type. One trip, one set of equipment laid out, one bill — usually £95–140 in total.</p>
+
+      <h2>Booking</h2>
+      <p>Call <strong>{NAP.phone.display}</strong> or WhatsApp. If you're booking the hob or extractor as a standalone (no oven), mention that on the call so I can quote the standalone rate.</p>
+    </div>
+  </section>
+
+  <FAQ faqs={faqs} />
+  <ContactCTA />
+</BaseLayout>

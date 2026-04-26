@@ -1,0 +1,103 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import ServiceSchema from '~/components/schema/Service.astro';
+import FAQPageSchema from '~/components/schema/FAQPage.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import FAQ from '~/components/FAQ.astro';
+import ContactCTA from '~/components/ContactCTA.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Double Oven Cleaning Newcastle | From £75 | Newcastle Oven Cleaning';
+const description = 'Specialist double oven cleaning in Newcastle from £75. Both cavities, all racks, inside door glass. Independent, fully insured. Call 07949 529741.';
+const url = '/double-oven-cleaning-newcastle/';
+
+const faqs = [
+  {
+    question: 'How much does a double oven clean cost in Newcastle?',
+    answer: 'Double oven cleans start at £75 and go up to £100 depending on condition and size. Tall integrated housing with a separate combi grill sits at the upper end.',
+  },
+  {
+    question: 'What counts as a double oven?',
+    answer: 'Any oven with two independent cooking cavities — a main oven plus a separate grill compartment, stacked built-in ovens, or two side-by-side ovens. If you\'re unsure, send a photo on WhatsApp and I\'ll confirm.',
+  },
+  {
+    question: 'Do I get charged extra for a grill compartment?',
+    answer: 'No. The grill compartment is included in the double oven price. Only hobs, extractors and microwaves are separate add-ons.',
+  },
+  {
+    question: 'How long does a double oven clean take?',
+    answer: 'Typically 2–3 hours on site. Heavily soiled ovens sit at the upper end of the range — but the price doesn\'t change.',
+  },
+  {
+    question: 'Do you also clean the hob and extractor at the same visit?',
+    answer: 'Yes — both can be added for £20 each. Most double oven bookings include either a hob clean, an extractor clean, or both.',
+  },
+];
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <ServiceSchema
+      serviceType="Double Oven Cleaning"
+      url={url}
+      priceFrom={75}
+      priceTo={100}
+      description="Specialist double oven cleaning across Newcastle. Both cavities, all racks, all door glass."
+    />
+    <FAQPageSchema faqs={faqs} />
+    <BreadcrumbList crumbs={[{ name: 'Double Oven Cleaning', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">⭐ From £75 · 2–3 hours · Fully insured</div>
+      <h1>Double <span>Oven Cleaning</span><br />in Newcastle upon Tyne</h1>
+      <p class="hero-lead">
+        Both cavities, every rack, every inside door pane — including the trapped inner pane that traps grease over time. Built-in or freestanding, all major brands (Bosch, Neff, Siemens, Smeg).
+      </p>
+      <p class="hero-meta"><strong>Call {NAP.phone.display}</strong> · {NAP.hours.display}</p>
+      <div class="hero-btns">
+        <a href={NAP.phone.href} class="btn-primary">📞 Call {NAP.phone.display}</a>
+        <a href={NAP.whatsapp.link} target="_blank" rel="noopener" class="btn-ghost">💬 WhatsApp a photo</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Double Oven Cleaning</span></div>
+  </div>
+
+  <section>
+    <div class="body-content">
+      <div class="price-box">
+        <h3>Double oven cleaning price</h3>
+        <p class="big">£75–100</p>
+        <p>2–3 hours on site. Both cavities, all racks, all door glass. Hob clean £20 add-on, extractor £20, microwave £20.</p>
+      </div>
+
+      <h2>What's included</h2>
+      <p>A double oven takes roughly twice the work of a single — two cavities, two sets of racks, two door systems, and usually a separate grill element. Each visit:</p>
+      <ul>
+        <li>Main oven cavity — roof, sides, floor, back wall</li>
+        <li>Top oven / grill cavity — heating element, racks, floor</li>
+        <li>Both sets of racks — removed and cleaned individually</li>
+        <li>Both doors — inside and outside glass, including the trapped inner pane</li>
+        <li>Door seals and hinges inspected</li>
+        <li>Control knobs and exterior fronts</li>
+      </ul>
+
+      <h2>Built-in tall housings — common in Newcastle Great Park, Gosforth, Darras Hall</h2>
+      <p>Most newer Newcastle kitchens have a built-in tall housing with a main oven and combi grill above. These trap grease in hard-to-reach spots between cavities and around the housing frame. I dismantle and reassemble where needed — that's standard practice on this kind of installation.</p>
+
+      <h2>The process</h2>
+      <p>Both cavities get the same full treatment — racks and removable parts cleaned individually, the interiors brushed, scrubbed, rinsed and polished. Every surface rinsed with fresh water before I leave. Ready to use as soon as I'm done.</p>
+
+      <h2>Booking</h2>
+      <p>Call <strong>{NAP.phone.display}</strong> or send photos on WhatsApp. Booking 1–2 weeks ahead is sensible during October–December (pre-Christmas peak).</p>
+    </div>
+  </section>
+
+  <FAQ faqs={faqs} />
+  <ContactCTA />
+</BaseLayout>
