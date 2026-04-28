@@ -83,7 +83,10 @@ section { padding: 72px 0; }
 }
 .site-header .inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 65px; max-width: var(--max-w); margin: 0 auto; padding: 0 20px;
+  height: 72px; max-width: var(--max-w); margin: 0 auto; padding: 0 20px;
+}
+@media (max-width: 540px) {
+  .site-header .inner { height: 64px; }
 }
 .site-header .logo {
   font-size: 1.2rem; font-weight: 800; color: var(--white);
@@ -92,8 +95,12 @@ section { padding: 72px 0; }
   text-decoration: none;
 }
 .site-header .logo img {
-  width: 36px; height: 36px; object-fit: contain;
+  width: 52px; height: 52px; object-fit: contain;
   display: block;
+}
+@media (max-width: 540px) {
+  .site-header .logo img { width: 44px; height: 44px; }
+  .site-header .logo { font-size: 1.05rem; gap: 8px; }
 }
 .site-header .logo span { color: var(--orange); }
 .site-header .desktop-nav { display: flex; gap: 22px; align-items: center; }
