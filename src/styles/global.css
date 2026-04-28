@@ -89,6 +89,11 @@ section { padding: 72px 0; }
   font-size: 1.2rem; font-weight: 800; color: var(--white);
   display: inline-flex; align-items: center; gap: 10px;
   letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.site-header .logo img {
+  width: 36px; height: 36px; object-fit: contain;
+  display: block;
 }
 .site-header .logo span { color: var(--orange); }
 .site-header .desktop-nav { display: flex; gap: 22px; align-items: center; }

@@ -24,8 +24,11 @@ const year = new Date().getFullYear();
   <link rel="canonical" href={canonicalUrl} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <!-- Open Graph / social share -->
   <meta property="og:type" content="website" />
@@ -49,7 +52,7 @@ const year = new Date().getFullYear();
 <header class="site-header">
   <div class="inner">
     <a href="/" class="logo" aria-label={NAP.name}>
-      <img src="/newcastle-logo.svg" alt="" width="28" height="34" style="vertical-align:middle" />
+      <img src="/newcastle-logo.png" alt="" width="36" height="36" loading="eager" decoding="async" />
       Newcastle <span>Oven Cleaning</span>
     </a>
     <nav class="desktop-nav">
