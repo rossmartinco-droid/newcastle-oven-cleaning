@@ -112,6 +112,33 @@ export const SERVICE_AREAS = [
 ] as const;
 
 /**
+ * Nearby-area mapping. Each area links to 3–4 geographically adjacent areas.
+ * Used by /oven-cleaning-[slug]/ for the "We also cover nearby areas" block —
+ * helps internal-linking + helps Google understand the geographic cluster.
+ */
+export const NEARBY_AREAS: Record<string, string[]> = {
+  'jesmond':              ['gosforth', 'south-gosforth', 'high-heaton', 'tynemouth'],
+  'gosforth':             ['jesmond', 'south-gosforth', 'high-heaton', 'newcastle-great-park'],
+  'high-heaton':          ['jesmond', 'gosforth', 'benton', 'south-gosforth'],
+  'newcastle-great-park': ['gosforth', 'wideopen', 'killingworth', 'ponteland'],
+  'south-gosforth':       ['gosforth', 'jesmond', 'high-heaton', 'benton'],
+  'ponteland':            ['darras-hall', 'newcastle-great-park', 'morpeth', 'cramlington'],
+  'darras-hall':          ['ponteland', 'newcastle-great-park', 'morpeth', 'gosforth'],
+  'tynemouth':            ['cullercoats', 'whitley-bay', 'jesmond', 'benton'],
+  'whitley-bay':          ['tynemouth', 'cullercoats', 'killingworth', 'benton'],
+  'cullercoats':          ['tynemouth', 'whitley-bay', 'jesmond', 'benton'],
+  'morpeth':              ['ponteland', 'cramlington', 'darras-hall', 'wideopen'],
+  'low-fell':             ['gosforth', 'jesmond', 'south-gosforth', 'high-heaton'],
+  'wylam':                ['ryton', 'prudhoe', 'newcastle-great-park', 'ponteland'],
+  'ryton':                ['wylam', 'prudhoe', 'newcastle-great-park', 'low-fell'],
+  'benton':               ['high-heaton', 'south-gosforth', 'killingworth', 'tynemouth'],
+  'wideopen':             ['killingworth', 'benton', 'newcastle-great-park', 'gosforth'],
+  'killingworth':         ['wideopen', 'benton', 'newcastle-great-park', 'tynemouth'],
+  'prudhoe':              ['ryton', 'wylam', 'low-fell', 'newcastle-great-park'],
+  'cramlington':          ['morpeth', 'ponteland', 'wideopen', 'killingworth'],
+};
+
+/**
  * The 5 service variant pages.
  */
 export const SERVICES = [

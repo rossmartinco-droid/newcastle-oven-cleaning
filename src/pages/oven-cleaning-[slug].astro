@@ -7,7 +7,7 @@ import FAQPageSchema from '~/components/schema/FAQPage.astro';
 import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
 import FAQ from '~/components/FAQ.astro';
 import ContactCTA from '~/components/ContactCTA.astro';
-import { NAP, SERVICES } from '~/lib/nap';
+import { NAP, SERVICES, SERVICE_AREAS, NEARBY_AREAS } from '~/lib/nap';
 
 export async function getStaticPaths() {
   const areas = await getCollection('service-areas');
@@ -23,6 +23,12 @@ const { data, id } = area;
 
 const url = `/oven-cleaning-${id}/`;
 const fullUrl = `${NAP.url}${url}`;
+
+// Resolve nearby area slugs → {slug, name} pairs for the in-page link block
+const nearbySlugs = NEARBY_AREAS[id] ?? [];
+const nearbyAreas = nearbySlugs
+  .map(slug => SERVICE_AREAS.find(a => a.slug === slug))
+  .filter((a): a is typeof SERVICE_AREAS[number] => Boolean(a));
 ---
 <BaseLayout
   title={data.metaTitle}
@@ -84,6 +90,18 @@ const fullUrl = `${NAP.url}${url}`;
 
       <h2>Book an oven clean in {data.name}</h2>
       <p>Call <strong>{NAP.phone.display}</strong> or send a WhatsApp with a photo of your oven for a precise quote. {NAP.hours.display}. Same-week appointments are usually available across {data.name} and the wider {data.postcodes.join(' / ')} area.</p>
+
+      {nearbyAreas.length > 0 && (
+        <div class="nearby-areas">
+          <h3>We also cover nearby areas</h3>
+          <p style="margin-bottom: 4px; color: var(--grey); font-size: 0.95rem;">If you're outside {data.name}, I likely cover your area too — same prices, same drive radius.</p>
+          <div class="nearby-areas-list">
+            {nearbyAreas.map(a => (
+              <a href={`/oven-cleaning-${a.slug}/`} class="nearby-area-link">Oven cleaning in {a.name}</a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 

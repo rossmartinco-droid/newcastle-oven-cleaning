@@ -27,6 +27,21 @@ const year = new Date().getFullYear();
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.png" />
 
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content={NAP.name} />
+  <meta property="og:image" content={`${NAP.url}/og-image.png`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${NAP.name} — Fenham, ${NAP.phone.display}`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${NAP.url}/og-image.png`} />
+
   <slot name="head" />
 </head>
 <body>
@@ -37,16 +52,40 @@ const year = new Date().getFullYear();
       <img src="/newcastle-logo.svg" alt="" width="28" height="34" style="vertical-align:middle" />
       Newcastle <span>Oven Cleaning</span>
     </a>
-    <nav>
+    <nav class="desktop-nav">
       <a href="/#services">Services</a>
       <a href="/#areas">Areas</a>
       <a href="/pricing/">Pricing</a>
       <a href="/about/">About</a>
-      <!-- Before/After page hidden from nav until photo gallery is populated -->
-      <a href={NAP.phone.href} class="nav-cta">📞 Call Now</a>
+      <a href={NAP.phone.href} class="nav-cta" aria-label={`Call ${NAP.phone.display}`}>📞 {NAP.phone.display}</a>
     </nav>
+
+    <!-- Mobile-only header right side: phone CTA always visible + hamburger -->
+    <div class="mobile-header-right">
+      <a href={NAP.phone.href} class="mobile-phone-mini" aria-label={`Call ${NAP.phone.display}`}>📞</a>
+      <button id="burger" class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu drawer -->
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <a href="/#services">Services</a>
+    <a href="/#areas">Areas</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+    <a href={NAP.phone.href} class="mobile-menu-call" aria-label={`Call ${NAP.phone.display}`}>📞 Call {NAP.phone.display}</a>
   </div>
 </header>
+
+<!-- TRUST STRIP — sitewide, just below header -->
+<div class="trust-strip" role="complementary" aria-label="Business credentials">
+  <span>Owner-run from Fenham</span><span class="sep">·</span>
+  <span>Fully insured £1m</span><span class="sep">·</span>
+  <span>{NAP.hours.display}</span>
+</div>
 
 <main>
   <slot />
@@ -72,6 +111,15 @@ const year = new Date().getFullYear();
   </div>
 </footer>
 
+<!-- STICKY MOBILE CALL CTA — visible <1024px viewport only -->
+<a
+  href={NAP.phone.href}
+  class="mobile-call-cta"
+  aria-label={`Call Ross on ${NAP.phone.display}`}
+>
+  📞 Call Ross — <span class="num">{NAP.phone.display}</span>
+</a>
+
 <a
   href={NAP.whatsapp.link}
   class="wa-float"
@@ -91,6 +139,29 @@ const year = new Date().getFullYear();
       q.parentElement?.classList.toggle('open');
     });
   });
+
+  // Mobile burger menu toggle
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobile-menu');
+  if (burger && menu) {
+    burger.addEventListener('click', function () {
+      const open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(open));
+      if (open) {
+        menu.removeAttribute('hidden');
+      } else {
+        menu.setAttribute('hidden', '');
+      }
+    });
+    // Close on link tap (so anchor links work)
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('hidden', '');
+      });
+    });
+  }
 </script>
 </body>
 </html>
