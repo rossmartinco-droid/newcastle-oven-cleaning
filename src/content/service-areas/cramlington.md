@@ -20,7 +20,7 @@ propertyTypes:
   - Newer estate properties on the West Hartford and Mayfield edges
 heroLead: Specialist oven cleaning across Cramlington NE23 — the wider Northburn, Beaconhill, Eastfield and Mayfield village pockets, plus the newer western developments.
 metaTitle: Oven Cleaning Cramlington | Local Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Cramlington NE23 from £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Cramlington NE23 £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Cramlington?
     answer: Yes — the central Manor Walks area, Northburn, Beaconhill, Eastfield, Mayfield, Shankhouse, Annitsford and Dudley pockets, plus the newer West Hartford developments on the western edge.

@@ -19,7 +19,7 @@ propertyTypes:
   - Newer estate developments at the Killingworth border
 heroLead: Specialist oven cleaning in Benton (and adjoining Forest Hall) — established residential pocket north-east of Newcastle, around the Metro line.
 metaTitle: Oven Cleaning Benton | Local Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Benton NE7/NE12 from £55. Forest Hall covered. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Benton NE7/NE12 £55. Forest Hall covered. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you cover Benton or Forest Hall?
     answer: Both — they sit alongside each other and I treat them as one service area. Same fixed pricing.
@@ -29,8 +29,6 @@ faqs:
     answer: Longbenton is bordering — partly mixed demographic. Call to confirm depending on the specific street.
   - question: Do you do annual maintenance?
     answer: Yes — most Benton customers are repeat. Established homeowner population.
-  - question: Do you clean Aga cookers?
-    answer: No. Call for a recommendation if you have one.
 ---
 
 ## Benton and Forest Hall

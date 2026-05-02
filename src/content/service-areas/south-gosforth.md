@@ -19,7 +19,7 @@ propertyTypes:
   - A small number of newer infill properties around the Metro station
 heroLead: Specialist oven cleaning across South Gosforth — the older, established residential side of NE3 around the Metro and Haddricks Mill.
 metaTitle: Oven Cleaning South Gosforth | Local Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in South Gosforth from £55. Independent sole trader, fully insured, Fenham-based. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in South Gosforth £55. Independent sole trader, fully insured, Fenham-based. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Where exactly is South Gosforth — different from Gosforth?
     answer: Yes, distinct enough to need its own page. South Gosforth is the older residential pocket south of Salters Bridge, around the South Gosforth Metro station and Haddricks Mill Road. Gosforth proper is the newer, larger family-home area further north.

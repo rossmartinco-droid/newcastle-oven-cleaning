@@ -20,16 +20,14 @@ propertyTypes:
   - A small number of newer bungalows around Marden Park
 heroLead: Specialist oven cleaning across Whitley Bay — focused on the Monkseaton and Marden end (the affluent residential pockets, not the town-centre seafront).
 metaTitle: Oven Cleaning Whitley Bay | Monkseaton Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Whitley Bay (Monkseaton, Marden) from £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Whitley Bay (Monkseaton, Marden) £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Whitley Bay or just the Monkseaton end?
     answer: I focus on the Monkseaton and Marden end — the established residential streets like Hillheads Road, Marden Park and the bungalow estates. The town-centre and seafront flats area is mixed and not really my target market.
   - question: How quickly can you come?
     answer: 2–4 working days. The drive from Fenham is about 30 minutes via the Coast Road.
   - question: Do you do bungalows in the Marden end?
-    answer: Yes — Marden has a high concentration of 1960s bungalows, often with Bosch or Neff integrated single ovens. Standard £55–80 pricing.
-  - question: Do you clean Aga cookers?
-    answer: No. If you have one, call me and I'll recommend an Aga specialist who covers North Tyneside.
+    answer: Yes — Marden has a high concentration of 1960s bungalows, often with Bosch or Neff integrated single ovens. Fixed £55.
   - question: Does coastal salt air affect appliances in Whitley Bay?
     answer: Yes — same as Tynemouth, properties within 200m of the seafront tend to need extractor filters cleaned more often (9 months rather than annually). Inland Monkseaton properties are unaffected.
 ---

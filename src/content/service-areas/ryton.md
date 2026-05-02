@@ -19,7 +19,7 @@ propertyTypes:
   - Some larger detached properties
 heroLead: Specialist oven cleaning in Ryton — established residential village 7 miles west of Newcastle.
 metaTitle: Oven Cleaning Ryton | Local Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Ryton NE40 from £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Ryton NE40 £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Ryton?
     answer: Yes — Old Ryton, the newer estates, and the streets up toward Crawcrook.
@@ -29,8 +29,6 @@ faqs:
     answer: Yes — within standard pricing.
   - question: Do you do range cookers in Ryton?
     answer: Yes — the larger detached houses have a steady share of Rangemaster and Stoves installations.
-  - question: Do you clean Aga cookers?
-    answer: No. Call for a specialist recommendation.
 ---
 
 ## Ryton — established west-of-Newcastle village

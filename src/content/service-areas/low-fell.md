@@ -20,7 +20,7 @@ propertyTypes:
   - Smaller terraces in the older town centre
 heroLead: Specialist oven cleaning in Low Fell — Gateshead's affluent residential pocket. Family homes, established homeowners, the postcode where annual oven maintenance is a habit.
 metaTitle: Oven Cleaning Low Fell | Gateshead Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Low Fell NE9 from £55. Gateshead's affluent pocket. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Low Fell NE9 £55. Gateshead's affluent pocket. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you cover all of Gateshead or just Low Fell?
     answer: I focus on Low Fell specifically. The wider Gateshead borough is mixed and most of it isn't my target market — Low Fell is the affluent residential pocket where my service makes sense.
@@ -30,8 +30,6 @@ faqs:
     answer: Yes — both within standard Low Fell pricing. The larger detached houses in this part of NE9 are a steady source of range cooker work.
   - question: Do you do annual maintenance bookings?
     answer: Yes — most of my Low Fell customers are repeat. I keep notes on each appliance.
-  - question: Do you clean Aga cookers?
-    answer: No. Call me for a specialist recommendation if you have one.
 ---
 
 ## Low Fell specifically — not generic Gateshead

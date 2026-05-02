@@ -19,12 +19,12 @@ propertyTypes:
   - Newer apartments around the village centre
 heroLead: Specialist oven cleaning across Newcastle Great Park — the new-build affluent estate north of Gosforth. High-spec integrated kitchens, double ovens, induction hobs.
 metaTitle: Oven Cleaning Newcastle Great Park | New-Build Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Newcastle Great Park from £55. New-build kitchens a speciality. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Newcastle Great Park £55. New-build kitchens a speciality. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Newcastle Great Park?
     answer: Yes — every phase, from the original eastern plots through the central village and the newer western developments. NE13 and the Great Park edge of NE3.
   - question: Do you clean integrated double ovens common in new-build kitchens?
-    answer: Yes — this is most of my Great Park work. Tall housing units with stacked Neff or Bosch double ovens are the standard installation here. £75–100 depending on age and condition.
+    answer: Yes — this is most of my Great Park work. Tall housing units with stacked Neff or Bosch double ovens are the standard installation here. Fixed £75.
   - question: How clean does an oven get on a 5-year-old new-build?
     answer: Honestly, often filthy. New-build owners frequently haven't deep-cleaned since moving in, and the integrated combi grills hide accumulated grease behind the housing frame. The first professional clean usually surprises people with how much comes out.
   - question: How quickly can you come to a Great Park booking?
@@ -43,8 +43,8 @@ A standard Great Park booking is a tall housing unit with a stacked double oven 
 
 ## Pricing
 
-- Single oven: £55–80
-- Double oven (most common Great Park appliance): £75–100
+- Single oven: £55
+- Double oven (most common Great Park appliance): £75
 - Hob (induction or ceramic): £20 add-on
 - Extractor: £35 add-on
 - Microwave (often built-in combi): £20 add-on

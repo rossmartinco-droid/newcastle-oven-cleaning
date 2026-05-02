@@ -19,7 +19,7 @@ propertyTypes:
   - A small number of newer infill properties
 heroLead: Specialist oven cleaning in Wylam — affluent riverside village 9 miles west of Newcastle.
 metaTitle: Oven Cleaning Wylam | Riverside Village Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Wylam NE41 from £55. Affluent commuter village. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Wylam NE41 £55. Affluent commuter village. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you cover all of Wylam?
     answer: Yes — the village proper, the streets running back from the river, and the Falcon Terrace area.
@@ -29,8 +29,6 @@ faqs:
     answer: Yes — the larger Victorian and 1930s houses on Algernon Terrace and West Road have a fair number of Rangemaster and Stoves installations.
   - question: Do you cover Crawcrook from Wylam?
     answer: Crawcrook is bordering — call to confirm. Within drive radius but not always on the route.
-  - question: Do you clean Aga cookers?
-    answer: No. Call me for a specialist recommendation.
 ---
 
 ## Wylam — small but distinctive affluent village

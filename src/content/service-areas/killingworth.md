@@ -19,7 +19,7 @@ propertyTypes:
   - Some older properties in the Village area
 heroLead: Specialist oven cleaning in Killingworth — family residential area 6 miles north-east of Newcastle, around Killingworth Lake.
 metaTitle: Oven Cleaning Killingworth | Local Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Killingworth NE12 from £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Killingworth NE12 £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Killingworth?
     answer: Yes — the Citadel area, the streets around Killingworth Lake, and the older Village pocket.
@@ -28,9 +28,7 @@ faqs:
   - question: Do you cover Burradon and Annitsford from Killingworth?
     answer: Burradon yes, within standard pricing. Annitsford depends on the street — call to confirm.
   - question: Do you do double ovens common in newer Killingworth Lake homes?
-    answer: Yes. The 1990s+ developments around the lake have a lot of integrated double ovens. Standard £75–100.
-  - question: Do you clean Aga cookers?
-    answer: No. Call for a specialist recommendation.
+    answer: Yes. The 1990s+ developments around the lake have a lot of integrated double ovens. Fixed £75.
 ---
 
 ## Killingworth

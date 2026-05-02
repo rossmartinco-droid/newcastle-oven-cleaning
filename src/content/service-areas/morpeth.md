@@ -20,7 +20,7 @@ propertyTypes:
   - Some older converted properties in the historic core
 heroLead: Specialist oven cleaning in Morpeth NE61 — affluent market town 16 miles north of Newcastle. Within my standard service radius, no postcode markup.
 metaTitle: Oven Cleaning Morpeth | Independent Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Morpeth NE61 from £55. 16 miles from Newcastle, no markup. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Morpeth NE61 £55. 16 miles from Newcastle, no markup. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you actually cover Morpeth — that's quite a drive?
     answer: Yes. Morpeth is 16 miles from my Fenham base, well within my 20-mile service radius. Same fixed pricing as Newcastle, no postcode markup.
@@ -30,8 +30,6 @@ faqs:
     answer: Yes — strong demand for range cooker cleans in the larger Loansdean and Stobhill houses. Standard pricing.
   - question: Do you cover the surrounding villages — Mitford, Pegswood, Hepscott?
     answer: Mitford and Hepscott yes, within standard pricing. Pegswood depends on the specific street — call to confirm.
-  - question: Do you clean Aga cookers?
-    answer: No. Morpeth has a fair number of Agas in the larger county-edge properties — call me and I'll recommend a Northumberland Aga specialist.
 ---
 
 ## Morpeth — within range, no postcode markup

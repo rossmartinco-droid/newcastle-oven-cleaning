@@ -19,7 +19,7 @@ propertyTypes:
   - A small number of newer apartments
 heroLead: Specialist oven cleaning across Cullercoats — small affluent coastal pocket between Tynemouth and Whitley Bay.
 metaTitle: Oven Cleaning Cullercoats | Coastal Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Cullercoats NE30 from £55. Coastal village. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Cullercoats NE30 £55. Coastal village. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you cover all of Cullercoats?
     answer: Yes — the village pocket between Tynemouth and Whitley Bay, including the streets back toward the Marden end of Whitley Bay.
@@ -29,8 +29,6 @@ faqs:
     answer: Yes — compact galley kitchens, often with single ovens. Same fixed pricing.
   - question: Does the salt air affect appliances?
     answer: Yes — extractor filters in particular need more frequent attention this close to the sea (every 9 months rather than yearly).
-  - question: Do you clean Aga cookers?
-    answer: No — call me for a recommendation if you have one.
 ---
 
 ## Cullercoats — small, coastal, distinct from Tynemouth and Whitley Bay

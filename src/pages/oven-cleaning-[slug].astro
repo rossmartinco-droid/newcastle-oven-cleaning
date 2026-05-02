@@ -72,8 +72,8 @@ const nearbyAreas = nearbySlugs
     <div class="body-content">
       <div class="price-box">
         <h3>Pricing for {data.name}</h3>
-        <p class="big">From £55</p>
-        <p>Single oven £55–80 · Double oven £75–100 · Range cooker £90–120 · Hob £20 · Extractor £35 · Microwave £20 add-ons. Same prices everywhere I cover — no postcode markup.</p>
+        <p class="big">£55</p>
+        <p>Single oven £55 · Double oven £75 · Range cooker £90 · Hob £20 · Extractor £35 · Microwave £20 add-ons. Fixed prices — no postcode markup, no condition surcharge.</p>
       </div>
 
       <Content />
@@ -81,12 +81,9 @@ const nearbyAreas = nearbySlugs
       <h2>Services available in {data.name}</h2>
       <ul>
         {SERVICES.map(s => (
-          <li><a href={`/${s.slug}/`}>{s.name}</a> — from £{s.priceFrom}</li>
+          <li><a href={`/${s.slug}/`}>{s.name}</a> — £{s.priceFrom}</li>
         ))}
       </ul>
-
-      <h2>Aga cookers</h2>
-      <p>I don't service Aga cookers — Aga has specific cleaning requirements that need specialist training I haven't undertaken, and I'd rather be upfront than do the job poorly. If you'd like a recommendation for an Aga specialist in the {data.name} area, give me a call and I'll point you in the right direction.</p>
 
       <h2>Book an oven clean in {data.name}</h2>
       <p>Call <strong>{NAP.phone.display}</strong> or send a WhatsApp with a photo of your oven for a precise quote. {NAP.hours.display}. Same-week appointments are usually available across {data.name} and the wider {data.postcodes.join(' / ')} area.</p>

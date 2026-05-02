@@ -20,7 +20,7 @@ propertyTypes:
   - Larger family townhouses (Jesmond Dene end)
 heroLead: Specialist oven cleaning across Jesmond NE2. Most jobs done same week. Jesmond is right on my doorstep — I'm based in Fenham, so getting to your kitchen takes about ten minutes.
 metaTitle: Oven Cleaning Jesmond | Independent Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Jesmond NE2 from £55. Independent sole trader, fully insured, Fenham-based. Single ovens, doubles, range cookers. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Jesmond NE2 £55. Independent sole trader, fully insured, Fenham-based. Single ovens, doubles, range cookers. Call 07949 529741.
 faqs:
   - question: Do you cover all of Jesmond?
     answer: Yes — all of Jesmond and West Jesmond, NE2 postcode, plus the immediate Sandyford and Heaton borders. From the smaller Tyneside flats at the southern end up to the larger family houses near Jesmond Dene.
@@ -31,7 +31,7 @@ faqs:
   - question: Do you do end-of-tenancy oven cleans for Jesmond letting agents?
     answer: Yes. I provide a dated receipt suitable for deposit deductions. The student-heavy streets around Sandyford Road and Osborne Road have heavy June/July demand — book 1–2 weeks ahead during that window.
   - question: Can you clean the larger range cookers in the family houses near Jesmond Dene?
-    answer: Yes. I service Rangemaster, Stoves, Belling, Smeg and similar — all the major range brands. I do not service Aga cookers; if you have one, call me and I'll recommend a specialist who does.
+    answer: Yes. I service Rangemaster, Stoves, Belling, Smeg and similar — all the major range brands.
 ---
 
 ## Oven cleaning across Jesmond and West Jesmond

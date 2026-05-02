@@ -20,7 +20,7 @@ propertyTypes:
   - Converted apartments in the older village buildings
 heroLead: Specialist oven cleaning across Tynemouth NE30 — the affluent coastal village pocket. Salt air, larger houses, range cookers in many of the village-centre properties.
 metaTitle: Oven Cleaning Tynemouth | Coastal Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Tynemouth NE30 from £55. Coastal village pocket. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Tynemouth NE30 £55. Coastal village pocket. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Tynemouth?
     answer: Yes — Tynemouth village, the Front Street area, the seafront streets, and the inland residential streets up to the Cullercoats border. Cullercoats has its own page.
@@ -30,8 +30,6 @@ faqs:
     answer: 2–4 working days. The drive from Fenham is about 30 minutes via the Coast Road.
   - question: Do you clean range cookers common in the larger Tynemouth houses?
     answer: Yes. Manor Road and Percy Park Road in particular have a lot of Rangemaster, Stoves and Smeg installations. Standard pricing applies.
-  - question: Do you clean Aga cookers in Tynemouth?
-    answer: No. There are a number of Agas in the larger Tynemouth properties — call me and I'll recommend an Aga specialist who covers North Tyneside.
 ---
 
 ## Tynemouth — coastal, affluent, distinct

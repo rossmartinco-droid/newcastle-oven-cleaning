@@ -19,7 +19,7 @@ propertyTypes:
   - Newer infill near the Great Park border
 heroLead: Specialist oven cleaning in Wideopen — family residential village 5 miles north of Newcastle, on the Great Park boundary.
 metaTitle: Oven Cleaning Wideopen | Local Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Wideopen NE13 from £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Wideopen NE13 £55. Independent, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Wideopen?
     answer: Yes — the village proper and the streets bordering Newcastle Great Park.
@@ -29,8 +29,6 @@ faqs:
     answer: Yes — within standard pricing.
   - question: Do you do range cookers in Wideopen?
     answer: Yes, though less common than the larger Gosforth or Ponteland houses. Standard pricing.
-  - question: Do you clean Aga cookers?
-    answer: No. Call me for a specialist recommendation.
 ---
 
 ## Wideopen

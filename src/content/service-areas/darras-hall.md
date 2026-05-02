@@ -20,16 +20,14 @@ propertyTypes:
   - Some older converted properties on the original estate
 heroLead: Specialist oven cleaning across Darras Hall — the premium-positioning estate adjoining Ponteland. High-spec range cookers, Lacanche and Smeg installations a routine fixture.
 metaTitle: Oven Cleaning Darras Hall | Premium Range Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Darras Hall NE20 from £55. Premium range cookers a speciality. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Darras Hall NE20 £55. Premium range cookers a speciality. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you charge a premium for Darras Hall?
-    answer: No — same fixed pricing as Newcastle. The price reflects the appliance and the work, not the postcode. Standard Rangemaster £90–110, larger or premium ranges (Lacanche, Falcon, Wolf) priced individually.
+    answer: No — same fixed pricing as Newcastle. £90 for any range cooker, regardless of brand or width.
   - question: How quickly can you come to Darras Hall?
     answer: 2–4 working days. The drive from Fenham is about 25 minutes via the A696.
   - question: Do you clean Lacanche, Falcon, or Wolf range cookers?
-    answer: Yes — premium continental and American range cookers are routine in Darras Hall. Send photos on WhatsApp and I'll quote precisely. Pricing typically £120–170 depending on configuration and condition.
-  - question: Do you clean Aga cookers?
-    answer: No. There are a number of Agas in Darras Hall, particularly in the older estate properties. If you have one, call me and I'll recommend an Aga specialist who covers Northumberland.
+    answer: Yes — premium continental and American range cookers are routine in Darras Hall. Send photos on WhatsApp before booking so I can confirm what's involved. Fixed price £90.
   - question: Are you discreet about premium addresses?
     answer: Yes. Sole trader, no signage on the car, no van branding. Standard practice across all areas, but particularly relevant for Darras Hall residents who value privacy.
 ---
@@ -44,10 +42,10 @@ Far more variety than anywhere else I cover. Standard installations include Rang
 
 ## Pricing
 
-- Standard 90cm Rangemaster: £90–110
-- Larger 110cm/120cm Rangemaster, Smeg, Britannia: £110–140
-- Premium continental (Lacanche, Falcon, Wolf, Gaggenau): £140–180, quoted individually after photos
-- Integrated Miele/Neff double ovens: £100–130
+- Single oven: £55
+- Double oven (incl. integrated Miele/Neff): £75
+- Range cooker (any brand, any width — Rangemaster, Smeg, Britannia, Lacanche, Falcon, Wolf, Gaggenau): £90
+- Hob: £20 add-on · Extractor: £35 add-on · Microwave: £20 add-on
 
 ## Streets I work on most
 

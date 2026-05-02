@@ -20,7 +20,7 @@ propertyTypes:
   - A small number of newer infill properties
 heroLead: Specialist oven cleaning across High Heaton — the affluent, family-home end of NE7. Streets like Heaton Park Road, Newton Road and Cartington Terrace.
 metaTitle: Oven Cleaning High Heaton | Family-Home Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in High Heaton NE7 from £55. Family homes a speciality. Independent, fully insured, Fenham-based. Call 07949 529741.
+metaDescription: Specialist oven cleaning in High Heaton NE7 £55. Family homes a speciality. Independent, fully insured, Fenham-based. Call 07949 529741.
 faqs:
   - question: Do you cover all of Heaton or just High Heaton?
     answer: I focus on High Heaton specifically — the family-home end around Heaton Park Road, Newton Road and the streets bordering Jesmond Dene. The Tyneside flat side of Heaton (closer to Chillingham Road and the Byker boundary) is mostly student lets and end-of-tenancy churn — a different market.
@@ -30,8 +30,6 @@ faqs:
     answer: Yes — most of my High Heaton customers are repeat. I keep notes on the specific oven and what it needed last time, so the second clean is faster.
   - question: Can you clean the larger Heaton family ovens during winter holidays?
     answer: Yes — December bookings are heaviest in High Heaton (pre-Christmas hosting), so book by mid-November ideally. January slots open up quickly after the New Year.
-  - question: Do you clean Aga cookers in High Heaton?
-    answer: No. There are a few Agas in the larger Heaton Park Road houses — if yours is one, call me and I'll recommend an Aga specialist in the area.
 ---
 
 ## High Heaton specifically — not generic Heaton

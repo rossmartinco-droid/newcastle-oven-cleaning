@@ -19,7 +19,7 @@ propertyTypes:
   - Newer infill near the station
 heroLead: Specialist oven cleaning in Prudhoe NE42 — established residential town 13 miles west of Newcastle. Within my standard service radius.
 metaTitle: Oven Cleaning Prudhoe | Independent Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Prudhoe NE42 from £55. Within drive radius, no markup. Independent, fully insured. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Prudhoe NE42 £55. Within drive radius, no markup. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you actually cover Prudhoe?
     answer: Yes — 13 miles from my Fenham base, well within the 20-mile radius. Same fixed pricing as Newcastle.
@@ -29,8 +29,6 @@ faqs:
     answer: Mickley yes, within standard pricing. Stocksfield is at the edge of the radius — call to confirm.
   - question: Do you do range cookers in Prudhoe?
     answer: Yes — the larger detached properties on Castle Drive and the newer estates have a fair share. Standard pricing.
-  - question: Do you clean Aga cookers?
-    answer: No — Prudhoe and the surrounding villages have a number of Agas. Call me for a specialist recommendation.
 ---
 
 ## Prudhoe — within range, established residential

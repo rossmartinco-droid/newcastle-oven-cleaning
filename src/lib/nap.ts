@@ -142,9 +142,9 @@ export const NEARBY_AREAS: Record<string, string[]> = {
  * The 5 service variant pages.
  */
 export const SERVICES = [
-  { slug: 'single-oven-cleaning-newcastle', name: 'Single Oven Cleaning', priceFrom: 55, priceTo: 80 },
-  { slug: 'double-oven-cleaning-newcastle', name: 'Double Oven Cleaning', priceFrom: 75, priceTo: 100 },
-  { slug: 'range-cooker-cleaning-newcastle', name: 'Range Cooker Cleaning', priceFrom: 90, priceTo: 120 },
-  { slug: 'hob-and-extractor-cleaning-newcastle', name: 'Hob & Extractor Cleaning', priceFrom: 20, priceTo: 50, addOn: true },
-  { slug: 'microwave-cleaning-newcastle', name: 'Microwave Cleaning', priceFrom: 20, priceTo: 30, addOn: true },
+  { slug: 'single-oven-cleaning-newcastle', name: 'Single Oven Cleaning', priceFrom: 55, priceTo: 55 },
+  { slug: 'double-oven-cleaning-newcastle', name: 'Double Oven Cleaning', priceFrom: 75, priceTo: 75 },
+  { slug: 'range-cooker-cleaning-newcastle', name: 'Range Cooker Cleaning', priceFrom: 90, priceTo: 90 },
+  { slug: 'hob-and-extractor-cleaning-newcastle', name: 'Hob & Extractor Cleaning', priceFrom: 20, priceTo: 20, addOn: true },
+  { slug: 'microwave-cleaning-newcastle', name: 'Microwave Cleaning', priceFrom: 20, priceTo: 20, addOn: true },
 ] as const;
