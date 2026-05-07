@@ -40,8 +40,8 @@ export const NAP = {
 
   whatsapp: {
     number: '447949529741',
-    defaultMessage: 'Ahoy Ross, I\'d like a quote for oven cleaning',
-    link: 'https://wa.me/447949529741?text=Ahoy%20Ross%2C%20I%27d%20like%20a%20quote%20for%20oven%20cleaning',
+    defaultMessage: 'I\'d like a quote for oven cleaning',
+    link: 'https://wa.me/447949529741?text=I%27d%20like%20a%20quote%20for%20oven%20cleaning',
   },
 
   url: 'https://newcastleovencleaning.co.uk',
