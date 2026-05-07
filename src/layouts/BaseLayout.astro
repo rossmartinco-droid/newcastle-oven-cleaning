@@ -86,7 +86,7 @@ const year = new Date().getFullYear();
 <!-- TRUST STRIP — sitewide, just below header -->
 <div class="trust-strip" role="complementary" aria-label="Business credentials">
   <span>Owner-run from Fenham</span><span class="sep">·</span>
-  <span>Fully insured £1m</span><span class="sep">·</span>
+  <span>Fully insured</span><span class="sep">·</span>
   <span>{NAP.hours.display}</span>
 </div>
 
@@ -107,6 +107,9 @@ const year = new Date().getFullYear();
           <a href={`/oven-cleaning-${a.slug}/`}>{a.name}</a>{i < SERVICE_AREAS.length - 1 ? ' · ' : ''}
         </>
       ))}
+    </div>
+    <div class="availability">
+      Available 7 days a week by phone or WhatsApp. We aim to respond to all enquiries within the hour.
     </div>
     <div class="bottom">
       &copy; {year} {NAP.name} &middot; {NAP.legalName} &middot; {NAP.address.city}, {NAP.address.region}

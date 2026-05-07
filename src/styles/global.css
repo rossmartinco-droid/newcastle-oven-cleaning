@@ -124,13 +124,24 @@ section { padding: 72px 0; }
 .mobile-header-right { display: none; align-items: center; gap: 4px; }
 .mobile-phone-mini {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px;
-  background: var(--orange);
+  width: 46px; height: 46px;
+  background: linear-gradient(135deg, var(--orange-light) 0%, var(--orange) 100%);
   color: var(--white) !important;
-  border-radius: 8px;
-  font-size: 18px;
+  border-radius: 12px;
+  font-size: 20px;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(255, 122, 0, 0.35);
+  box-shadow: 0 6px 18px rgba(255, 122, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  animation: phonePulse 2.4s ease-in-out infinite;
+}
+.mobile-phone-mini:active {
+  transform: scale(0.94);
+  box-shadow: 0 3px 10px rgba(255, 122, 0, 0.4);
+}
+@keyframes phonePulse {
+  0%, 100% { box-shadow: 0 6px 18px rgba(255, 122, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 0 0 rgba(255, 122, 0, 0.45); }
+  50%      { box-shadow: 0 6px 18px rgba(255, 122, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 0 10px rgba(255, 122, 0, 0); }
 }
 .burger {
   display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
@@ -355,9 +366,22 @@ section { padding: 72px 0; }
 }
 .site-footer .areas a { color: #94A3B8; }
 .site-footer .areas a:hover { color: var(--orange); }
+.site-footer .availability {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px; margin-top: 4px;
+  font-size: 0.92rem;
+  color: #CBD5E1;
+  line-height: 1.55;
+}
 .site-footer .bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 16px; font-size: 0.78rem;
+  padding-top: 16px; margin-top: 18px;
+  font-size: 0.78rem;
+}
+
+/* Hide Note from Ross on mobile to reduce information density */
+@media (max-width: 720px) {
+  .note-from-ross { display: none; }
 }
 
 /* ── TRUST STRIP (below header on every page) ──────────────── */
@@ -403,8 +427,8 @@ section { padding: 72px 0; }
 .mobile-call-cta .num { color: var(--orange); font-weight: 800; margin-left: 4px; }
 @media (max-width: 1024px) {
   .mobile-call-cta { display: flex; align-items: center; justify-content: center; gap: 6px; }
-  body { padding-bottom: 72px; } /* prevent footer overlap */
-  .wa-float { bottom: 86px; } /* lift WhatsApp button above the call bar */
+  body { padding-bottom: 80px; } /* prevent footer overlap */
+  .wa-float { bottom: 104px; } /* lift WhatsApp button clearly above the call bar */
 }
 
 /* ── NEARBY AREAS BLOCK (location pages) ────────────────────── */
@@ -645,7 +669,7 @@ section { padding: 72px 0; }
   50%      { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45), 0 0 0 16px rgba(37, 211, 102, 0); }
 }
 @media (max-width: 540px) {
-  .wa-float { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+  .wa-float { bottom: 100px; right: 16px; width: 54px; height: 54px; }
 }
 
 /* ── FADE-IN ───────────────────────────────────────────────── */
