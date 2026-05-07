@@ -20,12 +20,12 @@ propertyTypes:
   - Newer apartments above the High Street retail
 heroLead: Specialist oven cleaning across Gosforth NE3 — High Gosforth, West Gosforth, South Gosforth and the Brandling Park area. Gosforth has the highest density of Rangemasters, Stoves and Belling range cookers in Newcastle, and that's most of what I do here.
 metaTitle: Oven Cleaning Gosforth | Range Cooker Specialist | Newcastle Oven Cleaning
-metaDescription: Specialist oven cleaning in Gosforth NE3 £55. Range cookers £90. Independent sole trader, fully insured. Same-week appointments. Call 07949 529741.
+metaDescription: Specialist oven cleaning in Gosforth NE3 £55. Range cookers £160. Independent sole trader, fully insured. Same-week appointments. Call 07949 529741.
 faqs:
   - question: Do you cover all of Gosforth?
     answer: Yes — High Gosforth, West Gosforth, the South Gosforth side (also covered by its own dedicated page) and the wider NE3 postcode out to Coxlodge and the Brandling Park area.
   - question: How much do you charge for a Rangemaster clean in Gosforth?
-    answer: All range cookers are £90, fixed price regardless of brand, width or condition. Send a photo on WhatsApp if you'd like to confirm what's involved before booking.
+    answer: All range cookers are £160, fixed price regardless of brand, width or condition. Send a photo on WhatsApp if you'd like to confirm what's involved before booking.
   - question: How quickly can you come to a Gosforth booking?
     answer: Most Gosforth jobs are done within 2–3 working days. Same-day is occasionally possible for single ovens during quieter weeks. The drive from Fenham is about 10 minutes.
   - question: Do you take photo quotes for Gosforth customers?
@@ -38,7 +38,7 @@ Gosforth is one of my busiest areas. The mix of housing — 1920s semis on the r
 
 ## Range cookers — most of what I do here
 
-Two-thirds of my Gosforth jobs are full range cookers — typically Rangemaster Classic or Professional Plus, occasionally Stoves Richmond, Belling Farmhouse, or Smeg Concert. These take three to four hours on site, dismantled properly, and the price is £90 fixed regardless of width or condition. Send me two or three photos on WhatsApp before you book if you'd like to confirm what's involved.
+Two-thirds of my Gosforth jobs are full range cookers — typically Rangemaster Classic or Professional Plus, occasionally Stoves Richmond, Belling Farmhouse, or Smeg Concert. These take three to four hours on site, dismantled properly, and the price is £160 fixed regardless of width or condition. Send me two or three photos on WhatsApp before you book if you'd like to confirm what's involved.
 
 ## Local demand patterns
 
@@ -50,4 +50,4 @@ Salters Road, Broadway East, Moor Road, West Avenue, Ashburton Road, Greystoke A
 
 ## Why Gosforth families tend to use me
 
-I'm a named owner-operator rather than a franchisee. For a £90 range cooker clean, most Gosforth customers want to know exactly who's coming to their house and that the same person who quoted is the one doing the work. That's me, every time. No subcontracting, no salaried operative, no franchise overhead.
+I'm a named owner-operator rather than a franchisee. For a £160 range cooker clean, most Gosforth customers want to know exactly who's coming to their house and that the same person who quoted is the one doing the work. That's me, every time. No subcontracting, no salaried operative, no franchise overhead.

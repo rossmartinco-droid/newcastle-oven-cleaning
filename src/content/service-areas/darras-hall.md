@@ -23,11 +23,11 @@ metaTitle: Oven Cleaning Darras Hall | Premium Range Specialist | Newcastle Oven
 metaDescription: Specialist oven cleaning in Darras Hall NE20 £55. Premium range cookers a speciality. Independent, fully insured. Call 07949 529741.
 faqs:
   - question: Do you charge a premium for Darras Hall?
-    answer: No — same fixed pricing as Newcastle. £90 for any range cooker, regardless of brand or width.
+    answer: No — same fixed pricing as Newcastle. £160 for any range cooker, regardless of brand or width.
   - question: How quickly can you come to Darras Hall?
     answer: 2–4 working days. The drive from Fenham is about 25 minutes via the A696.
   - question: Do you clean Lacanche, Falcon, or Wolf range cookers?
-    answer: Yes — premium continental and American range cookers are routine in Darras Hall. Send photos on WhatsApp before booking so I can confirm what's involved. Fixed price £90.
+    answer: Yes — premium continental and American range cookers are routine in Darras Hall. Send photos on WhatsApp before booking so I can confirm what's involved. Fixed price £160.
   - question: Are you discreet about premium addresses?
     answer: Yes. Sole trader, no signage on the car, no van branding. Standard practice across all areas, but particularly relevant for Darras Hall residents who value privacy.
 ---
@@ -43,8 +43,8 @@ Far more variety than anywhere else I cover. Standard installations include Rang
 ## Pricing
 
 - Single oven: £55
-- Double oven (incl. integrated Miele/Neff): £75
-- Range cooker (any brand, any width — Rangemaster, Smeg, Britannia, Lacanche, Falcon, Wolf, Gaggenau): £90
+- Double oven (incl. integrated Miele/Neff): £80
+- Range cooker (any brand, any width — Rangemaster, Smeg, Britannia, Lacanche, Falcon, Wolf, Gaggenau): £160
 - Hob: £20 add-on · Extractor: £35 add-on · Microwave: £20 add-on
 
 ## Streets I work on most

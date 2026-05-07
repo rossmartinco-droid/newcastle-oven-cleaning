@@ -55,10 +55,10 @@ export const NAP = {
   },
 
   hours: {
-    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    opens: '08:00',
-    closes: '18:00',
-    display: 'Mon–Sat, 8am–6pm',
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+    display: 'Open 24/7',
   },
 } as const;
 
@@ -143,8 +143,8 @@ export const NEARBY_AREAS: Record<string, string[]> = {
  */
 export const SERVICES = [
   { slug: 'single-oven-cleaning-newcastle', name: 'Single Oven Cleaning', priceFrom: 55, priceTo: 55 },
-  { slug: 'double-oven-cleaning-newcastle', name: 'Double Oven Cleaning', priceFrom: 75, priceTo: 75 },
-  { slug: 'range-cooker-cleaning-newcastle', name: 'Range Cooker Cleaning', priceFrom: 90, priceTo: 90 },
+  { slug: 'double-oven-cleaning-newcastle', name: 'Double Oven Cleaning', priceFrom: 80, priceTo: 80 },
+  { slug: 'range-cooker-cleaning-newcastle', name: 'Range Cooker Cleaning', priceFrom: 160, priceTo: 160 },
   { slug: 'hob-and-extractor-cleaning-newcastle', name: 'Hob & Extractor Cleaning', priceFrom: 20, priceTo: 20, addOn: true },
   { slug: 'microwave-cleaning-newcastle', name: 'Microwave Cleaning', priceFrom: 20, priceTo: 20, addOn: true },
 ] as const;

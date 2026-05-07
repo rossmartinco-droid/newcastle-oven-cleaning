@@ -24,7 +24,7 @@ faqs:
   - question: Do you cover all of Newcastle Great Park?
     answer: Yes — every phase, from the original eastern plots through the central village and the newer western developments. NE13 and the Great Park edge of NE3.
   - question: Do you clean integrated double ovens common in new-build kitchens?
-    answer: Yes — this is most of my Great Park work. Tall housing units with stacked Neff or Bosch double ovens are the standard installation here. Fixed £75.
+    answer: Yes — this is most of my Great Park work. Tall housing units with stacked Neff or Bosch double ovens are the standard installation here. Fixed £80.
   - question: How clean does an oven get on a 5-year-old new-build?
     answer: Honestly, often filthy. New-build owners frequently haven't deep-cleaned since moving in, and the integrated combi grills hide accumulated grease behind the housing frame. The first professional clean usually surprises people with how much comes out.
   - question: How quickly can you come to a Great Park booking?
@@ -44,7 +44,7 @@ A standard Great Park booking is a tall housing unit with a stacked double oven 
 ## Pricing
 
 - Single oven: £55
-- Double oven (most common Great Park appliance): £75
+- Double oven (most common Great Park appliance): £80
 - Hob (induction or ceramic): £20 add-on
 - Extractor: £35 add-on
 - Microwave (often built-in combi): £20 add-on

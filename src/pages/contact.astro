@@ -5,7 +5,7 @@ import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
 import { NAP, SERVICE_AREAS } from '~/lib/nap';
 
 const title = 'Contact Newcastle Oven Cleaning | Call Ross on 07949 529741';
-const description = 'Contact Newcastle Oven Cleaning. Call 07949 529741, WhatsApp the same number, or email. Mon–Sat 8am–6pm. Based in Fenham, covering Newcastle and 20-mile radius.';
+const description = 'Contact Newcastle Oven Cleaning. Call 07949 529741, WhatsApp the same number, or email. Open 24/7 for bookings. Based in Fenham, covering Newcastle and 20-mile radius.';
 const url = '/contact/';
 ---
 <BaseLayout title={title} description={description}>
@@ -16,10 +16,10 @@ const url = '/contact/';
 
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">📞 Same-day reply during working hours</div>
+      <div class="hero-eyebrow">📞 Open 24/7 · Same-day reply</div>
       <h1>Contact <span>Newcastle Oven Cleaning</span></h1>
       <p class="hero-lead">
-        Easiest is the phone or WhatsApp — I usually reply within an hour during {NAP.hours.display}. Email's fine too.
+        Easiest is the phone or WhatsApp — bookings open 24/7 and I usually reply within an hour. Email's fine too.
       </p>
     </div>
   </section>
@@ -32,7 +32,7 @@ const url = '/contact/';
     <div class="body-content">
       <h2>Phone</h2>
       <p><a href={NAP.phone.href} style="font-size: 1.4rem; font-weight: 800;">{NAP.phone.display}</a><br />
-      Best for booking and quick questions. {NAP.hours.display}.</p>
+      Best for booking and quick questions. Open 24/7.</p>
 
       <h2>WhatsApp</h2>
       <p><a href={NAP.whatsapp.link} target="_blank" rel="noopener" style="font-size: 1.4rem; font-weight: 800;">Send a WhatsApp message</a><br />
@@ -40,7 +40,7 @@ const url = '/contact/';
 
       <h2>Email</h2>
       <p><a href={NAP.email.href} style="font-size: 1.1rem; font-weight: 700;">{NAP.email.address}</a><br />
-      Fine for non-urgent enquiries or paper trail. Same-day reply during working hours, next-day at most.</p>
+      Fine for non-urgent enquiries or paper trail. Same-day reply, next-day at most.</p>
 
       <h2>Address</h2>
       <p>
@@ -54,7 +54,7 @@ const url = '/contact/';
       <p>(I work from clients' homes, so this is the registered business address rather than a shop or office. The Google Business Profile lists this address publicly.)</p>
 
       <h2>Hours</h2>
-      <p>{NAP.hours.display}. Closed Sundays.</p>
+      <p>Open 24/7, Monday to Sunday. Bookings can be made any time.</p>
 
       <h2>Areas covered</h2>
       <p>Within roughly 20 miles of Fenham. Each of these has a dedicated page with local detail:</p>

@@ -28,7 +28,7 @@ faqs:
   - question: Do you cover Burradon and Annitsford from Killingworth?
     answer: Burradon yes, within standard pricing. Annitsford depends on the street — call to confirm.
   - question: Do you do double ovens common in newer Killingworth Lake homes?
-    answer: Yes. The 1990s+ developments around the lake have a lot of integrated double ovens. Fixed £75.
+    answer: Yes. The 1990s+ developments around the lake have a lot of integrated double ovens. Fixed £80.
 ---
 
 ## Killingworth
