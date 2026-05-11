@@ -1,0 +1,108 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Privacy Policy | Newcastle Oven Cleaning';
+const description = 'How Newcastle Oven Cleaning collects, uses and protects your personal data. UK GDPR compliant.';
+const url = '/privacy/';
+const lastUpdated = '7 May 2026';
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <BreadcrumbList crumbs={[{ name: 'Privacy Policy', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="hero-lead">How we handle your personal data. Plain English, UK GDPR compliant.</p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Privacy Policy</span></div>
+  </div>
+
+  <section>
+    <div class="body-content" style="max-width: 780px; margin: 0 auto;">
+      <p><em>Last updated: {lastUpdated}</em></p>
+
+      <h2>1. Who we are</h2>
+      <p>This website is operated by <strong>{NAP.legalName}</strong>, a sole trader based at {NAP.address.street}, {NAP.address.locality}, {NAP.address.city}, {NAP.address.postcode}, United Kingdom. In this policy, "we", "us" and "our" refer to {NAP.name}.</p>
+      <p>We are the data controller for the personal information described below. If you have any questions, contact us on <strong>{NAP.phone.display}</strong> or email <a href={NAP.email.href}>{NAP.email.address}</a>.</p>
+
+      <h2>2. What personal data we collect</h2>
+      <p>We only collect what we need to quote and deliver oven cleaning services. That includes:</p>
+      <ul>
+        <li><strong>Contact details</strong> — your name, phone number, email address and the address where the work is to be carried out.</li>
+        <li><strong>Booking information</strong> — what you'd like cleaned (oven type, hob, extractor, etc.), the date and time arranged, and any access notes you share.</li>
+        <li><strong>Photos you send us</strong> — if you send pictures of your appliance via WhatsApp or email to help with a quote, we keep them only as long as needed to deliver the quote and the job.</li>
+        <li><strong>Payment information</strong> — we record the amount paid and the payment method (cash, bank transfer or card). We do not store full card numbers; card payments are processed by our card terminal provider.</li>
+        <li><strong>Website usage data</strong> — when you visit this site, our hosting provider (Cloudflare) records basic technical information such as IP address, browser type and page visited, for security and performance.</li>
+      </ul>
+
+      <h2>3. Why we collect it and our legal basis</h2>
+      <ul>
+        <li><strong>To respond to enquiries and provide quotes</strong> — legal basis: legitimate interest (responding to your request).</li>
+        <li><strong>To carry out the oven cleaning service you've booked</strong> — legal basis: performance of a contract.</li>
+        <li><strong>To send you a booking confirmation or follow-up</strong> — legal basis: performance of a contract.</li>
+        <li><strong>To comply with UK tax and accounting obligations</strong> — legal basis: legal obligation. HMRC requires us to keep records for at least 6 years.</li>
+        <li><strong>To improve the website</strong> — legal basis: legitimate interest, using anonymised analytics where possible.</li>
+      </ul>
+
+      <h2>4. Who we share data with</h2>
+      <p>We do not sell your data. We only share it with:</p>
+      <ul>
+        <li><strong>Our accountant</strong>, where needed for tax and bookkeeping.</li>
+        <li><strong>Our insurance provider (Simply Business)</strong>, only if a claim arises.</li>
+        <li><strong>HMRC and other regulators</strong>, where the law requires.</li>
+        <li><strong>Service providers we rely on to run the business</strong>, including our website host (Cloudflare), our email provider, and our card payment processor. These providers act on our instructions and under their own data protection terms.</li>
+      </ul>
+
+      <h2>5. How long we keep your data</h2>
+      <ul>
+        <li>Enquiry contact details that do not result in a booking: <strong>up to 12 months</strong>.</li>
+        <li>Booking and customer records: <strong>at least 6 years</strong> after the work, to comply with HMRC rules.</li>
+        <li>Photos sent for quotes: <strong>up to 12 months</strong> after the job, then deleted.</li>
+      </ul>
+
+      <h2>6. Your rights</h2>
+      <p>Under UK GDPR you have the right to:</p>
+      <ul>
+        <li>Ask for a copy of the personal data we hold about you</li>
+        <li>Ask us to correct anything that's wrong</li>
+        <li>Ask us to delete your data, where we no longer need it</li>
+        <li>Object to how we use it</li>
+        <li>Ask us to restrict how we use it</li>
+        <li>Withdraw any consent you've given</li>
+      </ul>
+      <p>To exercise any of these rights, contact us using the details in section 1. We'll respond within one month.</p>
+      <p>If you're not happy with how we've handled your data, you can complain to the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.</p>
+
+      <h2>7. Cookies and tracking</h2>
+      <p>This site uses only essential cookies needed to load the site correctly. We do not use advertising cookies or third-party trackers. If we add analytics in future to understand how visitors use the site, this policy will be updated and consent will be requested where required.</p>
+
+      <h2>8. Security</h2>
+      <p>We take reasonable steps to protect your data. The website is served over HTTPS. Booking records are stored on a password-protected device. Photos and messages exchanged via WhatsApp are encrypted end-to-end by WhatsApp itself.</p>
+
+      <h2>9. Children's data</h2>
+      <p>Our services are aimed at homeowners and tenants over the age of 18. We do not knowingly collect personal data from anyone under 18.</p>
+
+      <h2>10. Changes to this policy</h2>
+      <p>We may update this policy from time to time. The "Last updated" date at the top of this page will reflect the most recent change.</p>
+
+      <h2>11. Contact</h2>
+      <p>
+        <strong>{NAP.legalName}</strong><br />
+        {NAP.address.street}<br />
+        {NAP.address.locality}<br />
+        {NAP.address.city}, {NAP.address.postcode}<br />
+        Phone: <a href={NAP.phone.href}>{NAP.phone.display}</a><br />
+        Email: <a href={NAP.email.href}>{NAP.email.address}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

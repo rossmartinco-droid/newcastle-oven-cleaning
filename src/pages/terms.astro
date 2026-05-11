@@ -1,0 +1,99 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import LocalBusiness from '~/components/schema/LocalBusiness.astro';
+import BreadcrumbList from '~/components/schema/BreadcrumbList.astro';
+import { NAP } from '~/lib/nap';
+
+const title = 'Terms of Service | Newcastle Oven Cleaning';
+const description = 'Terms and conditions for oven cleaning services provided by Newcastle Oven Cleaning. Booking, pricing, cancellation, and liability.';
+const url = '/terms/';
+const lastUpdated = '7 May 2026';
+---
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <LocalBusiness />
+    <BreadcrumbList crumbs={[{ name: 'Terms of Service', url }]} />
+  </Fragment>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Terms of <span>Service</span></h1>
+      <p class="hero-lead">The terms that apply when you book oven cleaning with us. Plain English, fair conditions.</p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="inner"><a href="/">Home</a> &rsaquo; <span>Terms of Service</span></div>
+  </div>
+
+  <section>
+    <div class="body-content" style="max-width: 780px; margin: 0 auto;">
+      <p><em>Last updated: {lastUpdated}</em></p>
+
+      <h2>1. About these terms</h2>
+      <p>These terms apply to all oven cleaning services provided by <strong>{NAP.legalName}</strong> ("we", "us", "our"), trading as {NAP.name}. By booking a service with us, you agree to these terms.</p>
+
+      <h2>2. The service</h2>
+      <p>We provide specialist oven cleaning, hob cleaning, extractor fan cleaning, range cooker cleaning and microwave cleaning at residential addresses within roughly 20 miles of {NAP.address.postcode}.</p>
+      <p>The work is carried out personally by Ross Smith. No subcontracting.</p>
+
+      <h2>3. Bookings</h2>
+      <p>You can book by phone, WhatsApp or email. A booking is confirmed when we send you a date and time and you confirm back. We may ask for photos of the appliance before confirming, to ensure we quote accurately.</p>
+
+      <h2>4. Pricing</h2>
+      <p>Our prices are fixed and published on our <a href="/pricing/">pricing page</a>. There is no postcode surcharge, no condition surcharge, and no call-out fee within our standard service area. Standalone add-on visits (hob only, extractor only, microwave only) are priced separately.</p>
+
+      <h2>5. Payment</h2>
+      <p>Payment is due on completion of the work, unless otherwise agreed in writing. We accept cash, bank transfer and card. A receipt is provided on request.</p>
+
+      <h2>6. Cancellation and rescheduling</h2>
+      <p>You can cancel or reschedule free of charge with at least 24 hours' notice. Cancellations with less than 24 hours' notice may incur a £20 charge to cover allocated time. Same-day cancellations after we have arrived may be charged at 50% of the booked service price.</p>
+      <p>If we need to cancel or reschedule for reasons outside our control (illness, vehicle breakdown, etc.), we'll let you know as soon as possible and offer the next available slot at no charge.</p>
+
+      <h2>7. Access and conditions on site</h2>
+      <p>You agree to:</p>
+      <ul>
+        <li>Be present at the property when we arrive and when we leave</li>
+        <li>Provide clear access to the appliance and a working power supply</li>
+        <li>Disclose any known faults with the appliance before work begins (loose hinges, broken seals, electrical issues, etc.)</li>
+        <li>Keep pets and small children safely away from the work area while we are using cleaning chemicals</li>
+      </ul>
+
+      <h2>8. What we will and won't do</h2>
+      <p>We will dismantle removable parts (racks, trays, door panels, burner caps, filters) as needed to clean them properly, and reassemble everything before we leave.</p>
+      <p>We will not carry out repairs, electrical work, or gas work. If we identify a safety concern during the visit (e.g. a damaged seal or loose element), we will tell you, but we are not qualified to repair it. We may decline to complete a clean if we believe doing so would be unsafe.</p>
+
+      <h2>9. Insurance and liability</h2>
+      <p>We hold £1 million public liability insurance via Simply Business (policy CHBS5491775XB). If something goes wrong during the visit that is genuinely our fault, our insurance covers it.</p>
+      <p>We are not liable for:</p>
+      <ul>
+        <li>Pre-existing faults or wear in the appliance disclosed or undisclosed at the time of booking</li>
+        <li>Components that fail after the clean due to age or pre-existing damage</li>
+        <li>Indirect or consequential losses (for example, food spoilage)</li>
+      </ul>
+      <p>Nothing in these terms limits our liability for death or personal injury caused by negligence, or for fraud.</p>
+
+      <h2>10. Photos</h2>
+      <p>We may, with your verbal permission on the day, take "before" and "after" photos of the appliance for our own portfolio. These photos never show your face, your address, or any identifying detail about you. If you'd rather we didn't, just say so on the day.</p>
+
+      <h2>11. Complaints</h2>
+      <p>If you're unhappy with any part of the service, tell us before we leave the property if possible — most issues can be sorted on the spot. If something becomes apparent later, contact us within 7 days on <a href={NAP.phone.href}>{NAP.phone.display}</a> or <a href={NAP.email.href}>{NAP.email.address}</a> and we'll put it right or return free of charge where reasonable.</p>
+
+      <h2>12. Governing law</h2>
+      <p>These terms are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the English courts. This does not affect your statutory consumer rights under UK law.</p>
+
+      <h2>13. Changes to these terms</h2>
+      <p>We may update these terms from time to time. The version that applies to your booking is the one published on this page on the date of your booking confirmation.</p>
+
+      <h2>14. Contact</h2>
+      <p>
+        <strong>{NAP.legalName}</strong><br />
+        {NAP.address.street}<br />
+        {NAP.address.locality}<br />
+        {NAP.address.city}, {NAP.address.postcode}<br />
+        Phone: <a href={NAP.phone.href}>{NAP.phone.display}</a><br />
+        Email: <a href={NAP.email.href}>{NAP.email.address}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
